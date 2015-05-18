@@ -96,52 +96,13 @@
 
     <div class="before_load"   pv-class="before_load {{runners_rate && trackwidth && show_map && 'hidden'}}"></div>
 		<div class="bmap big_block hidden_opacity" pv-class="bmap big_block {{!runners_rate && 'hidden_opacity'}}">
-			<div class="lang">
+			<!-- <div class="lang">
                 <div class="flag_con">
 				    <div class="left_flag"><img src="i/flag_rus_clr.png"></div>
 				    <div class="inactive_flag_bw right_flag"><a href="en/"><img src="i/flag_en_bw.png"></a></div>
                     <div class="inactive_flag_clr right_flag"><a href="en/"><img src="i/flag_en_clr.png"></a></div>
 				</div>
-            </div>
-			<div class="weather we_bg_sun">
-				<div class="weather_images">
-					<div
-
-						pv-class=" {{ !( time_value|compareTime: '00:00' : '7:00:00' ) && 'hidden'}}"
-						class="hidden">
-						<img src="i/w-sun.png" alt="">
-					</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+11°</div>
-					<div class="we_wind">0 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '1:00:00' : '2:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+14°</div>
-					<div class="we_wind">0 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '2:00:00' : '3:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+16°</div>
-					<div class="we_wind">0 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '3:00:00' : '4:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+17°</div>
-					<div class="we_wind">0 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '4:00:00' : '5:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+19°</div>
-					<div class="we_wind">↗ 1 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '5:00:00' : '6:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+19°</div>
-					<div class="we_wind">↗ 1 м/c</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '6:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+18°</div>
-					<div class="we_wind">↑ 1 м/c</div>
-				</div>
-
-			</div>
+            </div> -->
 			<div class="map-cover">
                 <img
 
@@ -445,6 +406,31 @@
 
 				</div>
 				<div class="bmap_etc">
+					<div class="weather">
+						<div class="we_temperature inline">+11°</div>
+						<div class="weather_images inline">
+							<div
+
+								pv-class=" {{ !( time_value|compareTime: '00:00' : '7:00:00' ) && 'hidden'}}"
+								class="hidden">
+								<img src="i/w-sun.png" alt="">
+							</div>
+						</div>
+						<div class="we_wind inline">
+							
+							<span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">←1 м/c</span>
+							<span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '2:00:00' ) && 'hidden'}}" class="hidden">0 м/c</span>
+							<span pv-class=" {{ !( time_value|compareTime: '2:00:00' : '3:00:00' ) && 'hidden'}}" class="hidden">↗ 3 м/c</span>
+							<span pv-class=" {{ !( time_value|compareTime: '3:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">↑ 8 м/c</span>
+							
+						</div>
+
+						<!-- <div pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">
+							<div class="we_temperature">+14°</div>
+							<div class="we_wind">0 м/c</div>
+						</div> -->
+						
+					</div>
 					<div class="legend">
 						<div class="legendcount_c">
 							<div>Толщина&nbsp;змея</div>
