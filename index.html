@@ -421,17 +421,15 @@
 							<span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">←1 м/c</span>
 							<span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '2:00:00' ) && 'hidden'}}" class="hidden">0 м/c</span>
 							<span pv-class=" {{ !( time_value|compareTime: '2:00:00' : '3:00:00' ) && 'hidden'}}" class="hidden">↗ 3 м/c</span>
-							<span pv-class=" {{ !( time_value|compareTime: '3:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">↑ 8 м/c</span>
-							
+							<span pv-class=" {{ !( time_value|compareTime: '3:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">↑ 8 м/c</span>			
 						</div>
-
-						<!-- <div pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">
-							<div class="we_temperature">+14°</div>
-							<div class="we_wind">0 м/c</div>
-						</div> -->
-						
 					</div>
 					<div class="legend">
+						<div class="legend_alt">
+						    <div>Набор&nbsp;высоты</div>
+						    <div class="svgcon alt_graph graph_has_text" id="alt_graph">
+						    </div>
+						</div>
 						<div class="legendcount_c">
 							<div>Толщина&nbsp;змея</div>
 							<div pv-anchor="legendcount" class="svgcon legendcount_svg">
@@ -444,12 +442,7 @@
 								<div class="graph_text_block" pv-anchor="legendage_textc"></div>
 							</div>
 						</div>
-                        <div class="legend_alt">
-                            <div>Набор&nbsp;высоты</div>
-                            <div class="svgcon alt_graph graph_has_text" id="alt_graph">
-
-                            </div>
-                        </div>
+                        
                         <div class="copyright_desc">Визуализация <a href="http://datalaboratory.ru/">Лаборатории&nbsp;данных
                         	<img src="i/dl-logo.png" alt=""></a></div>
 					</div>

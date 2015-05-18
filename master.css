@@ -414,24 +414,25 @@ path {
 		}
 
 	.legend{
-		width: 100px;
-		float: right;
+		/*width: 100px;*/
+		/*float: right;*/
 		font-size: 12px;
 		font-weight: 700;
-		margin-top: 20px;
-		margin-right: 22px;
+		/*margin-top: 20px;*/
+		/*margin-right: 22px;*/
 		}
 		.legend .graph_text_block{
 			font-weight: 400;
 		}
         .legend_alt {
-            position: absolute;
-            top:400px;
-            width: 130px;
+            /*position: absolute;*/
+            /*top:400px;*/
+            /*width: 130px;*/
         }
         .legend_alt svg {
         	font-size: 8px;
         	font-weight: normal;
+        	margin-left: 3px;
         }
         .legend .alt_graph {
             right: 4px;
