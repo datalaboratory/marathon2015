@@ -434,42 +434,49 @@ path {
         	font-weight: normal;
         	margin-left: 3px;
         }
-        .legend .alt_graph {
-            right: 4px;
-            cursor: pointer;
-        }
-		.legendcount_c{
-            position:absolute;
-			padding-right: 25px;
-		}
-		.legendcount_c .textblock{
-			font-size: 9px;
-			margin-top:0px;
-			margin-left: 23px;
+	        .alt_graph {
+	            right: 4px;
+	            cursor: pointer;
+	        }
+	    .legend_runners {
+			margin-top: 40px;
+	    }
+			.legendcount_c{
+				vertical-align: top;
+				width: 115px;
+				float: right;
+	            /*position:absolute;
+				padding-right: 25px;*/
 			}
-			.legendcount_c .svgcon{
-				position: relative;
+			.legendcount_c .textblock{
+				font-size: 9px;
+				margin-top:0px;
+				margin-left: 23px;
+				}
+				.legendcount_c .svgcon{
+					position: relative;
+				}
+	        .legendcount_svg{
+	            position: absolute;
+	            left: -2px;
+	            top: 4px;
+	        }
+	        .legendcount-text{
+	            /*position:absolute;
+	            right: -58px;
+	            width: 58px;*/
+	            font-weight: 100;
+	        }
+			.legendage_c{
+				width: 130px;
+				vertical-align: top;
 			}
-        .legendcount_svg{
-            position: absolute;
-            left: -2px;
-            top: 4px;
-        }
-        .legendcount-text{
-            position:absolute;
-            right: -58px;
-            width: 58px;
-            font-weight: 100;
-        }
-		.legendcount_c {
-
-		}
-		.legendage_c .svgcon{
-			height: 160px;
-			float: right;
-			width: 180px;
-			margin-right: -68px;
-		}
+			.legendage_c .svgcon{
+				height: 160px;
+				/*float: right;*/
+				width: inherit;
+				/*margin-right: -68px;*/
+			}
 
 	.share_h {
 		font-size: 14px;
@@ -801,9 +808,7 @@ path {
 .mthswitch{
 	cursor: pointer;
 }
-.legendage_c{
-	margin-top:56px;
-}
+
 .genbuttn_group{
 	display: inline-block;
 }

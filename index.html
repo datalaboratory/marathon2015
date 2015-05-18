@@ -203,8 +203,7 @@
 
 					</div>
 
-					<div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
-						<!-- Достопримечательности -->
+					<!-- <div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
 						<div pv-props="
 								style.top:   {{track_top_padding +  (trackheight * 0.34) }}
 								style.left:  {{track_left_padding + (trackwidth * 0.723)}}
@@ -261,9 +260,6 @@
                             <img class="factoid_img" src="i/sights/7_MoskvaC.png" style="margin-top: -17.5px; height: 35px;"/>
 						</div>
 
-						<!-- Фактоиды -->
-                        <!--на 42км-->
-                        <!--первые три-->
 						<div pv-props="
 									style.top:   {{track_top_padding +  (trackheight * 0.12) }}
 									style.left:  {{ - (trackwidth * 0.01)}}
@@ -298,7 +294,6 @@
                             <img class="factoid_img_msu" src="i/msu.png" />
                         </div>
 
-                        <!--вторые три-->
                         <div pv-props="
 									style.top:   {{track_top_padding +  (trackheight * 0.12) }}
 									style.left:  {{ - (trackwidth * 0.01)}}
@@ -333,7 +328,6 @@
 
                         </div>
 
-                        <!--третьи три-->
                          <div pv-props="
 								style.top:   {{track_top_padding +  (trackheight * 0.48)}}
 								style.left:  {{track_left_padding - (trackwidth * 0.22)}}
@@ -357,9 +351,7 @@
 
                         </div>
 
-                        <!--на 10км -->
-
-                        <!--первые три-->
+                       
                         <div pv-props="
 									style.top:   {{track_top_padding +  (trackheight * 0.12) }}
 									style.left:  {{track_top_padding + (trackwidth * 0.1)}}
@@ -400,8 +392,7 @@
 							
 							</div>
 						</div>
-
-					</div>
+					</div> -->
 					
 
 				</div>
@@ -430,21 +421,22 @@
 						    <div class="svgcon alt_graph graph_has_text" id="alt_graph">
 						    </div>
 						</div>
-						<div class="legendcount_c">
-							<div>Толщина&nbsp;змея</div>
-							<div pv-anchor="legendcount" class="svgcon legendcount_svg">
-								<div class="legendcount-text" pv-anchor="legendcounttext"></div>
+						<div class="legend_runners">
+							<div class="legendage_c inline">
+								<div>Пол&nbsp;и возраст</div>
+								<div pv-anchor="legendage" class="svgcon graph_has_text">
+									<div class="graph_text_block" pv-anchor="legendage_textc"></div>
+								</div>
+							</div>
+							<div class="legendcount_c inline">
+								<div>Толщина&nbsp;змея</div>
+								<div pv-anchor="legendcount" class="svgcon legendcount_svg">
+									<div class="legendcount-text" pv-anchor="legendcounttext"></div>
+								</div>
 							</div>
 						</div>
-						<div class="legendage_c">
-							<div>Возраст и&nbsp;пол</div>
-							<div pv-anchor="legendage" class="svgcon graph_has_text">
-								<div class="graph_text_block" pv-anchor="legendage_textc"></div>
-							</div>
-						</div>
-                        
-                        <div class="copyright_desc">Визуализация <a href="http://datalaboratory.ru/">Лаборатории&nbsp;данных
-                        	<img src="i/dl-logo.png" alt=""></a></div>
+					</div>
+					<div class="copyright_desc"><img src="i/dl-logo.png" alt="">Визуализация <a href="http://datalaboratory.ru/">Лаборатории&nbsp;данных</a>
 					</div>
 				</div>
 			</div>
