@@ -1,13 +1,13 @@
 <html>
 <head>
-	<title>Мы бежали марафон. Результаты Московского марафона 21 сентября 2014 года</title>
+	<title>Результаты Московского полумарафона 16 мая 2015 года</title>
 	<meta charset="utf-8">
 	<meta property="og:image" content="/i/screenshot.png"/>
-	<link rel="stylesheet" type="text/css" href="master.css">
+	<link rel="stylesheet" type="text/css" href="css/master.css">
 	<link rel="stylesheet" type="text/css" href="css/leaflet.css">
-	<!-- mm styles -->
-	<link href="mm.css" rel="stylesheet" type="text/css" />
-	<!-- /mm styles -->
+	<!-- moscow marathon styles -->
+	<link href="css/mm.css" rel="stylesheet" type="text/css" />
+	<!-- /moscow marathon styles -->
 
 	<link rel="shortcut icon" href="/i/favicon.ico">
 	<link rel="image_src" href="i/screenshot.png" />
@@ -15,16 +15,24 @@
         var locale = 'rus';
     </script>
 	<script data-main="njs/loader.js" src="njs/require-2.1.6.min.js"></script>
-
+	<!-- 
 	<script type="text/javascript" src="http://vk.com/js/api/openapi.js?101"></script>
 
 	<script type="text/javascript">
   		VK && VK.init({apiId: 4560673, onlyWidgets: true});
 	</script>
+	 -->
 
+	<!-- likely -->
+	<!-- 
+	<script src="njs/libs/jquery-2.0.2.min.js"></script>
+	<script src="njs/libs/likely.js"></script>
+	<link rel="stylesheet" href="css/likely.css">  -->
+	<!-- /likely -->
 </head>
 <body>
-<div id="fb-root"></div>
+	
+<!-- <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -32,7 +40,7 @@
   js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=1501547416745518&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-</script>
+</script>  -->
 
 <!-- mm header -->
 <div class="mm-wrapper">
@@ -436,7 +444,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="copyright_desc"><img src="i/dl-logo.png" alt="">Визуализация <a href="http://datalaboratory.ru/">Лаборатории&nbsp;данных</a>
+					<div> Тут лайкли, который конфликтует с provoda.js</div>
+					<!-- <div class="likely">
+					  <div class="twitter" data-via="ilyabirman">1</div>
+					  <div class="facebook">2</div>
+					  <div class="gplus">3</div>
+					  <div class="vkontakte">4</div>
+					</div> -->
+					<div class="dlcredits"><span class="dllogo inline"><a href="http://datalaboratory.ru/">Δλ</a></span><span class="copyright inline">Визуализация <a href="http://datalaboratory.ru/">Лаборатории&nbsp;данных</a></span>
 					</div>
 				</div>
 			</div>
