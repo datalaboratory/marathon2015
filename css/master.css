@@ -331,6 +331,7 @@ path {
 	width: 260px;
 	/*padding-top: 140px;*/
 	overflow: hidden;
+	margin-right: 20px;
 	}
     .lang {
         position: absolute;
@@ -468,7 +469,7 @@ path {
 	            font-weight: 100;
 	        }
 			.legendage_c{
-				width: 130px;
+				width: 145px;
 				vertical-align: top;
 			}
 			.legendage_c .svgcon{

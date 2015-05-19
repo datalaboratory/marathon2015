@@ -1,4 +1,5 @@
-define(['provoda', './modules/mm2014-42km-geo','./modules/mm2014-10km-geo','./modules/mm2014-42km-geo-accurate','./modules/mm2014-10km-geo-accurate', './modules/cvsloader'],
+// Два трека «42» и «10»
+define(['provoda', './modules/mm2015_17may-21km-geo','./modules/mm2015_17may-10km-geo','./modules/mm2015_17may-21km-geo','./modules/mm2015_17may-10km-geo', './modules/cvsloader'],
     function(provoda, geodata42, geodata10, geodata_alt42, geodata_alt10, cvsloader) {
 "use strict";
 

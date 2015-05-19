@@ -324,12 +324,13 @@ provoda.View.extendTo(RunMapCtr, {
 				this.projection.scale(1).translate([0, 0]);
 				var b = this.path.bounds(geodata),
 					// в s задаётся общий масштаб пары трек-карта
+					// в t задайтся общий сдвиг пары трек-карта
                     width = this.width,
                     height = this.height;
                     var	s = 0.9 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height)
 
                     if (type == 42) {
-                        var	t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+                        var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 140, (height - s * (b[1][1] + b[0][1])) / 2];
                     } else {
                         	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 74, (height - s * (b[1][1] + b[0][1])) / 2];
                     }
