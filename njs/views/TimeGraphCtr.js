@@ -60,8 +60,6 @@ provoda.View.extendTo(TimeGraphCtr, {
 			_this.checkPointerMove(e);
 		};
 
-
-
 		this.c
 		.on('mouseenter', function() {
 			_this.coffset = _this.c.offset();
@@ -74,13 +72,13 @@ provoda.View.extendTo(TimeGraphCtr, {
 		});
 		this.promiseStateUpdate('px_step', this.px_step);
 
-		this.timemarksg1 = this.svg.append('g');
-		this.timemarksg2 = this.svg.append('g');
+		this.timemarksg1 = this.svg.append('g').attr('class','timemaksg1');
+		this.timemarksg2 = this.svg.append('g').attr('class','timemaksg2');
         this.select_line = this.svg.append('g')
             .append('line')
             .attr('x1', 0)
-            .attr('y1', 0)
-            .attr('y2', 0)
+            .attr('y1', 4)
+            .attr('y2', 4)
             .classed('select_line', true)
 
         this.no_select_line = this.svg.append('g')
@@ -322,9 +320,9 @@ provoda.View.extendTo(TimeGraphCtr, {
 				for (var i = 0; i < timesteps.length; i++) {
 					var line1 = this.timemarksg1.append('line');
 					line1.attr({
-						y1: 0,
-						y2: mheight,
-						'stroke':'#CBCBCB',
+						y1: 2,
+						y2: mheight+2,
+						'stroke':'#000',
 						'stroke-width':1
 					});
 					var line2 = this.timemarksg1.append('line');
@@ -332,7 +330,7 @@ provoda.View.extendTo(TimeGraphCtr, {
 						y1: this.height,
 						y2: this.height - mheight,
 						'stroke':'#CBCBCB',
-						'stroke-width':1
+						'stroke-width':0								//костыль — мы рисуем нижние риски, но нулевой толщины
 					});
 					result.push({
 						top: line1,
@@ -372,7 +370,7 @@ provoda.View.extendTo(TimeGraphCtr, {
         fn: function(width_factor, cvs_data, time) {
             if (!width_factor || !cvs_data || !time) return
             var _this = this
-            this.select_line.attr('x2', _this.width * time)
+            this.select_line.attr('x2', _this.width * time-25)
             this.no_select_line.attr('x2', _this.width * time)
         }
     },

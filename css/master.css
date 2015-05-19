@@ -154,7 +154,8 @@ path {
 		border-width: 1px 0px;
 	}
     .select_line{
-        stroke: #5F5F5F;
+        stroke: #eee;
+        /*stroke: url(select_line.png) repeat-x;*/
         stroke-width: 4;
     }
     .no_select_line{
@@ -167,6 +168,11 @@ path {
 			z-index: 3;
 			top:0px;
 			}
+		.scroll_marker img {
+			width: 50%;
+			margin-top: 4.5px;
+			margin-left: 25%;
+		}
 	.timeline .tl_text_mark{
 		position: absolute;
 	}
@@ -175,11 +181,17 @@ path {
 		font-size: 12px;
 	}
 	.timeline .mark_top{
-		top: -19px;
+		top: 17px;
 		}
-
+	.timeline .mark_top .just_text_of_mark{
+		font-size: 9px;
+		color: #9c9c9c;
+		}
+	.timeline .mark_bottom .just_text_of_mark{
+		font-size: 13px;
+		}
 	.timeline .mark_bottom{
-		bottom: -22px;
+		top: 0px;
 		}
 
 	.timeline .last_mark .just_text_of_mark{
@@ -220,10 +232,11 @@ path {
     font-size: 13px;
 }
 .current_time {
+	color: #fd0f3a;
     position: absolute;
-    top: 102%;
+    top: 0;
     font-size: 13px;
-    font-weight: 700;
+    z-index: 50;
 }
 .start_text {
     top: 10px;
@@ -247,14 +260,22 @@ path {
 }
 .winner_info_man{
     top: 47%;
+    padding-top: 29px;
 }
 .winner_info_woman {
     top: 10%;
+    padding-top: 29px;
 }
 
 .big_block{
 	margin: 0 20px;
 	}
+.big_block svg {
+	margin: 29px 0 0 0;
+}
+.big_block .no_select_line {
+	display: none;
+}
 .factoids{
 		position: absolute;
 		top:0px;
@@ -307,16 +328,17 @@ path {
 		font-size: 13px;
 		}
 .controlls_desc{
-	top:50px;
+	top:128px;
 
 	position: absolute;
 	}
 	.controlls_desc_h{
-		font-size: 24px;
-		line-height: 33px;
+		font-size: 23px;
+		line-height: 28px;
 	}
 	.controlls_desc_i{
-		font-size: 18px;
+		font-size: 23px;
+		line-height: 28px;
 	}
 
 
@@ -931,6 +953,7 @@ path {
 
 			}
 .graph_has_text{
+	border:none;
 	position: relative;
 	}
 	.graph_has_text .graph_text_block{
