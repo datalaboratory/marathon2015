@@ -231,7 +231,7 @@ provoda.View.extendTo(RunMapCtr, {
 		});
 		this.wch(this, 'height', function(e) {
 			this.parent_view.parent_view.promiseStateUpdate('mapheight', e.value);
-			this.root_view.promiseStateUpdate('maxwdith', e.value * 1.6);
+			this.root_view.promiseStateUpdate('maxwdith', e.value * 1.0);
 			this.checkSizes();
 			this.root_view.promiseStateUpdate('mapheight', e.value);
 		});
@@ -243,9 +243,9 @@ provoda.View.extendTo(RunMapCtr, {
 		var result = {};
 		var container = this.c.parent();
 		if (container[0]){
-			result.width = Math.min(container.width(), 960);
+			result.width = Math.min(container.width(), 960); // Определение ширины свг
 		}
-		result.height = Math.max(window.innerHeight - 80, 580);
+		result.height = Math.max(window.innerHeight - 80, 640); // Определение высоты свг
 		this.updateManyStates(result);
 	},
 	updateManyStates: function(obj) {
@@ -327,10 +327,11 @@ provoda.View.extendTo(RunMapCtr, {
 					// в t задайтся общий сдвиг пары трек-карта
                     width = this.width,
                     height = this.height;
-                    var	s = 0.9 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height)
+                    var	s = 0.7 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+                    console.log("LOG:",s);
 
                     if (type == 42) {
-                        var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 140, (height - s * (b[1][1] + b[0][1])) / 2];
+                        var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
                     } else {
                         	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 74, (height - s * (b[1][1] + b[0][1])) / 2];
                     }

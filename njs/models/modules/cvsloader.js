@@ -238,6 +238,7 @@ eventor.init();
 // var data_path42 = (locale == 'rus')? 'data/data42km/data3.html':'../data/data42km_en/data3.html';
 // var data_path10 = (locale == 'rus')? 'data/data10km/data3.html':'../data/data10km_en/data3.html';
 
+// Выбор данных с результатами забега
 var data_path42 = (locale == 'rus')? 'data/data42km/data3.html':'../data/data42km/data3.html';
 var data_path10 = (locale == 'rus')? 'data/data10km/data3.html':'../data/data10km/data3.html';
 
