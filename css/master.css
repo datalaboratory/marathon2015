@@ -164,13 +164,12 @@ path {
     }
 		.scroll_marker{
 			position: absolute;
-			margin-top: -9px;
+			margin-top: -6px;
 			z-index: 3;
 			top:0px;
 			}
 		.scroll_marker img {
 			width: 50px;
-			margin-top: 4.5px;
 			margin-left: 0px;
 		}
 	.timeline .tl_text_mark{
@@ -200,7 +199,7 @@ path {
 		margin-left: 0px;
 		}
 		.timeline .mark_bottom.last_mark .just_text_of_mark{
-			bottom:0px;
+			top:0px;
 			
 		}
     .timeline_black_text {
@@ -270,7 +269,7 @@ path {
 .big_block{
 	margin: 0 20px;
 	}
-.big_block svg {
+.controlls svg {
 	margin: 29px 0 0 0;
 }
 .big_block .no_select_line {
