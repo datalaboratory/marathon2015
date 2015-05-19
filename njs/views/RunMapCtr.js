@@ -333,7 +333,7 @@ provoda.View.extendTo(RunMapCtr, {
                     if (type == 42) {
                         var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
                     } else {
-                        	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 74, (height - s * (b[1][1] + b[0][1])) / 2];
+                        	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
                     }
                 this.behavior.translate(t).scale(s);
 
