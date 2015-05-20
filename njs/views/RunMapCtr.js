@@ -292,6 +292,7 @@ provoda.View.extendTo(RunMapCtr, {
 		fn: function(geodata) {
 			var rad_distance = d3.geo.length(geodata);
 			this.total_distance = rad_distance * this.earth_radius;
+			// console.log("LOG total:",this.total_distance);
 			this.knodes.base.data([geodata]);
 			return true;
 		}
@@ -328,7 +329,6 @@ provoda.View.extendTo(RunMapCtr, {
                     width = this.width,
                     height = this.height;
                     var	s = 0.7 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-                    console.log("LOG:",s);
 
                     if (type == 42) {
                         var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
@@ -390,7 +390,7 @@ provoda.View.extendTo(RunMapCtr, {
             var step = (type == 42) ? 500 : 200;
 			var data = mh.getPoints(current_runners_data.runners_groups, this.knodes, time_value, cvs_data.start_time, this.total_distance, step);
 			mh.drawRunnersPoints(colors, this.parent_view.parent_view.gender_grads, data, current_runners_data.items, this.knodes.debug_group, time_value, cvs_data.start_time);
-
+			console.log("LOG:",time_value,current_runners_data);
 			return Date.now();
 		}
 	},
@@ -453,15 +453,15 @@ provoda.View.extendTo(RunMapCtr, {
         }
     },
     'compx-draw_alt_graph': {
-        depends_on: ['altitudes', 'geo_alt'],
-            fn: function(alt, geo) {
+        depends_on: ['altitudes', 'geo_alt', 'distance_type'],
+            fn: function(alt, geo, distance_type) {
             if (!alt || !geo) return
-            var width = 252, height = 50, offset_ver = 15, offset_hor = 5;
+            var width = 240, height = 20, offset_ver = 20, offset_hor = 9;
             var svg = this.alt_graph
             svg = svg.attr('width', width + 2 * offset_hor).attr('height', height + 2 * offset_ver)
             svg.selectAll('*').remove()
             this.knodes.altitude.selectAll('*').remove()
-            var path = svg.append('path')
+            // var path = svg.append('path') // «тень» под графиком
             var top = svg.append('path')
 
             var min_max_alt = d3.extent(alt)
@@ -474,7 +474,7 @@ provoda.View.extendTo(RunMapCtr, {
                 .range([offset_hor, width + offset_hor])
 
             var first_point = {x: offset_hor, y: height + offset_ver}
-            var data = [first_point]
+            // var data = [first_point] // «тень» под графиком
             var data_top = []
             var max_alt = first_point
             var min_alt = {x: offset_hor, y: 0}
@@ -488,31 +488,65 @@ provoda.View.extendTo(RunMapCtr, {
                     min_alt = point
                     min_alt.num = i
                 }
-                data.push(point)
+                // data.push(point) // «тень» под графиком
                 data_top.push(point)
             })
-            data.push({x: width + offset_hor, y: height + offset_ver})
-            data = mh.formatPathPoints(data) + ' Z'
             data_top = mh.formatPathPoints(data_top)
-
-            path
-                .attr('d', data)
-                .style({
-                    fill: '#E6E6E6',
-                    stroke: 'none'
-                })
             top
                 .attr('d', data_top)
-                .style('stroke', '#949494')
+                .style('stroke', 'url(#gradient)')
 
-            var alt_line = svg.append('line')
-                .attr('x1', max_alt.x)
-                .attr('x2', max_alt.x)
-                .attr('y1', max_alt.y)
-                .attr('y2', height + offset_ver)
-                .attr('stroke', '#949494')
-                .attr('stroke-dasharray', 1)
-                .attr('opacity', '.9')
+            var distance_in_km = Math.round(this.total_distance/1000), // 21\42\10 и т.п. для рисок на графике
+            	distance_marks = (distance_type === 42) ? [5 ,distance_in_km/2, 15] : [2 ,distance_in_km/2, 7]; // Где будем ставить риски
+            var distance_marks_for_alt = svg.selectAll('g')
+            	.data(distance_marks)
+            	.enter().append('g')
+            	.attr('class','distance_marks_for_alt');
+            	
+        	// Рисуем риски
+        	distance_marks_for_alt
+            	.append('line')
+            	.attr("x1", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y1", min_alt.y + 10) // Удлиняем риску
+                .attr("x2", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y2", max_alt.y)
+
+            // Подписываем риски
+            distance_marks_for_alt
+            	.append('text')
+            	.text(function(d,i) {
+            		if (i === 0) {
+            			return (locale == 'rus') ? (d + ' км') : (d + ' km')
+            		} else {
+            			return d
+            		};
+            	})
+            	.attr({
+            		x : function(d) { return d/distance_in_km * (width + 2 * offset_hor) },
+            		y : min_alt.y + 10,
+            		dx : 0,
+            		dy : 9.5
+            	});
+            	
+            		
+            // «тень» под графиком
+            // data.push({x: width + offset_hor, y: height + offset_ver})
+            // data = mh.formatPathPoints(data) + ' Z'
+            // path
+            //     .attr('d', data)
+            //     .style({
+            //         fill: '#E6E6E6',
+            //         stroke: 'none'
+            //     })
+            
+
+            // Линия на ось Х для максимальной точки
+            // var alt_line = svg.append('line')
+            //     .attr('x1', max_alt.x)
+            //     .attr('x2', max_alt.x)
+            //     .attr('y1', max_alt.y)
+            //     .attr('y2', height + offset_ver)
+            //     .attr('stroke', '#949494')
+            //     .attr('stroke-dasharray', 1)
+            //     .attr('opacity', '.9')
 
             var meter = (locale == 'rus') ? ' м' : ' m'
 
@@ -525,7 +559,7 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr('x', min_alt.x)
                 .attr('y', min_alt.y + 12)
 
-            svg.selectAll('text').style('text-anchor', 'middle')
+            // svg.selectAll('text').style('text-anchor', 'middle')
 
             var top_black_point = svg.append('circle')
                 .attr('cx', max_alt.x)
@@ -535,24 +569,28 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr('cx', min_alt.x)
                 .attr('cy', min_alt.y)
                 .attr('r', 1.5)
+
+            // Размер квадрата с маркером старт\финиш
+            var marks_size = 15;
             svg
                 .append("image")
                 .attr("xlink:href", function () {
                     return (locale == 'rus') ? "i/mark-yel.png" : "../i/mark-yel.png"
                 })
-                .attr("x", scaleX(0) - 5)
-                .attr("y", scaleY(alt[0]) - 10)
+                .attr("x", scaleX(0) - marks_size/2)
+                .attr("y", scaleY(alt[0]) - marks_size)
             svg
                 .append("image")
                 .attr("xlink:href", function () {
                     return (locale == 'rus') ? "i/mark-red.png" : "../i/mark-red.png"
                 })
-                .attr("x", scaleX(alt.length) - 5)
-                .attr("y", scaleY(alt[alt.length - 1]) - 10)
+                .attr("x", scaleX(alt.length) - marks_size/2)
+                .attr("y", scaleY(alt[alt.length - 1]) - marks_size)
 
             svg.selectAll('image')
-                .attr("width", 10)
-                .attr("height", 10)
+                .attr("width", marks_size)
+                .attr("height", marks_size)
+
             var _this = this
             var point_on_map = this.knodes.altitude.append('circle').attr('r', 2).style('opacity', 0)
             var text_alt_on_map = this.knodes.altitude.append('text').style('text-anchor', 'middle')
@@ -577,10 +615,10 @@ provoda.View.extendTo(RunMapCtr, {
                     .attr('x', geo_point_px[0])
                     .attr('y', geo_point_px[1] - 6)
                 if (x > offset_hor && x < width + offset_hor) {
-                    alt_line
-                        .attr('x1', x)
-                        .attr('x2', x)
-                        .attr('y1', y)
+                    // alt_line
+                    //     .attr('x1', x)
+                    //     .attr('x2', x)
+                    //     .attr('y1', y)
                     top_black_point
                         .attr('cx', x)
                         .attr('cy', y)
@@ -592,10 +630,10 @@ provoda.View.extendTo(RunMapCtr, {
             })
 
             svg.on('mouseleave', function() {
-                alt_line
-                    .attr('x1', max_alt.x)
-                    .attr('x2', max_alt.x)
-                    .attr('y1', max_alt.y)
+                // alt_line
+                //     .attr('x1', max_alt.x)
+                //     .attr('x2', max_alt.x)
+                //     .attr('y1', max_alt.y)
                 top_black_point
                     .attr('cx', max_alt.x)
                     .attr('cy', max_alt.y)
@@ -604,7 +642,23 @@ provoda.View.extendTo(RunMapCtr, {
                 point_on_map.style('opacity', 0)
                 text_alt_on_map.style('opacity', 0)
             })
-                
+            
+            // Градиент
+            svg.append("linearGradient")
+                .attr("id", "gradient")
+                .attr("gradientUnits", "userSpaceOnUse")
+                .attr("x1", min_alt.x).attr("y1", min_alt.y)
+                .attr("x2", min_alt.x).attr("y2", max_alt.y)
+              .selectAll("stop")
+                .data([
+                  {offset: "0%", color: "steelblue"},
+                  {offset: "50%", color: "gray"},
+                  {offset: "100%", color: "red"}
+                ])
+              .enter().append("stop")
+                .attr("offset", function(d) { return d.offset; })
+                .attr("stop-color", function(d) { return d.color; });
+
         }
     }
 });

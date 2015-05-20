@@ -451,12 +451,19 @@ path {
         .legend_alt svg {
         	font-size: 8px;
         	font-weight: normal;
-        	margin-left: 3px;
         }
 	        .alt_graph {
 	            right: 4px;
 	            cursor: pointer;
+	            position: static;
 	        }
+	        	.distance_marks_for_alt line {
+					stroke-width: 1px;
+					stroke: #C1C1C1;
+	        	}
+	        	.distance_marks_for_alt text {
+	        		fill: #C1C1C1;
+	        	}
 	    .legend_runners {
 			margin-top: 40px;
 	    }
@@ -952,11 +959,10 @@ path {
 	border:none;
 	position: relative;
 	}
-	.graph_has_text .graph_text_block{
+	/*.graph_has_text .graph_text_block{
 		margin-top: -28;
 		position: absolute;
-
-		}
+		}*/
 	.graph_has_text .graph_text_block .textblock{
 		position: absolute;
 		}

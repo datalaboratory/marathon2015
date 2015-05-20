@@ -24,6 +24,15 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		svg = document.createElementNS(mh.SVGNS, 'svg');
 		$(svg).appendTo(this.tpl.ancs['legendcount']);
 		this.legendcount =  d3.select(svg);
+		this.legendcount.append('path')
+			.attr('id','legendcount-male')
+			.style('fill', '#82c0fd')
+            .style('stroke', 'none');
+		this.legendcount.append('path')
+			.attr('id','legendcount-female')
+			.style('fill', '#f492a2')
+            .style('stroke', 'none');
+		this.legendcount.append('path').attr('id','legendcount-all');
 
 
 		var scroll_marker = this.tpl.ancs['scroll_marker'];
@@ -146,17 +155,18 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		}
 	},
     'compx-legendcount': {
-        depends_on: ['cvs_data'],
-        fn: function(cvs_data) {
+        depends_on: ['cvs_data','time_value','selected_time'],
+        fn: function(cvs_data, time_value,selected_time) {
             if (!cvs_data)return
             var container = this.tpl.ancs['legendcount'];
             var width = 80
-            var height= 20//container.height();
-            var factor = cvs_data.genders_groups[0].raw.length / cvs_data.items.length
+            var height= 50 //container.height();
+            var factor = cvs_data.genders_groups[0].raw.length / cvs_data.items.length // доля женщин
             $(this.legendcount.node()).css({
                 width: width,
                 height: height
             });
+            // console.log("LOG:",time_value);
             var svg = this.legendcount
             function formatSnakePath(width, height, factor) {
                 return 'M0 '+ height +
@@ -166,13 +176,16 @@ provoda.View.extendTo(RunMapCompxCtr, {
                     ( width / 2) + ' ' + (height - 1 * height * factor / 20) +
                     ' 0 ' + height + ' Z'
             }
-            svg.append('path')
+            // Добавляем мальчиков
+            svg.select('#legendcount-male')
                 .attr('d', formatSnakePath(width, height, 1))
-                .style('fill', '#82c0fd')
-            svg.append('path')
-                .attr('d', formatSnakePath(width, height, factor))
-                .style('fill', '#f492a2')
-            svg.selectAll('path').style('stroke', 'none')
+                
+            // Добавляем девочек
+            svg.select('#legendcount-female')
+                .attr('d', formatSnakePath(width, height * selected_time, factor))
+            // Добавляем общего змея
+            svg.select('#legendcount-all')
+                .attr('d', formatSnakePath(width, height, 1))
             return height
         }
     },
