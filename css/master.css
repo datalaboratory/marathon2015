@@ -148,7 +148,7 @@ path {
 	position: relative;
 }
 	.timeline{
-		margin-top: 45px;
+		margin-top: 90px;
 		height: 205px;
 		border-bottom: 1px solid #ccc;
 		border-width: 1px 0px;
@@ -164,13 +164,12 @@ path {
     }
 		.scroll_marker{
 			position: absolute;
-			margin-top: -6px;
+			margin-top: -33px;
 			z-index: 3;
 			top:0px;
 			}
 		.scroll_marker img {
 			width: 50px;
-			margin-left: 0px;
 		}
 	.timeline .tl_text_mark{
 		position: absolute;
@@ -233,7 +232,7 @@ path {
 .current_time {
 	color: #fd0f3a;
     position: absolute;
-    top: 0;
+    margin-top: -28px;
     font-size: 13px;
     z-index: 50;
 }
@@ -255,23 +254,20 @@ path {
     width: 100px;
 }
 .winner_info_man span, .winner_info_woman span{
+	line-height: 16px;
+	font-size: 13px;
     background: rgba(255,255,255,0.7);
 }
 .winner_info_man{
-    top: 47%;
-    padding-top: 29px;
+    bottom: 47;
 }
 .winner_info_woman {
-    top: 10%;
-    padding-top: 29px;
+    bottom: 123;
 }
 
 .big_block{
 	margin: 0 20px;
 	}
-.controlls svg {
-	margin: 29px 0 0 0;
-}
 .big_block .no_select_line {
 	display: none;
 }
@@ -327,7 +323,8 @@ path {
 		font-size: 13px;
 		}
 .controlls_desc{
-	top:128px;
+
+	bottom: -6px;
 
 	position: absolute;
 	}
@@ -956,11 +953,9 @@ path {
 	position: relative;
 	}
 	.graph_has_text .graph_text_block{
+		margin-top: -28;
 		position: absolute;
-		left:0px;
-		right:0px;
-		top:0px;
-		bottom:0px;
+
 		}
 	.graph_has_text .graph_text_block .textblock{
 		position: absolute;
@@ -975,15 +970,15 @@ path {
 	margin-top: -3px;
 }
 .timeline_select_desc{
-	
 	position: absolute; 
 	}
 .timeline_select_desc-text{
+	text-align: center;
 	display: block;
 	width: 200px;
 	position: absolute;
 	right:0px;
-	bottom:5px;
+	bottom:-231px;
     z-index: 100;
     border: 1px solid rgba(0,0,0,0.2);
 }

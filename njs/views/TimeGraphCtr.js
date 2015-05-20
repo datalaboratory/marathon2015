@@ -72,14 +72,16 @@ provoda.View.extendTo(TimeGraphCtr, {
 		});
 		this.promiseStateUpdate('px_step', this.px_step);
 
-		this.timemarksg1 = this.svg.append('g').attr('class','timemaksg1');
-		this.timemarksg2 = this.svg.append('g').attr('class','timemaksg2');
-        this.select_line = this.svg.append('g')
+		 this.select_line = this.svg.append('g')
             .append('line')
             .attr('x1', 0)
             .attr('y1', 4)
             .attr('y2', 4)
             .classed('select_line', true)
+
+		this.timemarksg1 = this.svg.append('g').attr('class','timemaksg1');
+		this.timemarksg2 = this.svg.append('g').attr('class','timemaksg2');
+       
 
         this.no_select_line = this.svg.append('g')
             .append('line')
@@ -130,7 +132,7 @@ provoda.View.extendTo(TimeGraphCtr, {
                 if (marks.length) marks.each(function(i,el) {
                     var left_el = (i == marks.length - 1) ? context_width - $(el).find('.just_text_of_mark').width() : $(el).position().left,
                         right_el = (i == marks.length - 1) ? context_width : $(el).position().left + $(el).width()
-                    if (left_time < left_el && left_el < right_time &&  right_time < right_el  ||
+                    /*if (left_time < left_el && left_el < right_time &&  right_time < right_el  ||
                         left_el < left_time && left_time < right_el && right_el < right_time ||
                         left_time < left_el && right_time > right_el ||
                         left_time > left_el && right_time < right_el){
@@ -141,7 +143,7 @@ provoda.View.extendTo(TimeGraphCtr, {
                         $(el).css({
                             opacity: 1
                         })
-                    }
+                    }*/
                 })
 
                 var convertToTimeString = function(seconds) {
@@ -177,10 +179,10 @@ provoda.View.extendTo(TimeGraphCtr, {
 
             this.svg.select('.circle-line-g').remove()
             var g = this.svg.append('g').classed('circle-line-g', true)
-            g.append('circle').classed('man_circle', true).attr('r', 2).attr('cx', winner_man.pixel_pos ).attr('cy', 165)
+            //g.append('circle').classed('man_circle', true).attr('r', 2).attr('cx', winner_man.pixel_pos ).attr('cy', 165)
             g.append('line').classed('man_line', true).attr('x1', winner_man.pixel_pos ).attr('y1', 165).attr('x2', winner_man.pixel_pos ).attr('y2', context_height)
 
-            g.append('circle').classed('woman_circle', true).attr('r', 2).attr('cx', winner_woman.pixel_pos ).attr('cy', 89)
+            //g.append('circle').classed('woman_circle', true).attr('r', 2).attr('cx', winner_woman.pixel_pos ).attr('cy', 89)
             g.append('line').classed('woman_line', true).attr('x1', winner_woman.pixel_pos ).attr('y1', 89).attr('x2', winner_woman.pixel_pos ).attr('y2', context_height)
             return {
                 winner_man: winner_man,
@@ -327,8 +329,8 @@ provoda.View.extendTo(TimeGraphCtr, {
 					});
 					var line2 = this.timemarksg1.append('line');
 					line2.attr({
-						y1: this.height,
-						y2: this.height - mheight,
+						y1: 0,
+						y2: 0,
 						'stroke':'#CBCBCB',
 						'stroke-width':0								//костыль — мы рисуем нижние риски, но нулевой толщины
 					});
@@ -339,6 +341,7 @@ provoda.View.extendTo(TimeGraphCtr, {
 
 					//timesteps[i]
 				}
+
 				return result;
 			}
 
@@ -350,7 +353,7 @@ provoda.View.extendTo(TimeGraphCtr, {
 			if (marks && bd && cvs_data && timesteps){
 				var width_factor = this.width/cvs_data.run_gap;
 				for (var i = 0; i < marks.length; i++) {
-					var val =  width_factor * timesteps[i];
+					var val =  Math.round(width_factor * timesteps[i]);
                     if (val) {
                         var attrs = {
                             x1: val,
@@ -540,7 +543,6 @@ provoda.View.extendTo(TimeGraphCtr, {
 	checkPointerMove: function(e) {
 
 		var pos = e.pageX - this.coffset.left;
-
 
 		var pos_x = Math.floor(pos/this.px_step);
 		if (pos_x < 0){
