@@ -38,6 +38,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		var scroll_marker = this.tpl.ancs['scroll_marker'];
 		var controlls = this.tpl.ancs['controlls'];
 
+		console.log("get scroll marker", this)
 		this.marker_width = scroll_marker.width();
 		this.half_width = this.marker_width / 2;
 
@@ -59,6 +60,9 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		var watchPos = function(e) {
 			var pos = e.pageX - _this.con_offset.left;
 			changeTime(pos, _this.con_offset);
+
+			//костыль чтобы обновить время на слайдере
+			$(".scroll_time").html($(".current_time").text());
 		};
 
 		var watchTouchPos = function(e) {

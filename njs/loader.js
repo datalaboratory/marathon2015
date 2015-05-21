@@ -67,6 +67,7 @@ require(['models/AppModel', 'views/AppView', 'angbo', 'provoda'], function(AppMo
             "background-size" : "62px"
         })
     }
+
     updateImgVert();
 });
 
