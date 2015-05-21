@@ -242,6 +242,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 
                     // console.log(rstart);
 
+                    var count = cur.length;
 					var y = el_top;
 					var rheight = height_factor * (rend - rstart + 1);
 					var rwidth  = (cur.length * width_factor / rheight);
@@ -254,7 +255,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						y: y,
 						width:  rwidth,
 						height: rheight,
-						fill: color
+						fill: color,
+						count: count
 					});
 
                     // console.log(rstart, rend, color, x, y, rwidth, rheight);
@@ -274,7 +276,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                 // console.log(array);
                 
                 var max_length = 0;
-                
+
                 for (var i = 0; i < cvs_data.big_genders_groups[0].age_groups.length; i++) {
                     var cur = cvs_data.big_genders_groups[0].age_groups[i];
 
@@ -297,6 +299,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 
                     // console.log(rstart);
 
+                    var count = cur.length;
 					var y = el_top;
 					var rheight = height_factor * (rend - rstart + 1);
 					var rwidth  = (cur.length * width_factor / rheight);
@@ -309,7 +312,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						y: y,
 						width:  rwidth,
 						height: rheight,
-						fill: color
+						fill: color,
+						count: count
 					});
 
                     result_data.text_desc[i] = {
