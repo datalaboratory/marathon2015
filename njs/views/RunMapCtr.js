@@ -651,9 +651,8 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr("x2", min_alt.x).attr("y2", max_alt.y)
               .selectAll("stop")
                 .data([
-                  {offset: "0%", color: "steelblue"},
-                  {offset: "50%", color: "gray"},
-                  {offset: "100%", color: "red"}
+                  {offset: "0%", color: "#fc0"},
+                  {offset: "100%", color: "#f03"}
                 ])
               .enter().append("stop")
                 .attr("offset", function(d) { return d.offset; })
