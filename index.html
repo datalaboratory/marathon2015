@@ -150,7 +150,7 @@
 			<div class="mapoverlay">
             <div class="main_header">
                 <h1 class="bmap_header" pv-class="bmap_header {{current_runner_data && 'hidden'}}" >
-                    <div style="float:left;" >МОСКОВСКИЙ ПОЛУМАРАФОН </div>
+                    <div class="bold" style="float:left;" >МОСКОВСКИЙ ПОЛУМАРАФОН </div>
                     <div class="toggle">
                     <div class="toggle-header 42menu_item" pv-class="42menu_item {{distance_type==42 && 'toggle-header current_menu_item'}}
                                                             {{distance_type!=42 && menu_opened && 'toggle_menu_item'}}
@@ -404,7 +404,7 @@
 				</div>
 				<div class="bmap_etc">
 					<div class="weather">
-						<div class="we_temperature inline">
+						<div class="we_temperature bold inline">
                             <span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">+10°</span>
                             <span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">+11°</span>
                             </div>
@@ -423,20 +423,20 @@
 					</div>
 					<div class="legend">
 						<div class="legend_alt">
-						    <div>Высотный&nbsp;профиль</div>
+						    <div class="bold">Высотный&nbsp;профиль</div>
 						    <div class="svgcon graph_has_text alt_graph" id="alt_graph">
 						    </div>
 						</div>
 						<div class="legend_runners">
 							<div class="legendage_c inline">
-								<div>Пол&nbsp;и возраст</div>
+								<div class="bold">Пол&nbsp;и возраст</div>
 								<div pv-anchor="legendage" class="svgcon graph_has_text">
 									<div class="graph_text_block" pv-anchor="legendage_textc"></div>
                                     <div class="age_text"></div>
 								</div>
 							</div>
 							<div class="legendcount_c inline">
-								<div>Толщина&nbsp;змея</div>
+								<div class="bold">Толщина&nbsp;змея</div>
 								<div pv-anchor="legendcount" class="svgcon legendcount_svg">
 									<div class="legendcount-text" pv-anchor="legendcounttext"></div>
 								</div>
@@ -486,9 +486,11 @@
                 <div class="controlls_desc">
 
                     <h2 class="controlls_desc_h">
-                        <span class="hidden" pv-class="{{!male_current_number && 'hidden'}}" pv-text="{{male_current_number}}"></span>
-                        <span class="hidden" pv-class="{{!(male_current_number && female_current_number) && 'hidden'}}"><br/> и</span>
-                        <span class="hidden" pv-class="{{!female_current_number && 'hidden'}}"  pv-text="{{female_current_number}}"></span>
+                        <span class="bold">
+                            <span class="hidden" pv-class="{{!male_current_number && 'hidden'}}" pv-text="{{male_current_number}}"></span>
+                            <span class="hidden" pv-class="{{!(male_current_number && female_current_number) && 'hidden'}}"><br/> и</span>
+                            <span class="hidden" pv-class="{{!female_current_number && 'hidden'}}"  pv-text="{{female_current_number}}"></span>
+                        </span>
                     </h2>
                     <div class="controlls_desc_i hidden" pv-class="controlls_desc_i {{!((male_current_number||female_current_number) && max_age) && 'hidden'}}" >
                         <span class="hidden" pv-class="{{!min_age && 'hidden'}}" pv-text="от {{min_age}} до "></span>
@@ -534,7 +536,7 @@
 				pv-anchor="scroll_con">
 				<div id="start-screen" class="runners_block big_block" pv-nest="scope">
 					<div class="runners_header" pv-anchor="runners_header">
-						<h2>Результаты  </h2>
+						<h2 class="bold">Результаты</h2>
 						<span class="sex_filter">
 							<div class="genbuttn_group ">
 								<div class="genbuttn" pv-nest="filter_gender" pv-class="
@@ -610,7 +612,7 @@
                             <div class="runr_place" pv-text="{{city || country}}"></div>
                             <div class="runr_time" pv-text="{{full_time_string}}"></div>
                         </div>
-                        <div class="hidden load_more_button" pv-class="load_more_button {{!has_more_button && 'hidden'}}" pv-events="click::showMore">Показать ещё 100 результатов</div>
+                        <div class="hidden bold load_more_button" pv-class="load_more_button {{!has_more_button && 'hidden'}}" pv-events="click::showMore">Показать ещё 100 результатов</div>
                     </div>
 				
 					

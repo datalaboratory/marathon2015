@@ -2,7 +2,8 @@
 
 
 body{
-	font: 14px/1.5 Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
 }
 
 path {
@@ -40,6 +41,9 @@ path {
 	display: inline-block;
 }
 
+.bold {
+	font-family: Bold, Arial, Helvetica, sans-serif;
+}
 
 .complex-page{
 
@@ -220,7 +224,7 @@ path {
         background: #fff;
         color: #000;
         font-size: 26px;
-        font-weight: bold;
+        /*font-weight: bold;*/
         padding: 6px 17px 5px 17px;
     }
     .timeline_yellow_text {
@@ -307,9 +311,8 @@ path {
 
 		}
 		.factoid_h{
-			font-family: Arial Black;
 			font-size: 16px;
-			font-weight: 100;
+			/*font-weight: 100;*/
 			}
 		.factoid_d{
 			font-size: 13px;
@@ -334,7 +337,7 @@ path {
 	}
 	.timemark_t{
 		font-size: 18px;
-		font-weight: 700;
+		/*font-weight: 700;*/
 		}
 	.timemark_d{
 		font-size: 13px;
@@ -432,7 +435,7 @@ path {
 
 		.we_temperature{
 			font-size: 22px;
-			font-weight: 700;
+			/*font-weight: 700;*/
 			/*margin-top: -40px;*/
 			text-align: left;
 			vertical-align: 71px;
@@ -441,7 +444,7 @@ path {
 		}
 		.we_wind{
 			font-size: 13px;
-			font-weight: 100;
+			/*font-weight: 100;*/
 			text-align: right;
 			/*margin-right: 24px;*/
 			/*margin-top: -24px;*/
@@ -453,7 +456,7 @@ path {
 		/*width: 100px;*/
 		/*float: right;*/
 		font-size: 12px;
-		font-weight: 700;
+		/*font-weight: 700;*/
 		/*margin-top: 20px;*/
 		/*margin-right: 22px;*/
 		}
@@ -463,10 +466,10 @@ path {
 			line-height: 16px;
 			position: absolute;
 			background: rgba(255,255,255,0.9);
-			font-weight: 300;
+			/*font-weight: 300;*/
 		}
 		.legend .graph_text_block{
-			font-weight: 400;
+			/*font-weight: 400;*/
 		}
         .legend_alt {
             /*position: absolute;*/
@@ -475,7 +478,7 @@ path {
         }
         .legend_alt svg {
         	/*font-size: 8px;*/
-        	font-weight: normal;
+        	/*font-weight: normal;*/
         }
 	        .alt_graph {
 	            /*right: 4px;*/
@@ -515,8 +518,8 @@ path {
 	        .legendcount-text{
 	            /*position:absolute;
 	            right: -58px;
-	            width: 58px;*/
-	            font-weight: 100;
+	            width: 58px;
+	            font-weight: 100;*/
 	        }
 			.legendage_c{
 				width: 145px;
@@ -776,7 +779,7 @@ path {
 			}
 		.runr_time{
 			margin-left: 10px;
-			font-weight: 700;
+			/*font-weight: 700;*/
 		}
 .filterr_menu{
 		position: relative;
@@ -796,7 +799,6 @@ path {
 			}
 
 			.no_filtering_item .filter_item_name{
-				font-weight: 700;
 			}
             .not_specified_item {
                 color: #7f7f7f;
@@ -811,11 +813,9 @@ path {
 			.flrr_item_col1{
 				display: inline-block;
 				width: 44%;
-				font-weight: 700;
 				box-sizing: border-box;
 			}
 			.flrr_item_col1 .counter{
-				font-weight: 400;
 			}
 			.flrr_item_col2{
 				display: inline-block;
@@ -1032,7 +1032,7 @@ path {
     /*position: absolute;
 	margin-top: 276px;*/
 	font-size: 12px;
-    font-weight: 100;
+    /*font-weight: 100;*/
 	}
 	.dllogo {
 		font-size: 38px;
@@ -1055,7 +1055,7 @@ path {
 
 	margin-top: 1em;
 	text-align: center;
-	font-weight: 700;
+	/*font-weight: 700;*/
 
 
 	background-image: -o-linear-gradient(#fdfdfd,#f5f5f5);
