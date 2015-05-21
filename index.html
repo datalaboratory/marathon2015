@@ -404,21 +404,21 @@
 				</div>
 				<div class="bmap_etc">
 					<div class="weather">
-						<div class="we_temperature inline">+11°</div>
+						<div class="we_temperature inline">
+                            <span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">+10°</span>
+                            <span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">+11°</span>
+                            </div>
 						<div class="weather_images inline">
 							<div
-
 								pv-class=" {{ !( time_value|compareTime: '00:00' : '7:00:00' ) && 'hidden'}}"
 								class="hidden">
-								<img src="i/w-sun.png" alt="">
+								<img src="i/weather/w-small-rain.gif" alt="">
 							</div>
 						</div>
 						<div class="we_wind inline">
 							
-							<span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">←1 м/c</span>
-							<span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '2:00:00' ) && 'hidden'}}" class="hidden">0 м/c</span>
-							<span pv-class=" {{ !( time_value|compareTime: '2:00:00' : '3:00:00' ) && 'hidden'}}" class="hidden">↗ 3 м/c</span>
-							<span pv-class=" {{ !( time_value|compareTime: '3:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">↑ 8 м/c</span>			
+							<span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">→ 2 м/c</span>
+							<span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">→ 3 м/c</span>		
 						</div>
 					</div>
 					<div class="legend">
