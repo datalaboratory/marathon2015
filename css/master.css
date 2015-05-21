@@ -525,6 +525,7 @@ path {
 				width: 145px;
 				vertical-align: top;
 			}
+
 			.legendage_c .svgcon{
 				height: 160px;
 				/*float: right;*/
@@ -993,7 +994,7 @@ path {
 	line-height: 1;
 	width: 50px;
 	margin-left: 4px;
-	color:#666; 
+	color:#999; 
 	margin-top: -3px;
 }
 .timeline_textc span{
