@@ -1,8 +1,6 @@
-body,dt,dd,p,dl,li,ul,ol,h1,h2,h3,h5,h6{
-	margin: 0px;
-	padding:0px;
-	color:#222;
-	}
+@import url(reset.css);
+
+
 body{
 	font: 14px/1.5 Arial, sans-serif;
 }
@@ -478,11 +476,11 @@ path {
             /*width: 130px;*/
         }
         .legend_alt svg {
-        	font-size: 8px;
+        	/*font-size: 8px;*/
         	font-weight: normal;
         }
 	        .alt_graph {
-	            right: 4px;
+	            /*right: 4px;*/
 	            cursor: pointer;
 	            position: static;
 	        }

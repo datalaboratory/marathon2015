@@ -390,7 +390,7 @@ provoda.View.extendTo(RunMapCtr, {
             var step = (type == 42) ? 500 : 200;
 			var data = mh.getPoints(current_runners_data.runners_groups, this.knodes, time_value, cvs_data.start_time, this.total_distance, step);
 			mh.drawRunnersPoints(colors, this.parent_view.parent_view.gender_grads, data, current_runners_data.items, this.knodes.debug_group, time_value, cvs_data.start_time);
-			console.log("LOG:",time_value,current_runners_data);
+			// console.log("LOG:",time_value,current_runners_data);
 			return Date.now();
 		}
 	},
@@ -456,7 +456,7 @@ provoda.View.extendTo(RunMapCtr, {
         depends_on: ['altitudes', 'geo_alt', 'distance_type'],
             fn: function(alt, geo, distance_type) {
             if (!alt || !geo) return
-            var width = 240, height = 20, offset_ver = 20, offset_hor = 9;
+            var width = 246, height = 20, offset_ver = 20, offset_hor = 7;
             var svg = this.alt_graph
             svg = svg.attr('width', width + 2 * offset_hor).attr('height', height + 2 * offset_ver)
             svg.selectAll('*').remove()
