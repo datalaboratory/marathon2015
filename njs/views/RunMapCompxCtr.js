@@ -24,6 +24,15 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		svg = document.createElementNS(mh.SVGNS, 'svg');
 		$(svg).appendTo(this.tpl.ancs['legendcount']);
 		this.legendcount =  d3.select(svg);
+		this.legendcount.append('path')
+			.attr('id','legendcount-male')
+			.style('fill', '#82c0fd')
+            .style('stroke', 'none');
+		this.legendcount.append('path')
+			.attr('id','legendcount-female')
+			.style('fill', '#f492a2')
+            .style('stroke', 'none');
+		this.legendcount.append('path').attr('id','legendcount-all');
 
 
 		var scroll_marker = this.tpl.ancs['scroll_marker'];
@@ -66,6 +75,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 					$(document).off('mousemove', watchPos);
 				});
 			});
+
+
 
 		//Поведение на тач-устройствах
 		//Оригинальные тач-события упакованы в x.Event. Слушаем их на "div.controlls.big_block"
@@ -146,17 +157,18 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		}
 	},
     'compx-legendcount': {
-        depends_on: ['cvs_data'],
-        fn: function(cvs_data) {
+        depends_on: ['cvs_data','time_value','selected_time'],
+        fn: function(cvs_data, time_value,selected_time) {
             if (!cvs_data)return
             var container = this.tpl.ancs['legendcount'];
             var width = 80
-            var height= 20//container.height();
-            var factor = cvs_data.genders_groups[0].raw.length / cvs_data.items.length
+            var height= 50 //container.height();
+            var factor = cvs_data.genders_groups[0].raw.length / cvs_data.items.length // доля женщин
             $(this.legendcount.node()).css({
                 width: width,
                 height: height
             });
+            // console.log("LOG:",time_value);
             var svg = this.legendcount
             function formatSnakePath(width, height, factor) {
                 return 'M0 '+ height +
@@ -166,13 +178,16 @@ provoda.View.extendTo(RunMapCompxCtr, {
                     ( width / 2) + ' ' + (height - 1 * height * factor / 20) +
                     ' 0 ' + height + ' Z'
             }
-            svg.append('path')
+            // Добавляем мальчиков
+            svg.select('#legendcount-male')
                 .attr('d', formatSnakePath(width, height, 1))
-                .style('fill', '#82c0fd')
-            svg.append('path')
-                .attr('d', formatSnakePath(width, height, factor))
-                .style('fill', '#f492a2')
-            svg.selectAll('path').style('stroke', 'none')
+                
+            // Добавляем девочек
+            svg.select('#legendcount-female')
+                .attr('d', formatSnakePath(width, height * selected_time, factor))
+            // Добавляем общего змея
+            svg.select('#legendcount-all')
+                .attr('d', formatSnakePath(width, height, 1))
             return height
         }
     },
@@ -250,13 +265,31 @@ provoda.View.extendTo(RunMapCompxCtr, {
 					                    
 					var color = colors.getGradColor(i, 1, array.length, grad);
 
+					//добавляю невидимый прямоугольник для наведения
+					svg.append('rect').attr({
+						class: "nohover",
+						x: 0,
+						y: y,
+						width:  limit,
+						height: rheight,
+						fill: "#fff",
+						count: count,
+						gender: 0,
+						start: rstart,
+						end: rend
+					});
+
 					svg.append('rect').attr({
 						x: x,
 						y: y,
 						width:  rwidth,
-						height: rheight,
+						height: rheight-1,
 						fill: color,
-						count: count
+						stroke: color,
+						count: count,
+						gender: 0,
+						start: rstart,
+						end: rend
 					});
 
                     // console.log(rstart, rend, color, x, y, rwidth, rheight);
@@ -297,23 +330,42 @@ provoda.View.extendTo(RunMapCompxCtr, {
                     var rstart = cvs_data.big_ages_ranges[i].start;
                     var rend   = cvs_data.big_ages_ranges[i].end;
 
-                    // console.log(rstart);
+                     console.log(rstart);
 
                     var count = cur.length;
 					var y = el_top;
 					var rheight = height_factor * (rend - rstart + 1);
 					var rwidth  = (cur.length * width_factor / rheight);
 					var x = width - limit;
+					var max_width = x*width_factor/3;
 					                    
 					var color = colors.getGradColor(i+1, 1, array.length, grad);
 
+					//добавляю невидимый прямоугольник для наведения
 					svg.append('rect').attr({
+						class: "nohover",
 						x: x,
 						y: y,
-						width:  rwidth,
+						width:  max_width,
 						height: rheight,
+						fill: "#fff",
+						count: count,
+						gender: 1,
+						start: rstart,
+						end: rend
+					});
+
+					svg.append('rect').attr({
+						x: x+1,
+						y: y,
+						width:  rwidth,
+						height: rheight-1,
 						fill: color,
-						count: count
+						stroke: color,
+						count: count,
+						gender: 1,
+						start: rstart,
+						end: rend
 					});
 
                     result_data.text_desc[i] = {
@@ -327,6 +379,49 @@ provoda.View.extendTo(RunMapCompxCtr, {
 				};
 
 			})();
+
+			/*svg.append('text').attr({
+                		class: "age_text",
+						x: 20,
+						y: 20,
+						fill: "#000"	
+					})
+                .text("test text");*/
+
+            $('.svgcon rect').mousemove(function(e){
+            	var gender = ['мужчин','женщин'];
+            	var endings = ['','a','ы','ы','ы','','','','','']
+
+            	var cur_gender = Number($(this).attr('gender'));
+            	var count = Number($(this).attr('count'));
+            	var start = Number($(this).attr('start'));
+            	var end = Number($(this).attr('end'));
+            	var ending = endings[count%10];
+
+            	var offset = $(this).parent().parent().offset();
+            	var y = e.pageY-offset.top;
+            	var x = e.pageX-offset.left;
+
+            	$(this).attr('stroke', function(){
+            		if($(this).attr('class')!="nohover"){
+            			return "#000";
+            		}
+            	})
+
+            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>от "+start+" до "+end+" лет").css({
+            		top: y+'px',
+            		left: x+'px'
+            	});
+            })
+            $('.svgcon rect').mouseover(function(){
+            	$('.age_text').css("display","block");
+            })
+            $('.svgcon rect').mouseout(function(){
+            	$(this).attr('stroke', function(){
+            		return $(this).attr('fill');
+            	})
+            	$('.age_text').css("display","none");
+            })
 			return result_data;
 		}
 	},

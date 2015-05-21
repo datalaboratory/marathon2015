@@ -198,7 +198,7 @@ path {
 		margin-left: 0px;
 		}
 		.timeline .mark_bottom.last_mark .just_text_of_mark{
-			top:0px;
+			top:28px;
 			
 		}
     .timeline_black_text {
@@ -235,6 +235,13 @@ path {
     margin-top: -28px;
     font-size: 13px;
     z-index: 50;
+
+    -webkit-touch-callout: none; /*запрещаем таскать текст*/
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .start_text {
     top: 10px;
@@ -440,6 +447,14 @@ path {
 		/*margin-top: 20px;*/
 		/*margin-right: 22px;*/
 		}
+		.age_text {
+			margin-left:10px;
+			width: 100px;
+			line-height: 16px;
+			position: absolute;
+			background: rgba(255,255,255,0.9);
+			font-weight: 300;
+		}
 		.legend .graph_text_block{
 			font-weight: 400;
 		}
@@ -451,12 +466,19 @@ path {
         .legend_alt svg {
         	font-size: 8px;
         	font-weight: normal;
-        	margin-left: 3px;
         }
 	        .alt_graph {
 	            right: 4px;
 	            cursor: pointer;
+	            position: static;
 	        }
+	        	.distance_marks_for_alt line {
+					stroke-width: 1px;
+					stroke: #C1C1C1;
+	        	}
+	        	.distance_marks_for_alt text {
+	        		fill: #C1C1C1;
+	        	}
 	    .legend_runners {
 			margin-top: 40px;
 	    }
@@ -952,11 +974,6 @@ path {
 	border:none;
 	position: relative;
 	}
-	.graph_has_text .graph_text_block{
-		margin-top: -28;
-		position: absolute;
-
-		}
 	.graph_has_text .graph_text_block .textblock{
 		position: absolute;
 		}
@@ -969,6 +986,9 @@ path {
 	color:#666; 
 	margin-top: -3px;
 }
+.timeline_textc span{
+	margin-top: -28px;
+}
 .timeline_select_desc{
 	position: absolute; 
 	}
@@ -978,7 +998,7 @@ path {
 	width: 200px;
 	position: absolute;
 	right:0px;
-	bottom:-231px;
+	bottom:0px;
     z-index: 100;
     border: 1px solid rgba(0,0,0,0.2);
 }
