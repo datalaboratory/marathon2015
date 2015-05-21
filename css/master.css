@@ -185,6 +185,9 @@ path {
 		font-size: 9px;
 		color: #9c9c9c;
 		}
+	.timeline .mark_top .last_mark{
+			top:28px;
+		}
 	.timeline .mark_bottom .just_text_of_mark{
 		font-size: 13px;
 		}
@@ -199,7 +202,6 @@ path {
 		}
 		.timeline .mark_bottom.last_mark .just_text_of_mark{
 			top:28px;
-			
 		}
     .timeline_black_text {
         background: #000;

@@ -275,9 +275,6 @@ provoda.View.extendTo(TimeGraphCtr, {
 
 
 				span_top.css('left', width_factor * cur.value);
-				if (cur.last){
-					span_top.addClass('last_mark');
-				}
 			};
 
 			for (var i = 0; i < hours_steps.length; i++) {
