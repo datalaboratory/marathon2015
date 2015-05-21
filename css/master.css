@@ -112,21 +112,19 @@ path {
     margin-top: 3px;
 }
 .clear_filters {
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin-left: 12px;
-    margin-top: 1.5px;
-    text-align: center;
-    color: #ccc;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+	background: url(../i/x.png) no-repeat;
+	background-size: 17px;
+	width: 17px;
+	height: 17px;
+	float: left;
+	margin-left: 12px;
+	margin-top: 4.5px;
     cursor: pointer;
 }
-.clear_filters:hover {
+/*.clear_filters:hover {
     color: #d11d1d;
     border: 1px solid #d11d1d;
-}
+}*/
 #map-con{
 	height: 400px;
 }
