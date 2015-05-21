@@ -154,9 +154,9 @@ path {
 		border-width: 1px 0px;
 	}
     .select_line{
-        stroke: #eee;
+        /*stroke: #eee;
         /*stroke: url(select_line.png) repeat-x;*/
-        stroke-width: 4;
+        /*stroke-width: 4;*/
     }
     .no_select_line{
         stroke: #CCCCCC;

@@ -72,11 +72,30 @@ provoda.View.extendTo(TimeGraphCtr, {
 		});
 		this.promiseStateUpdate('px_step', this.px_step);
 
+		var gradient = this.svg.append("svg:defs")
+			.append("svg:linearGradient")
+			.attr("id", "timeline_gradient")
+			.attr("x1", "0%")
+			.attr("x2", "0%")
+			.attr("y1", "0%")
+			.attr("y2", "100%")
+			.attr("spreadMethod", "pad");
+
+		gradient.append("svg:stop")
+			.attr("offset", "0%")
+    		.attr("stop-color", "#f8d3dc");
+
+    	gradient.append("svg:stop")
+			.attr("offset", "100%")
+    		.attr("stop-color", "#d3dff7");	
+
 		 this.select_line = this.svg.append('g')
-            .append('line')
-            .attr('x1', 0)
-            .attr('y1', 4)
-            .attr('y2', 4)
+            .append('rect')
+            .attr('x', 0)
+            .attr('y', 2)
+            .attr('width', 0)
+            .attr('height', 4)
+            .attr('fill','url(#timeline_gradient)')
             .classed('select_line', true)
 
 		this.timemarksg1 = this.svg.append('g').attr('class','timemaksg1');
@@ -97,7 +116,7 @@ provoda.View.extendTo(TimeGraphCtr, {
 		
 		if (container[0]){
 			result.width = container.width();
-            this.no_select_line.attr('x1', result.width)
+            this.no_select_line.attr('x2', result.width)
 		}
 		this.original_height = container.height();
 //		result.height = ;
@@ -370,7 +389,9 @@ provoda.View.extendTo(TimeGraphCtr, {
         fn: function(width_factor, cvs_data, time) {
             if (!width_factor || !cvs_data || !time) return
             var _this = this
-            this.select_line.attr('x2', _this.width * time-25)
+        	var sel_line_width = _this.width * time-25;
+        	if(sel_line_width<0){sel_line_width=0};
+            this.select_line.attr('width', sel_line_width )
             this.no_select_line.attr('x2', _this.width * time)
         }
     },
@@ -421,7 +442,6 @@ provoda.View.extendTo(TimeGraphCtr, {
 			}
 			this.areas_group.selectAll('*').remove();
 			var age_areas = {};
-
 
 			var array = cvs_data.runners_groups.slice();//.reverse();
 			var _this = this;

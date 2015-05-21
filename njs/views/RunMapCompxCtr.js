@@ -38,7 +38,6 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		var scroll_marker = this.tpl.ancs['scroll_marker'];
 		var controlls = this.tpl.ancs['controlls'];
 
-		console.log("get scroll marker", this)
 		this.marker_width = scroll_marker.width();
 		this.half_width = this.marker_width / 2;
 
@@ -334,7 +333,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                     var rstart = cvs_data.big_ages_ranges[i].start;
                     var rend   = cvs_data.big_ages_ranges[i].end;
 
-                     console.log(rstart);
+                    // console.log(rstart);
 
                     var count = cur.length;
 					var y = el_top;
