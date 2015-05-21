@@ -197,24 +197,19 @@ path {
 		font-size: 9px;
 		color: #9c9c9c;
 		}
-	.timeline .mark_top .last_mark{
-			top:28px;
-		}
+
 	.timeline .mark_bottom .just_text_of_mark{
 		font-size: 13px;
 		}
 	.timeline .mark_bottom{
 		top: 0px;
 		}
-
 	.timeline .last_mark .just_text_of_mark{
+		top: 28px;
 		position: absolute;
-		right:0px;
-		margin-left: 0px;
-		}
-		.timeline .mark_bottom.last_mark .just_text_of_mark{
-			top:28px;
-		}
+		right: 0px;
+	}
+
     .timeline_black_text {
         background: #000;
         color: #fff;
@@ -275,14 +270,17 @@ path {
     width: 100px;
 }
 .winner_info_man span, .winner_info_woman span{
+	padding-top: 5px;
 	line-height: 16px;
 	font-size: 13px;
     background: rgba(255,255,255,0.7);
 }
 .winner_info_man{
+	left: 10px;
     bottom: 47;
 }
 .winner_info_woman {
+	left: 10px;
     bottom: 123;
 }
 
@@ -461,6 +459,8 @@ path {
 		/*margin-right: 22px;*/
 		}
 		.age_text {
+			padding-left: 5px;
+			padding-top: 3px;
 			margin-left:10px;
 			width: 100px;
 			line-height: 16px;

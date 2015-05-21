@@ -473,11 +473,11 @@
 
                 <!-- <span class="start_text timeline_text">начало забега</span> -->
                <!--<span class="hidden" pv-class="winner_text timeline_text {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos - 5}}">финишировал победитель</span>-->
-                <div class="hidden" pv-class="winner_info_man {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos - 5}}">
+                <div class="hidden" pv-class="winner_info_man {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos}}">
                     <span pv-text="{{winner.winner_man.full_name}}"></span>
                     <span pv-text="{{winner.winner_man.result_time_string}}"></span>
                 </div>
-                <div class="hidden" pv-class="winner_info_woman {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_woman.pixel_pos - 5}}">
+                <div class="hidden" pv-class="winner_info_woman {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_woman.pixel_pos}}">
                     <span pv-text="{{winner.winner_woman.full_name}}"></span>
                     <span pv-text="{{winner.winner_woman.result_time_string}}"></span>
                 </div>
