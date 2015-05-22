@@ -480,9 +480,14 @@
 				</div>
 			</div>
             <div class="desc_text_on_map" id="desc_text_on_map">
-                <div class="timeline_black_text" ></div>
-                <div class="timeline_white_text" ></div>
-                <div class="timeline_yellow_text" ></div>
+                <div class="timeline_black_text" pv-html="{{selector_matching.runner.full_name}},<br> {{selector_matching.runner.age_years}}"></div>
+                            <div class="timeline_white_text bold" pv-text="{{selector_matching.runner.end_time_string}}"></div>
+                            <div class="timeline_yellow_block">
+                                <div class="text_wrapper">
+                                    <div class="yellow_text_logo"><img src="./i/mm-logo-small.png"></div>
+                                    <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
+                                </div>
+                            </div>
 
             </div>
 			<div id="map-con" pv-nest="geo_map" pv-class="{{!show_map && 'hidden_opacity'}}"></div>

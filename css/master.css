@@ -1095,13 +1095,13 @@ path {
     z-index: 100;
 }
 .desc_text_on_map{
-    display: block;
-    width: 200px;
-    right:0px;
-    bottom:5px;
-    position: absolute;
-    opacity: 0;
-    border: 1px solid rgba(0,0,0,0.2);
+    text-align: center;
+	display: block;
+	width: 178px;
+	position: absolute;
+	right:0px;
+	bottom:0px;
+    z-index: 100;
 }
 	.runner_on_map text {
 		fill: white;
