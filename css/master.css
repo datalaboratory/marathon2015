@@ -492,6 +492,12 @@ path {
 	        	.distance_marks_for_alt text {
 	        		fill: #C1C1C1;
 	        	}
+	        .legend_alt_annotation {
+				margin-top: 8px;
+	        }
+	        .legend_alt_annotation span {
+	        	display: block;
+	        }
 	    .legend_runners {
 			margin-top: 40px;
 	    }

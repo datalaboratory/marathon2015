@@ -291,6 +291,7 @@ BrowseMap.Model.extendTo(StartPage, {
         }
         return applyArguments(locales[locale][string], args)
     },
+    // Выхывается 1 раз
 	getIndexes: function(runners, cvsdata) {
 		var _this = this;
 		
@@ -316,6 +317,7 @@ BrowseMap.Model.extendTo(StartPage, {
 		this.setFilterResult(this.getGenderGroups(runners), 'gender', gender_header, true);
 
 	},
+    // Вызывается каждый раз при изменении фильтров
     updateFilters: function(e) {
         var _this = this;
         if (!e.value) return;

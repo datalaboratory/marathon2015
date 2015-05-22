@@ -465,9 +465,9 @@ provoda.View.extendTo(RunMapCtr, {
             var top = svg.append('path')
 
             var min_max_alt = d3.extent(alt)
-
+            var mm_max_alt = 169; // Самая высокая точка ММ
             var scaleY = d3.scale.linear()
-                .domain(min_max_alt)
+                .domain([min_max_alt[0],mm_max_alt])
                 .range([height + offset_ver, offset_ver])
             var scaleX = d3.scale.linear()
                 .domain([0, alt.length])
@@ -506,8 +506,8 @@ provoda.View.extendTo(RunMapCtr, {
         	// Рисуем риски
         	distance_marks_for_alt
             	.append('line')
-            	.attr("x1", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y1", min_alt.y + 10) // Удлиняем риску
-                .attr("x2", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y2", max_alt.y)
+            	.attr("x1", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y1", min_alt.y + 10) // Удлиняем риску вниз
+                .attr("x2", function (d) { return d/distance_in_km * (width + 2 * offset_hor) }).attr("y2", max_alt.y - 5) // Удлиняем риску вверх
 
             // Подписываем риски
             distance_marks_for_alt
@@ -559,6 +559,11 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr('x', min_alt.x)
                 .attr('y', min_alt.y + 12)
 
+            var mm_max_alt_text = svg.append('text')
+                .text(mm_max_alt + meter)
+                .attr('x', 0.75*(width + 2 * offset_hor))
+                .attr('y', scaleY(mm_max_alt) - 5)
+
             // svg.selectAll('text').style('text-anchor', 'middle')
 
             var top_black_point = svg.append('circle')
@@ -570,8 +575,13 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr('cy', min_alt.y)
                 .attr('r', 1.5)
 
+            var mm_max_alt_black_point = svg.append('circle')
+                .attr('cx', 0.75*(width + 2 * offset_hor))
+                .attr('cy', scaleY(mm_max_alt))
+                .attr('r', 1.5)
+
             // Размер квадрата с маркером старт\финиш
-            var marks_size = 15;
+            var marks_size = 14.5;
             svg
                 .append("image")
                 .attr("xlink:href", function () {
@@ -623,7 +633,8 @@ provoda.View.extendTo(RunMapCtr, {
                         .attr('cx', x)
                         .attr('cy', y)
                 }
-                svg.selectAll('text').style('opacity', 0)
+                bottom_text.style('opacity', 0)
+                top_text.style('opacity', 0)
                 bottom_black_point.style('opacity', 0)
                 point_on_map.style('opacity', 1)
                 text_alt_on_map.style('opacity', 1)
@@ -637,7 +648,8 @@ provoda.View.extendTo(RunMapCtr, {
                 top_black_point
                     .attr('cx', max_alt.x)
                     .attr('cy', max_alt.y)
-                svg.selectAll('text').style('opacity', 1)
+                bottom_text.style('opacity', 1)
+                top_text.style('opacity', 1)
                 bottom_black_point.style('opacity', 1)
                 point_on_map.style('opacity', 0)
                 text_alt_on_map.style('opacity', 0)
@@ -648,7 +660,7 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr("id", "gradient")
                 .attr("gradientUnits", "userSpaceOnUse")
                 .attr("x1", min_alt.x).attr("y1", min_alt.y)
-                .attr("x2", min_alt.x).attr("y2", max_alt.y)
+                .attr("x2", min_alt.x).attr("y2", mm_max_alt)
               .selectAll("stop")
                 .data([
                   {offset: "0%", color: "#fc0"},
