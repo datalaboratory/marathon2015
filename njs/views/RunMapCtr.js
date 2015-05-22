@@ -9,7 +9,7 @@ provoda.View.extendTo(SelRunner, {
 	createBase: function() {
 		var con = document.createElementNS(mh.SVGNS, 'g');
 		this.c = con;
-		this.runner_on_map = d3.select(con).attr('class','runner_on_map')
+		this.d3_g = d3.select(con).attr('class','runner_on_map')
 		this.d3_c = d3.select(con).append('circle');
 		this.d3_t = d3.select(con).append('text');
         var _this = this;
@@ -95,7 +95,7 @@ provoda.View.extendTo(SelRunner, {
 					.attr("cy", px_coords[1])
 			}
 
-            $(_this.d3_c.node()).on('mousemove', function(e) {
+            $(_this.d3_g.node()).on('mousemove', function(e) {
                 var black = _this.info_text.find('.timeline_black_text').text(raw.full_name)
                 var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
                 var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
@@ -113,31 +113,7 @@ provoda.View.extendTo(SelRunner, {
                 })
             })
 
-            $(_this.d3_t.node()).on('mousemove', function(e) {
-                var black = _this.info_text.find('.timeline_black_text').text(raw.full_name)
-                var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
-                var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
-
-                var container_width = $('.big-wrap').width()
-                var offset_hor = (window.innerWidth - container_width) / 2
-                var offset_vert = $('.mm-wrapper').height()
-                _this.info_text.css({
-                    left: e.pageX - offset_hor + 15 + 'px',
-                    top: e.pageY - offset_vert + 15 + 'px'
-                })
-                _this.info_text.css({
-                    height: black.innerHeight() + white.innerHeight() + yellow.innerHeight() + 'px',
-                    opacity: 1, 'z-index': 100
-                })
-            })
-
-            this.d3_t.on('mouseleave', function(){
-                _this.info_text.css({
-                    opacity: 0,
-                    'z-index': -10})
-            })
-
-            this.d3_c.on('mouseleave', function(){
+            this.d3_g.on('mouseleave', function(){
                 _this.info_text.css({
                     opacity: 0,
                     'z-index': -10})
