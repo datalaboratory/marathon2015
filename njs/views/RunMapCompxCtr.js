@@ -441,7 +441,10 @@ provoda.View.extendTo(RunMapCompxCtr, {
 			for (var i = 0; i < cvs_data.big_ages_ranges.length; i++) {
 				var cur = cvs_data.big_ages_ranges[i];
 
-				cur.label = cur.label.substr(0,cur.label.indexOf('-'))+"–"+cur.label.substr(cur.label.indexOf('-')+1,1000); //заменяем дефис на среднее тире
+				if(cur.label.indexOf('-')!=-1){																					//если в строке есть дефис,
+					cur.label = cur.label.substr(0,cur.label.indexOf('-'))+"–"+cur.label.substr(cur.label.indexOf('-')+1,1000); //заменяем дефис на среднее тире
+				}
+				//console.log("checking labels", cur.label, part1, part2)
 				if(i==cvs_data.big_ages_ranges.length-1) {cur.label = cur.label.substr(1,1000)} //если последняя группа, убираем тире
 				$('<span class="textblock"></span>').appendTo(dfrg).css({
 					top: Math.round(legend_age.text_desc[i].y),
