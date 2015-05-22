@@ -43,7 +43,8 @@ provoda.View.extendTo(SelRunner, {
 				return;
 			}
             this.info_text = $('#desc_text_on_map')
-            var black = this.info_text.find('.timeline_black_text').text(raw.full_name)
+            console.log("looking inside raw", raw)
+            var black = this.info_text.find('.timeline_black_text').html(raw.full_name+",<br>"+raw.pos)
             var white = this.info_text.find('.timeline_white_text').text(raw.result_time_string)
             var yellow = this.info_text.find('.timeline_yellow_text').text(raw.num)
             this.info_text.css({
@@ -118,9 +119,14 @@ provoda.View.extendTo(SelRunner, {
 			}
 
             $(_this.d3_g.node()).on('mousemove', function(e) {
-                var black = _this.info_text.find('.timeline_black_text').text(raw.full_name)
+            	var age_endings = ['лет', 'год', 'года', 'года', 'года', 'лет', 'лет', 'лет', 'лет', 'лет'];
+            	var gender_endings = ['й','м','a',''];
+            	var curyear = new Date().getFullYear()
+            	var age = curyear - raw.birthyear;
+                var black = _this.info_text.find('.timeline_black_text').html(raw.full_name+",<br>"+age+" "+age_endings[age%10])
                 var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
                 var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
+                var white_small = _this.info_text.find('.timeline_small_white_text').text("Финишировал"+gender_endings[raw.gender+2]+" "+raw.num+"-"+gender_endings[raw.gender])
 
                 var container_width = $('.big-wrap').width()
                 var offset_hor = (window.innerWidth - container_width) / 2
