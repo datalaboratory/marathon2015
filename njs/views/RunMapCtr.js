@@ -12,8 +12,12 @@ provoda.View.extendTo(SelRunner, {
 		this.d3_g = d3.select(con).attr('class','runner_on_map')
 		this.d3_c = d3.select(con).append('circle');
 		this.d3_t = d3.select(con).append('text');
+		// this.runner_on_alt_graph = d3.select('#alt_graph svg').append('circle') // Бегун на графике высот
+
         var _this = this;
 
+        // this.runner_on_alt_graph
+        // 	.attr('r', 1.5)
 		this.d3_c
 			.attr("cy", 0)
 			.attr("cx", 0)
@@ -35,7 +39,6 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-			console.log("LOG raw:",raw);
             this.info_text = $('#desc_text_on_map')
             var black = this.info_text.find('.timeline_black_text').text(raw.full_name)
             var white = this.info_text.find('.timeline_white_text').text(raw.result_time_string)
@@ -53,8 +56,8 @@ provoda.View.extendTo(SelRunner, {
 				return;
 			}
 			this.d3_t.text(raw.pos)
-			// this.d3_c.style('stroke', raw.gender === 1 ? 'blue': 'red');
 			this.d3_c.style('fill', raw.gender === 1 ? '#48e': '#f46');
+			// this.runner_on_alt_graph.style('fill', raw.gender === 1 ? '#48e': '#f46');
 		}
 	],
 
