@@ -151,23 +151,42 @@
             <div class="main_header">
                 <h1 class="bmap_header" pv-class="bmap_header {{current_runner_data && 'hidden'}}" >
                     <div class="bold" style="float:left;" >МОСКОВСКИЙ ПОЛУМАРАФОН </div>
-                    <div class="toggle">
-                    <div class="toggle-header 42menu_item" pv-class="42menu_item {{distance_type==42 && 'toggle-header current_menu_item'}}
-                                                            {{distance_type!=42 && menu_opened && 'toggle_menu_item'}}
-                                                            {{!(menu_opened||distance_type==42) && 'hidden'}}
-                                                            {{distance_type==42 && menu_opened && 'toggle-header-open'}}"
-                         pv-events="click::updateGeo42">
+                    <!--<div class="toggle">-->
+                    <div class="switch">
+                        <div class="switch_item active" pv-events="click::updateGeo42">
+                            <div class="icon runner"><img src="./i/runner.png"></div>
+                            <div class="switch_text"><span class="mthswitch">21,1</span></div>
+                        </div>
+                        <div class="switch_item last" pv-events="click::updateGeo10">
+                            <div class="icon runner"><img src="./i/runner.png"></div>
+                            <div class="switch_text"><span class="mthswitch">10 КМ</span></div>
+                        </div>
 
-                        <div><span pv-anchor="mthswitch" class="mthswitch" pv-class=" toggle_item_text">21 км</span></div>
-                    </div>
-                    <div class="hidden toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
-                                                            {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
-                                                            {{!(menu_opened||distance_type==10) && 'hidden'}}
-                                                            {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
-                         pv-events="click::updateGeo10">
-                        <span class="toggle_item_text">10 км</span>
-                    </div>
-                    <img class="toggle_arrow" src="i/triangle.png">
+                        <!--
+                        <div class="toggle-header 42menu_item" pv-class="42menu_item {{distance_type==42 && 'toggle-header current_menu_item'}}
+                                                                {{distance_type!=42 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==42) && 'hidden'}}
+                                                                {{distance_type==42 && menu_opened && 'toggle-header-open'}}"
+                             pv-events="click::updateGeo42">
+
+                            <div><span pv-anchor="mthswitch" class="mthswitch" pv-class=" toggle_item_text">21,1</span></div>
+                        </div>
+                        <div class="toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
+                                                                {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==10) && 'hidden'}}
+                                                                {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
+                             pv-events="click::updateGeo42">
+
+                            <div><span class="toggle_item_text">10 КМ</span></div>
+                        </div>
+                        <div class="toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
+                                                                {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==10) && 'hidden'}}
+                                                                {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
+                             pv-events="click::updateGeo10">
+                            <span class="toggle_item_text">10 км</span>
+                        </div>
+                        <img class="toggle_arrow" src="i/triangle.png">-->
                     </div>
                 </h1>
 

@@ -143,6 +143,8 @@ provoda.HModel.extendTo(RunnerMapComplex, {
         $('.before_load').css({
             position: 'absolute'
         })
+        $(".switch").children().attr("class","switch_item");
+        e.node.className = "switch_item active";
         if (this.state('distance_type') == 42) {
             this.updateState('menu_opened', !this.state('menu_opened'))
         } else {
@@ -162,6 +164,8 @@ provoda.HModel.extendTo(RunnerMapComplex, {
         $('.before_load').css({
             position: 'absolute'
         })
+        $(".switch").children().attr("class","switch_item");
+        e.node.className = "switch_item active";
         if (this.state('distance_type') == 10) {
             this.updateState('menu_opened', !this.state('menu_opened'))
         } else {
