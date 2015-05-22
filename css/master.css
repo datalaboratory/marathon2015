@@ -721,19 +721,32 @@ path {
 	}
 	.runr_selection_mark {
 		position: absolute;
-		left:-30px;
+/*		left:-30px;
 		width: 16px;
 		height: 16px;
 		border-radius: 16px;
 		border: 1px solid red;
-		top:1px;
+		top:1px;*/
 		display: none;
 	}
-	.selected_runr .runr_selection_mark {
-		display: block;
+
+	/*Выделялка номера в таблице*/
+	.selected_runr .runr_pos span {
+		padding: 0.2em 0.3em 0px;
+		color: #fff;
+		border-radius: 5px;
+		margin-left: -0.3em;
 		
 	}
-	.runrs_item.runr_female .runr_selection_mark {
+	
+	.selected_runr.runr_male .runr_pos span {
+		background-color: #48e;
+	}
+
+	.selected_runr.runr_female .runr_pos span {
+		background-color: #f46;
+	}
+	/*.runrs_item.runr_female .runr_selection_mark {
 
 		border-color: #880e4f;
 	}
@@ -741,27 +754,21 @@ path {
 
 		border-color: #2a36b1;
 
-
-
 	}
     .runrs_item.runr_off .runr_selection_mark {
 
         border-color: #fff;
     }
 	.runrs_item.runr_female.selected_runr .runr_selection_mark {
-		background: #f48fb1;
+		background: #f46;
 
 	}
 	.runrs_item.runr_male.selected_runr .runr_selection_mark {
 		background: #afbfff;
-
-
-
-		
 	}
     .runrs_item.runr_off.selected_runr .runr_selection_mark {
         background: none;
-    }
+    }*/
 	.runrs_item:after {
 		visibility: hidden;
         display: block;
@@ -775,15 +782,15 @@ path {
 	.runrs_item:hover{
 		background-color: #f3f3f3;
 		}
-	.runrs_item.runr_female:hover{
+	.selected_runr.runrs_item.runr_female, .runrs_item.runr_female:hover{
 		background-color: #fce4ec;
 		}
-	.runrs_item.runr_male:hover{
+	.selected_runr.runrs_item.runr_male, .runrs_item.runr_male:hover{
 		background-color: #e7e9fd;
 		}
-		.runrs_item:hover .runr_selection_mark{
+		/*.runrs_item:hover .runr_selection_mark{
 			display: block;
-		}
+		}*/
 .runners_block{
 	
 	}
