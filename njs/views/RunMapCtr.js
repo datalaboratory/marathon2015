@@ -9,19 +9,25 @@ provoda.View.extendTo(SelRunner, {
 	createBase: function() {
 		var con = document.createElementNS(mh.SVGNS, 'g');
 		this.c = con;
+		this.runner_on_map = d3.select(con).attr('class','runner_on_map')
 		this.d3_c = d3.select(con).append('circle');
+		this.d3_t = d3.select(con).append('text');
         var _this = this;
 
 		this.d3_c
 			.attr("cy", 0)
 			.attr("cx", 0)
-			.attr("r", 5)
+			.attr("r", 10)
 			.style({
-				'stroke-width': 2,
+				// 'stroke-width': 2,
 				stroke: 'none',
-				"fill": 'white'
+				"fill": 'none'
 			});
-
+		this.d3_t
+			.attr("y", 0)
+			.attr("x", 0)
+			.attr('dy', "0.35em")
+			.text('')
 	},
 	'compx-ftille': [
 		['raw'],
@@ -29,7 +35,7 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-
+			console.log("LOG raw:",raw);
             this.info_text = $('#desc_text_on_map')
             var black = this.info_text.find('.timeline_black_text').text(raw.full_name)
             var white = this.info_text.find('.timeline_white_text').text(raw.result_time_string)
@@ -46,7 +52,9 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-			this.d3_c.style('stroke', raw.gender === 1 ? 'blue': 'red');
+			this.d3_t.text(raw.pos)
+			// this.d3_c.style('stroke', raw.gender === 1 ? 'blue': 'red');
+			this.d3_c.style('fill', raw.gender === 1 ? '#48e': '#f46');
 		}
 	],
 
@@ -78,6 +86,10 @@ provoda.View.extendTo(SelRunner, {
 
 			if (px_coords) {
                 var _this = this;
+                this.d3_t
+                	.attr("x", px_coords[0])
+					.attr("y", px_coords[1])
+
 				this.d3_c
 					.attr("cx", px_coords[0])
 					.attr("cy", px_coords[1])
@@ -101,6 +113,29 @@ provoda.View.extendTo(SelRunner, {
                 })
             })
 
+            $(_this.d3_t.node()).on('mousemove', function(e) {
+                var black = _this.info_text.find('.timeline_black_text').text(raw.full_name)
+                var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
+                var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
+
+                var container_width = $('.big-wrap').width()
+                var offset_hor = (window.innerWidth - container_width) / 2
+                var offset_vert = $('.mm-wrapper').height()
+                _this.info_text.css({
+                    left: e.pageX - offset_hor + 15 + 'px',
+                    top: e.pageY - offset_vert + 15 + 'px'
+                })
+                _this.info_text.css({
+                    height: black.innerHeight() + white.innerHeight() + yellow.innerHeight() + 'px',
+                    opacity: 1, 'z-index': 100
+                })
+            })
+
+            this.d3_t.on('mouseleave', function(){
+                _this.info_text.css({
+                    opacity: 0,
+                    'z-index': -10})
+            })
 
             this.d3_c.on('mouseleave', function(){
                 _this.info_text.css({

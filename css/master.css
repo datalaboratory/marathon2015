@@ -1065,6 +1065,11 @@ path {
     opacity: 0;
     border: 1px solid rgba(0,0,0,0.2);
 }
+	.runner_on_map text {
+		fill: white;
+		text-anchor: middle;
+		cursor: default;
+	}
 .selector_box{
 	border: 1px solid white;
 	margin-left:-1px;
