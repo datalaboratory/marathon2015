@@ -126,7 +126,7 @@ provoda.View.extendTo(SelRunner, {
                 var black = _this.info_text.find('.timeline_black_text').html(raw.full_name+",<br>"+age+" "+age_endings[age%10])
                 var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
                 var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
-                var white_small = _this.info_text.find('.timeline_small_white_text').text("Финишировал"+gender_endings[raw.gender+2]+" "+raw.num+"-"+gender_endings[raw.gender])
+                var white_small = _this.info_text.find('.timeline_small_white_text').text("Финишировал"+gender_endings[raw.gender+2]+" "+raw.pos+"-"+gender_endings[raw.gender])
 
                 var container_width = $('.big-wrap').width()
                 var offset_hor = (window.innerWidth - container_width) / 2

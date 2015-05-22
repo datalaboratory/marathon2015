@@ -265,8 +265,15 @@ provoda.View.extendTo(RunMapCompxCtr, {
 					var rheight = height_factor * (rend - rstart + 1);
 					var rwidth  = (cur.length * width_factor / rheight);
 					var x = limit - rwidth;
+
+					//if(rwidth==0) {rwidth=1}
 					                    
 					var color = colors.getGradColor(i, 1, array.length, grad);
+
+					var last = "not-last";
+					if(i==cvs_data.big_genders_groups[1].age_groups.length-1){
+						last = "last";
+					}
 
 					//добавляю невидимый прямоугольник для наведения
 					svg.append('rect').attr({
@@ -279,7 +286,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						count: count,
 						gender: 0,
 						start: rstart,
-						end: rend
+						end: rend,
+						last: last
 					});
 
 					svg.append('rect').attr({
@@ -292,7 +300,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						count: count,
 						gender: 0,
 						start: rstart,
-						end: rend
+						end: rend,
+						last: last
 					});
 
                     // console.log(rstart, rend, color, x, y, rwidth, rheight);
@@ -341,8 +350,14 @@ provoda.View.extendTo(RunMapCompxCtr, {
 					var rwidth  = (cur.length * width_factor / rheight);
 					var x = width - limit;
 					var max_width = x*width_factor/3;
+
+					//if(rwidth==0) {rwidth=1}
 					                    
 					var color = colors.getGradColor(i+1, 1, array.length, grad);
+					var last = "not-last";
+					if(i==cvs_data.big_genders_groups[0].age_groups.length-1){
+						last = "last";
+					}
 
 					//добавляю невидимый прямоугольник для наведения
 					svg.append('rect').attr({
@@ -355,7 +370,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						count: count,
 						gender: 1,
 						start: rstart,
-						end: rend
+						end: rend,
+						last: last
 					});
 
 					svg.append('rect').attr({
@@ -368,7 +384,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
 						count: count,
 						gender: 1,
 						start: rstart,
-						end: rend
+						end: rend,
+						last: last
 					});
 
                     result_data.text_desc[i] = {
@@ -400,6 +417,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
             	var start = Number($(this).attr('start'));
             	var end = Number($(this).attr('end'));
             	var ending = endings[count%10];
+            	var last = $(this).attr('last');
 
             	var offset = $(this).parent().parent().offset();
             	var y = e.pageY-offset.top;
@@ -411,10 +429,17 @@ provoda.View.extendTo(RunMapCompxCtr, {
             		}
             	})
 
-            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>от "+start+" до "+end+" лет").css({
-            		top: y+'px',
-            		left: x+'px'
-            	});
+            	if(last != "last"){
+	            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>от "+start+" до "+end+" лет").css({
+	            		top: y+'px',
+	            		left: x+'px'
+	            	});
+	            } else {
+	            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>старше "+start+" лет").css({
+	            		top: y+'px',
+	            		left: x+'px'
+	            	});
+	            }
             })
             $('.svgcon rect').mouseover(function(){
             	$('.age_text').css("display","block");
@@ -446,7 +471,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 					cur.label = cur.label.substr(0,cur.label.indexOf('-'))+"–"+cur.label.substr(cur.label.indexOf('-')+1,1000); //заменяем дефис на среднее тире
 				}
 				//console.log("checking labels", cur.label, part1, part2)
-				if(i==cvs_data.big_ages_ranges.length-1) {cur.label = cur.label.substr(1,1000)} //если последняя группа, убираем тире
+				//if(i==cvs_data.big_ages_ranges.length-1) {cur.label = cur.label.substr(1,1000)} //если последняя группа, убираем тире
 				$('<span class="textblock"></span>').appendTo(dfrg).css({
 					top: Math.round(legend_age.text_desc[i].y),
 					left: Math.round(legend_age.text_desc[i].x)
