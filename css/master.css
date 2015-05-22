@@ -270,20 +270,30 @@ path {
         line-height: 16px;
         color: #fff;
     }
-    .timeline_white_text {
+    .white_text_container {
     	padding: 7px 0 0 0;
+    	background: #fff;
+    	height: 54px;
+    	width: 176px;
     	border-left: 1px solid #eae4b3;
     	border-right: 1px solid #eae4b3;
+    }
+    .timeline_white_text {
     	width: 176px;
-    	height: 55px;
-        background: #fff;
+    	height: 34px;
         color: #000;
         font-size: 28px;
+    }
+    .timeline_small_white_text {
+    	color: #999;
+    	font-size: 10px;
+    	width: 176px;
+    	height: 20px;
     }
     .timeline_yellow_block {
     	padding: 7px 0 0 0;
     	width: 100%;
-    	height: 25px;
+    	height: 26px;
     	background: #ffee66;
     }
     .timeline_yellow_text {
