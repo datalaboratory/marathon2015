@@ -633,7 +633,7 @@
                                 class="runrs_item"
                                 pv-class="runrs_item {{selected && 'selected_runr'}} {{gender === 0 && 'runr_female'}} {{gender === 1 && 'runr_male'}} {{gender === 2 && 'runr_off'}}">
                             <div class="runr_selection_mark"></div>
-                            <div class="runr_pos" pv-text="{{selected_filter_gender && gender_pos}} {{!selected_filter_gender && pos}}"></div>
+                            <div class="runr_pos"><span pv-text="{{selected_filter_gender && gender_pos}} {{!selected_filter_gender && pos}}"></span></div>
                             <div class="runr_name" pv-text="{{full_name}}"></div>
                             <div class="runr_num" pv-text="{{num}}"></div>
                             <div class="runr_age" pv-text="{{2015 - birthyear}}"></div>

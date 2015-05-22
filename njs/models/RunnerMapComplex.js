@@ -158,7 +158,7 @@ provoda.HModel.extendTo(RunnerMapComplex, {
 
             var data42 = this.state('cvs_data42')
             this.app.updateState('cvs_data', data42)
-            // $('.legendage_c .svgcon').css({'margin-right': '-68px'})
+            // $('.legendage_c .svgcon').css({'margin-left': '0px'})
         }
 
     },
@@ -179,7 +179,7 @@ provoda.HModel.extendTo(RunnerMapComplex, {
 
             var data10 = this.state('cvs_data10')
             this.app.updateState('cvs_data', data10)
-            $('.legendage_c .svgcon').css({'margin-left': '-30px'}) // Двигаем график для 10км
+            // $('.legendage_c .svgcon').css({'margin-left': '-30px'}) // Двигаем график для 10км
         }
 
     }

@@ -425,12 +425,13 @@ provoda.View.extendTo(RunMapCompxCtr, {
             	})
             	$('.age_text').css("display","none");
             })
+
 			return result_data;
 		}
 	},
 	'compx-legend_age_text':{
-		depends_on: ['legend_age', 'cvs_data'],
-		fn: function(legend_age, cvs_data) {
+		depends_on: ['legend_age', 'cvs_data','distance_type'],
+		fn: function(legend_age, cvs_data, type) {
 			if (!legend_age){
 				return;
 			}
@@ -453,7 +454,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 				//cvs_data.big_ages_ranges[i]
 			}
 			con.append(dfrg);
-
+			$('.legendage_c .svgcon').css((type == 42) ? {'margin-left': '0px'} : {'margin-left': '-30px'});
 		}
 	},
 
