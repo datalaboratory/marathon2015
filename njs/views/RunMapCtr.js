@@ -601,59 +601,61 @@ provoda.View.extendTo(RunMapCtr, {
                 .attr("width", marks_size)
                 .attr("height", marks_size)
 
-            var _this = this
-            var point_on_map = this.knodes.altitude.append('circle').attr('r', 2).style('opacity', 0)
-            var text_alt_on_map = this.knodes.altitude.append('text').style('text-anchor', 'middle')
+            
+            // Анимация при наведении
+            // var _this = this
+            // var point_on_map = this.knodes.altitude.append('circle').attr('r', 2).style('opacity', 0)
+            // var text_alt_on_map = this.knodes.altitude.append('text').style('text-anchor', 'middle')
+            // 
+            // svg.on('mousemove', function() {
+            //     var x = d3.mouse(this)[0]
+            //     var y = scaleY(alt[scaleX.invert(x).toFixed(0)])
+            //     var current_coord_number = Math.round(scaleX.invert(x)).toFixed(0)
 
-            svg.on('mousemove', function() {
-                var x = d3.mouse(this)[0]
-                var y = scaleY(alt[scaleX.invert(x).toFixed(0)])
-                var current_coord_number = Math.round(scaleX.invert(x)).toFixed(0)
+            //     if (current_coord_number > geo.geometry.coordinates.length - 1) {
+            //         current_coord_number = geo.geometry.coordinates.length - 1
+            //     } else if (current_coord_number < 0) {
+            //         current_coord_number = 0
+            //     }
+            //     var geo_point_px = _this.projection(geo.geometry.coordinates[current_coord_number])
 
-                if (current_coord_number > geo.geometry.coordinates.length - 1) {
-                    current_coord_number = geo.geometry.coordinates.length - 1
-                } else if (current_coord_number < 0) {
-                    current_coord_number = 0
-                }
-                var geo_point_px = _this.projection(geo.geometry.coordinates[current_coord_number])
+            //     point_on_map
+            //         .attr('cx', geo_point_px[0])
+            //         .attr('cy', geo_point_px[1])
+            //     text_alt_on_map
+            //         .text(alt[current_coord_number] + meter)
+            //         .attr('x', geo_point_px[0])
+            //         .attr('y', geo_point_px[1] - 6)
+            //     if (x > offset_hor && x < width + offset_hor) {
+            //         // alt_line
+            //         //     .attr('x1', x)
+            //         //     .attr('x2', x)
+            //         //     .attr('y1', y)
+            //         top_black_point
+            //             .attr('cx', x)
+            //             .attr('cy', y)
+            //     }
+            //     bottom_text.style('opacity', 0)
+            //     top_text.style('opacity', 0)
+            //     bottom_black_point.style('opacity', 0)
+            //     point_on_map.style('opacity', 1)
+            //     text_alt_on_map.style('opacity', 1)
+            // })
 
-                point_on_map
-                    .attr('cx', geo_point_px[0])
-                    .attr('cy', geo_point_px[1])
-                text_alt_on_map
-                    .text(alt[current_coord_number] + meter)
-                    .attr('x', geo_point_px[0])
-                    .attr('y', geo_point_px[1] - 6)
-                if (x > offset_hor && x < width + offset_hor) {
-                    // alt_line
-                    //     .attr('x1', x)
-                    //     .attr('x2', x)
-                    //     .attr('y1', y)
-                    top_black_point
-                        .attr('cx', x)
-                        .attr('cy', y)
-                }
-                bottom_text.style('opacity', 0)
-                top_text.style('opacity', 0)
-                bottom_black_point.style('opacity', 0)
-                point_on_map.style('opacity', 1)
-                text_alt_on_map.style('opacity', 1)
-            })
-
-            svg.on('mouseleave', function() {
-                // alt_line
-                //     .attr('x1', max_alt.x)
-                //     .attr('x2', max_alt.x)
-                //     .attr('y1', max_alt.y)
-                top_black_point
-                    .attr('cx', max_alt.x)
-                    .attr('cy', max_alt.y)
-                bottom_text.style('opacity', 1)
-                top_text.style('opacity', 1)
-                bottom_black_point.style('opacity', 1)
-                point_on_map.style('opacity', 0)
-                text_alt_on_map.style('opacity', 0)
-            })
+            // svg.on('mouseleave', function() {
+            //     // alt_line
+            //     //     .attr('x1', max_alt.x)
+            //     //     .attr('x2', max_alt.x)
+            //     //     .attr('y1', max_alt.y)
+            //     top_black_point
+            //         .attr('cx', max_alt.x)
+            //         .attr('cy', max_alt.y)
+            //     bottom_text.style('opacity', 1)
+            //     top_text.style('opacity', 1)
+            //     bottom_black_point.style('opacity', 1)
+            //     point_on_map.style('opacity', 0)
+            //     text_alt_on_map.style('opacity', 0)
+            // })
             
             // Градиент
             svg.append("linearGradient")

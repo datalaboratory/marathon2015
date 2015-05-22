@@ -526,7 +526,7 @@ path {
         }
 	        .alt_graph {
 	            /*right: 4px;*/
-	            cursor: pointer;
+	            /*cursor: pointer;*/
 	            position: static;
 	        }
 	        	.distance_marks_for_alt line {
@@ -539,9 +539,7 @@ path {
 	        .legend_alt_annotation {
 				margin-top: 8px;
 	        }
-	        .legend_alt_annotation span {
-	        	display: block;
-	        }
+	        
 	    .legend_runners {
 			margin-top: 40px;
 	    }
