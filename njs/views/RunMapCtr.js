@@ -10,24 +10,27 @@ provoda.View.extendTo(SelRunner, {
 		var con = document.createElementNS(mh.SVGNS, 'g');
 		this.c = con;
 		this.d3_g = d3.select(con).attr('class','runner_on_map')
-		this.d3_c = d3.select(con).append('circle');
-		this.d3_t = d3.select(con).append('text');
+		this.d3_rect = d3.select(con).append('rect');
+		this.d3_text = d3.select(con).append('text');
 		// this.runner_on_alt_graph = d3.select('#alt_graph svg').append('circle') // Бегун на графике высот
 
         var _this = this;
 
         // this.runner_on_alt_graph
         // 	.attr('r', 1.5)
-		this.d3_c
-			.attr("cy", 0)
-			.attr("cx", 0)
-			.attr("r", 10)
+
+		this.d3_rect
+			.attr("y", 0)
+			.attr("x", 0)
+			.attr("ry", 0)
+			.attr("rx", 0)
+			.attr('height',20)
 			.style({
 				// 'stroke-width': 2,
 				stroke: 'none',
 				"fill": 'none'
 			});
-		this.d3_t
+		this.d3_text
 			.attr("y", 0)
 			.attr("x", 0)
 			.attr('dy', "0.35em")
@@ -55,8 +58,21 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-			this.d3_t.text(raw.pos)
-			this.d3_c.style('fill', raw.gender === 1 ? '#48e': '#f46');
+			var num_of_nums = raw.pos.toString().split('').length;
+			var widths = [20, 24, 32, 40]; // Длины прямоугольника для разных порядков чисел
+			// console.log("LOG:",raw.pos);
+			this.d3_text.text(raw.pos)
+			this.d3_rect
+				.style('fill', raw.gender === 1 ? '#48e': '#f46')
+				.attr('width', widths[num_of_nums -1])
+				.attr('ry', function() {
+					if (num_of_nums === 1) {
+						return 20;
+					} else {
+						return 9;
+					};
+				})
+
 			// this.runner_on_alt_graph.style('fill', raw.gender === 1 ? '#48e': '#f46');
 		}
 	],
@@ -81,21 +97,24 @@ provoda.View.extendTo(SelRunner, {
 
 			if (!place_finishers_at_finish) {
 				if (px_coords) {
-					this.d3_c.style('display', 'block');
+					this.d3_g.style('display', 'block');
 				} else {
-					this.d3_c.style('display', 'none');
+					this.d3_g.style('display', 'none');
 				}
 			}
 
 			if (px_coords) {
                 var _this = this;
-                this.d3_t
+                this.d3_text
                 	.attr("x", px_coords[0])
 					.attr("y", px_coords[1])
 
-				this.d3_c
-					.attr("cx", px_coords[0])
-					.attr("cy", px_coords[1])
+
+				this.d3_rect
+					.attr("x", function () {
+						return px_coords[0] - $(this).attr('width')/2
+					})
+					.attr("y", px_coords[1] - 10)
 			}
 
             $(_this.d3_g.node()).on('mousemove', function(e) {
