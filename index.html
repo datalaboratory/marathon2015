@@ -541,10 +541,14 @@
 
 						>
 						<div class="timeline_select_desc-text" >
-							<div class="timeline_black_text" pv-text="{{selector_matching.runner.full_name}}, {{selector_matching.runner.age_years}}"></div>
-							<div class="timeline_white_text" pv-text="{{selector_matching.runner.end_time_string}}"></div>
-                            <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
-
+							<div class="timeline_black_text" pv-html="{{selector_matching.runner.full_name}},<br> {{selector_matching.runner.age_years}}"></div>
+							<div class="timeline_white_text bold" pv-text="{{selector_matching.runner.end_time_string}}"></div>
+                            <div class="timeline_yellow_block">
+                                <div class="text_wrapper">
+                                    <div class="yellow_text_logo"><img src="./i/mm-logo-small.png"></div>
+                                    <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
+                                </div>
+                            </div>
 						</div>
 					</div>					
 				</div>

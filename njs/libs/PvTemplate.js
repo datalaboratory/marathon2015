@@ -175,6 +175,7 @@ var parser = {
 	},
 	directives: {
 		'pv-text': true,
+		'pv-html': true,
 		'pv-class': true,
 		'pv-props': true,
 		'pv-anchor': true,
@@ -205,6 +206,9 @@ var parser = {
 		getTextValue: function(node) {
 			return $(node).text();
 		},
+		setHtmlValue: function(node, new_value) {
+			$(node).html(new_value);
+		},
 		setTextValue: function(node, new_value) {
 			$(node).text(new_value);
 		},
@@ -234,6 +238,13 @@ var parser = {
 				complex_statement: full_declaration,
 				getValue: this.dom_helpres.getTextValue,
 				setValue: this.dom_helpres.setTextValue
+			});
+		},
+		'pv-html': function(node, full_declaration) {
+			return new this.StandartChange(node, this, {
+				complex_statement: full_declaration,
+				getValue: this.dom_helpres.getTextValue,
+				setValue: this.dom_helpres.setHtmlValue
 			});
 		},
 		'pv-class': function(node, full_declaration) {
@@ -743,6 +754,12 @@ SimplePVSampler.prototype.clone = SimplePVSampler.prototype.getClone;
 
 var directives_h = {
 		'pv-text': function(node, standch){
+			if (standch){
+				var wwtch = standch.createBinding(node, this);
+				this.states_watchers.push(wwtch);
+			}
+		},
+		'pv-html': function(node, standch){
 			if (standch){
 				var wwtch = standch.createBinding(node, this);
 				this.states_watchers.push(wwtch);

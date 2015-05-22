@@ -256,21 +256,50 @@ path {
 		right: 0px;
 	}
 
+	.timeline_yellow_block .text_wrapper {
+		width: 50px;
+		margin: 0 auto 0;
+	}
+
     .timeline_black_text {
+    	padding: 7px 0 0 0;
+    	width: 100%;
+    	height: 36px;
         background: #000;
+        font-size: 13px;
+        line-height: 16px;
         color: #fff;
-        padding: 8px 17px 8px 17px;
     }
     .timeline_white_text {
+    	padding: 7px 0 0 0;
+    	border-left: 1px solid #eae4b3;
+    	border-right: 1px solid #eae4b3;
+    	width: 176px;
+    	height: 55px;
         background: #fff;
         color: #000;
-        font-size: 26px;
-        /*font-weight: bold;*/
-        padding: 6px 17px 5px 17px;
+        font-size: 28px;
+    }
+    .timeline_yellow_block {
+    	padding: 7px 0 0 0;
+    	width: 100%;
+    	height: 25px;
+    	background: #ffee66;
     }
     .timeline_yellow_text {
-        background: #f0f060;
-        padding: 8px 17px 7px 17px;
+    	font-size: 13px;
+    	text-align: left;
+    	float:left;
+    	width: 30px;        
+        /*padding: 8px 17px 7px 17px;*/
+    }
+    .yellow_text_logo {
+    	float: left;
+    }
+    .yellow_text_logo img{
+    	margin-top: 1px;
+    	margin-right: 3px;
+    	width: 17px;
     }
 	.big_timemarks{
 		margin-top: 20px;
@@ -1052,12 +1081,11 @@ path {
 .timeline_select_desc-text{
 	text-align: center;
 	display: block;
-	width: 200px;
+	width: 178px;
 	position: absolute;
 	right:0px;
 	bottom:0px;
     z-index: 100;
-    border: 1px solid rgba(0,0,0,0.2);
 }
 .desc_text_on_map{
     display: block;
