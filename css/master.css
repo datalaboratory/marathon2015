@@ -45,6 +45,9 @@ path {
 	font-family: Bold, Arial, Helvetica, sans-serif;
 }
 
+.grey_text {
+	color: #999;
+}
 .complex-page{
 
 	}
@@ -573,10 +576,10 @@ path {
 	        }
 	        	.distance_marks_for_alt line {
 					stroke-width: 1px;
-					stroke: #C1C1C1;
+					stroke: #999;
 	        	}
 	        	.distance_marks_for_alt text {
-	        		fill: #C1C1C1;
+	        		fill: #999;
 	        	}
 	        .legend_alt_annotation {
 				margin-top: 8px;
@@ -604,6 +607,11 @@ path {
 	            position: absolute;
 	            left: -2px;
 	            top: 4px;
+	        }
+	        .legendcount_num {
+	        	position: absolute;
+	        	left: 85px;
+	        	line-height: 1;
 	        }
 	        .legendcount-text{
 	            /*position:absolute;

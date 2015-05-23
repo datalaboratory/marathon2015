@@ -328,13 +328,14 @@ var getStepHeight = function(knodes, distance, seconds, runners_array, start_tim
 
 	var distances = getDistances(runners_array, start_time +  seconds * 1000);
 	var runners = getRunners(distances, step_start, step_end);
-	var value = getHeightByRunners(runners, step);
-    //console.log(step, value, runners, step_distance, step/px_in_m)
+	var height = getHeightByRunners(runners, step);
+    // console.log('step, height, runners, step_distance, step/px_in_m, start_time, seconds, start_time +  seconds * 1000', '\n', step, height, runners, step_distance, step/px_in_m, start_time, seconds, start_time +  seconds * 1000)
 	return {
 		step: step,
-		height: value,
+		height: height,
 		runners: runners,
-		step_m: step_distance || step/px_in_m
+		step_m: step_distance || step/px_in_m,
+		distance: distance
 	};
 };
 var base_points_cache = {};
