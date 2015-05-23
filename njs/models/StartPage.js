@@ -313,7 +313,7 @@ BrowseMap.Model.extendTo(StartPage, {
         var ages_header = (locale == 'rus') ? ('Все от ' + ages.min_age + ' до ' + ages.max_age) : ('All from ' + ages.min_age + ' to ' + ages.max_age)
 		this.setFilterResult(this.getAgesGroups(runners, cvsdata.big_ages_ranges, cvsdata), 'ages', ages_header);
 
-        var gender_header = (locale == 'rus') ? 'Всех вместе' : 'All genders'
+        var gender_header = (locale == 'rus') ? 'всех вместе' : 'аll genders'
 		this.setFilterResult(this.getGenderGroups(runners), 'gender', gender_header, true);
 
 	},
@@ -352,32 +352,55 @@ BrowseMap.Model.extendTo(StartPage, {
         }
 
     },
+    getWinners: function(runners, number) {
+        var menWinners = []
+        var womenWinners = []
+        runners.forEach(function(runner){
+            if (menWinners.length < number && runner.states.gender == 1) {
+                menWinners.push(runner)
+            }
+            if (womenWinners.length < number &&runner.states.gender == 0) {
+                womenWinners.push(runner)
+            }
+        })
+        return  menWinners.concat(womenWinners)
+    },
 	getGenderGroups: function(runners) {
 		var result = [];
 		
 		var field = ['states', 'gender'];
 		var index = spv.makeIndexByField(runners, field, true);
+        var index_winners = this.getWinners(runners, 6)
 
-        var label_men = (locale == 'rus') ? 'Мужчин':'Men'
-        var label_women = (locale == 'rus') ? 'Женщин':'Women'
+        var label_men = (locale == 'rus') ? 'мужчин':'men'
+        var label_women = (locale == 'rus') ? 'женщин':'women'
+        var label_winners = (locale == 'rus') ? 'призёров':'winners'
+
         var counter_men = index[0] && index[0].length
         var counter_women = index[1] && index[1].length
+
         this.no_men = (counter_men) ? false : true
         this.no_women = (counter_women) ? false : true
+
 		result.push({
 			label: label_women,
 			counter: counter_women
 		},{
 			label: label_men,
 			counter: counter_men
-		});
+		},{
+            label: label_winners,
+            counter: index_winners.length
+        });
 
 		index = (locale == 'rus')? {
-			'Мужчин': index[1],
-			'Женщин': index[0]
+            'призёров': index_winners,
+			'мужчин': index[1],
+			'женщин': index[0]
 		}:{
-            'Men': index[1],
-            'Women': index[0]
+            'winners': index_winners,
+            'men': index[1],
+            'women': index[0]
         };
 		return {
 			index: index,

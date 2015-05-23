@@ -582,13 +582,13 @@
 							<div class="genbuttn_group ">
 								<div class="genbuttn" pv-nest="filter_gender" pv-class="
 									genbuttn
-									{{label == 'Мужчин' && 'genbuttn-male'}}
-									{{label == 'Женщин' && 'genbuttn-female'}}
+									{{(label == 'призёров' || label == 'winners') && 'buttn-winners'}}
+									{{(label == 'мужчин' || label == 'men') && 'genbuttn-male'}}
+									{{(label == 'женщин' || label == 'women') && 'genbuttn-female'}}
 									{{novalue && 'genbuttn-male-female'}}
 									{{active && 'active'}}
-								" pv-text="{{label}}" pv-events="click::setFilter"></div>
+								" pv-text="{{label}}" pv-events="click::setFilter click::update"></div>
 							</div>
-
 						</span>
 						<div class="filters">
 							<div class="firunr_search_c">

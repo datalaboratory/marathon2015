@@ -1056,6 +1056,9 @@ path {
 			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a6b7e5), to(#f9c3d0));
 			background-image: linear-gradient(#a6b7e5, #f9c3d0);*/
 		}
+		.buttn-winners:active,.buttn-winners.active {
+			background: #fd0;
+		}
 .marker{
 	width: 14px;
 	height: 19px;
