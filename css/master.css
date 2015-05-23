@@ -781,10 +781,10 @@ path {
 
 	/*Выделялка номера в таблице*/
 	.selected_runr .runr_pos span {
-		padding: 0.2em 0.3em 0px;
+		padding: 0.3em 0.49em 0.1em;
 		color: #fff;
-		border-radius: 5px;
-		margin-left: -0.3em;
+		border-radius: 10px;
+		margin-left: -0.49em;  /*Компенсируем паддинг слева*/
 		
 	}
 	
