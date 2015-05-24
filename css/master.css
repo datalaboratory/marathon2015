@@ -612,7 +612,17 @@ path {
 	        	position: absolute;
 	        	left: 85px;
 	        	line-height: 1;
-	        }
+	        	margin-bottom: -1em;
+	        }	
+	        	.legendcount_num_max {
+	        		
+	        	}
+	        	.legendcount_num_male {
+	        		color: rgb(130, 192, 253);
+	        	}
+	        	.legendcount_num_female {
+	        		color: rgb(244, 146, 162);
+	        	}
 	        .legendcount-text{
 	            /*position:absolute;
 	            right: -58px;

@@ -166,15 +166,19 @@ provoda.View.extendTo(RunMapCompxCtr, {
             var container = this.tpl.ancs['legendcount'];
             var width = 80
             var height_scale = 0.8 //как hclc.height_scale в maphelper.js
-            var container_height = (type==42) ? 130 * height_scale : 144 * height_scale; // TODO Сделать зависимым от трека 144 для 10км
-            var height= (runners_rate) ? runners_rate['height']*height_scale : 50 //При первой загрузке подставляем 50 
-            var factor = cvs_data.genders_groups[0].raw.length / cvs_data.items.length // доля женщин в забеге
+            // Высота змея «макс» — высота контейнера
+            var container_height = (type==42) ? 130 * height_scale : 144 * height_scale;
+            // Массив высот для Ж, М и всех вместе
+            var height= (runners_rate) ? [runners_rate[0]['height']*height_scale, runners_rate[1]['height']*height_scale, runners_rate[2]['height']*height_scale] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
+            // factor — доля женщин на участке максимальной толщины в данный момент
+            var factor = (runners_rate) ? (height[0] / height[2]) : 1 
+            if (isNaN(factor)) { factor = 1 };
+            
             $(this.legendcount.node()).css({
                 width: width,
                 height: container_height 
             });
-            // console.log("LOG height:",(runners_rate) ? Math.round(runners_rate['height']) : 0,'at', (runners_rate) ? Math.round(runners_rate['distance']) : 0 );
-            // console.log("LOG cvs_data from legendcount:",cvs_data);
+
             var svg = this.legendcount
             function formatSnakePath(width, height, factor) {
                 return 'M0 '+ height +
@@ -186,13 +190,13 @@ provoda.View.extendTo(RunMapCompxCtr, {
             }
             // Добавляем мальчиков
             svg.select('#legendcount-male')
-                .attr('d', formatSnakePath(width, height, 1))
-                .attr('transform', 'translate(0,' + (container_height - height) + ')')
+                .attr('d', formatSnakePath(width, height[2], 1))
+                .attr('transform', 'translate(0,' + (container_height - height[2]) + ')')
                 
             // Добавляем девочек
             svg.select('#legendcount-female')
-                .attr('d', formatSnakePath(width, height, factor))
-                .attr('transform', 'translate(0,' + (container_height - height) + ')')
+                .attr('d', formatSnakePath(width, height[2], factor))
+                .attr('transform', 'translate(0,' + (container_height - height[2]) + ')')
             // Добавляем общего змея
             svg.select('#legendcount-all')
                 .attr('d', formatSnakePath(width, container_height, 1))
@@ -200,7 +204,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
             // Обновляем максимальное кол-во бегунов
             var max_count = (type==42) ? 1500 : 1800;
             var text = (locale == 'rus')? "макс":'max'
-            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 20).html(max_count + '</br>' + text);
+            $('.legendcount_num.legendcount_num_max').css('bottom', container_height).html(max_count + '</br>' + text);
             return height
         }
     },
@@ -209,14 +213,24 @@ provoda.View.extendTo(RunMapCompxCtr, {
         fn: function(runners_rate, height) {
         	// console.log("LOG runners_rate from legendcount_text:",runners_rate);
             if (!runners_rate || !height) return
-            var count = Math.round(mh.getStepValueByHeight(height, runners_rate.step));
-            count = (count % 100 > 50 ? count - count % 100 + 100 : count - count % 100)
-            this.tpl.ancs['legendcounttext'].empty();
+            var male_count = Math.round(mh.getStepValueByHeight(height[1], runners_rate[1].step)),
+        		female_count = Math.round(mh.getStepValueByHeight(height[0], runners_rate[0].step));
+
+
+
+        	function formatCount(count) {
+        	    return count % 10 > 5 ? count - count % 10 + 10 : count - count % 10
+        	}
+
+            male_count = formatCount(male_count);
+            female_count = formatCount(female_count)
+            // this.tpl.ancs['legendcounttext'].empty();
             // var span = $('<div class="textblock"></div>');
             
             // span.html(text);
 
-            $('.legendcount_num.legendcount_num_current').css('bottom', height).text(count);
+            $('.legendcount_num.legendcount_num_male').css('bottom', height[2]).text(male_count == 0 ? '' : male_count);
+            $('.legendcount_num.legendcount_num_female').css('bottom', height[0]).text(female_count == 0 ? '' : female_count);
             // this.tpl.ancs['legendcounttext'].append(span);
         }
     },

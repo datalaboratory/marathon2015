@@ -253,6 +253,7 @@ provoda.View.extendTo(RunMapCtr, {
         this.wch(this, 'runners_rate', function(e) {
             this.parent_view.parent_view.promiseStateUpdate('runners_rate', e.value);
         });
+
         this.wch(this, 'draw', function(e) {
             this.parent_view.parent_view.promiseStateUpdate('show_map', true);
             this.parent_view.promiseStateUpdate('show_map', true);
@@ -426,37 +427,31 @@ provoda.View.extendTo(RunMapCtr, {
 			var step_for_dots = 1000; // шаг на дистанции с которым смотрим высоту змея
 			var rr_on_distance = {},
 				heights_on_distance = [],
-				rr_with_max_height;
-			console.log("LOG time from runners_rate:",time_value);
+				rr_with_max_height,
+				rr_male_on_max_height,
+				rr_female_on_max_height;
 
 			// Из total distance формируем массив точек, где смотрим толщину змея
 			while ((dots_on_distance[dots_on_distance.length - 1] + step_for_dots) < this.total_distance) {
 				dots_on_distance.push(dots_on_distance[dots_on_distance.length - 1] + step_for_dots);
 			}
 			dots_on_distance.push(this.total_distance);
-			// console.log("LOG dots_on_distance:",dots_on_distance);
-		
+
 			// Идём по всем точкам и определяем там высоту змея. Запоминаем высоту в массив
 			dots_on_distance.forEach(function (dot,i) {
 				var rr_on_dot = mh.getStepHeight(that.knodes, dot, time_value, current_runners_data.items, cvs_data.start_time, that.total_distance, 1000)
-				// if (i===0) {
-				// 	rr_with_max_height = rr_on_dot;
-				// } else {
-
-				// };
 				rr_on_distance[rr_on_dot['height']] = rr_on_dot;
 				heights_on_distance.push(rr_on_dot['height'])
 			})
-			// Ищем максимальное число в массиве
+			// Ищем максимальное число в массиве высот и соответствующий ему runners_rater
 			rr_with_max_height = rr_on_distance[d3.max(heights_on_distance)]
-			// console.log("LOG heights_on_distance:",heights_on_distance, d3.max(heights_on_distance));
-			// console.log("LOG rr:",rr_on_distance, rr_on_distance[d3.max(heights_on_distance)]);
 			
+			// Вычисляем высоты М и Ж змеев на участке с максимальной высотой
+			rr_male_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[1].raw, cvs_data.start_time, that.total_distance, 1000)
+			rr_female_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[0].raw, cvs_data.start_time, that.total_distance, 1000)
 
-			return rr_with_max_height;
-			// getStepHeight возвращает высоту змея в конкретной точке дистанции в конкретный момент времени. 
-			// return mh.getStepHeight(this.knodes, 20500, time_value, current_runners_data.items, cvs_data.start_time, this.total_distance, 1000);
-			// return mh.getStepHeight(this.knodes, 900, 600, current_runners_data.items, cvs_data.start_time, this.total_distance, 1000);
+			// Возвращаем массив с runners rate для [всех, M, Ж]
+			return [rr_female_on_max_height, rr_male_on_max_height, rr_with_max_height];
 		}
 	},
 	'compx-draw': {
