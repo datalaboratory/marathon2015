@@ -59,10 +59,15 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-			var num_of_nums = raw.pos.toString().split('').length;
-			var widths = [20, 24, 32, 40]; // Длины прямоугольника для разных порядков чисел
+			// Смотрим какой выделен ли «Все вместе»
+			var show_all = $('.genbuttn-male-female').hasClass('active');
+
+			// Для «все вместе» берём номер в общем зачёте, в противном случае — в группе по полу
+			var runner_num_in_table = show_all ? raw.pos : raw.gender_pos;
+			var num_of_nums = runner_num_in_table.toString().split('').length;
+			var widths = [20, 26, 32, 40]; // Длины прямоугольника для разных порядков чисел
 			// console.log("LOG:",raw.pos);
-			this.d3_text.text(raw.pos)
+			this.d3_text.text(runner_num_in_table) // Число в кружке бегуна
 			this.d3_rect
 				.style('fill', raw.gender === 1 ? '#48e': '#f46')
 				.attr('width', widths[num_of_nums -1])
@@ -70,7 +75,7 @@ provoda.View.extendTo(SelRunner, {
 					if (num_of_nums === 1) {
 						return 20;
 					} else {
-						return 9;
+						return 10;
 					};
 				})
 
