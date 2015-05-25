@@ -43,6 +43,7 @@ require(['models/AppModel', 'views/AppView', 'angbo', 'provoda'], function(AppMo
 
 	//скроллим к визуализации
 	$('html, body').animate({ scrollTop: $(".big-wrap").offset().top }, 200);
+	
 
 	(function() {
 		var view = new AppView();

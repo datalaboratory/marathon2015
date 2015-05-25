@@ -6,6 +6,17 @@ body{
 	line-height: 1.5;
 }
 
+.text_link {
+	color: inherit;
+	text-decoration: none;
+	border-bottom:1px solid rgb(209, 209, 209);
+}
+	.text_link:hover {
+		color: #dc322f;
+		text-decoration: none;
+		border-bottom:1px solid #dc322f;
+	}
+
 path {
   fill: none;
   stroke: #999;
@@ -615,7 +626,7 @@ path {
 	        	margin-bottom: -1em;
 	        }	
 	        	.legendcount_num_max {
-	        		
+
 	        	}
 	        	.legendcount_num_male {
 	        		color: rgb(130, 192, 253);
@@ -1172,9 +1183,9 @@ path {
     /*font-weight: 100;*/
 	}
 	.dllogo {
-		font-size: 38px;
-		text-decoration: none;
+		width: 35px;
 	}
+
 	.copyright{
 		width: 92px;
 		margin-left: 5px;
