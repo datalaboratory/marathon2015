@@ -165,14 +165,24 @@ provoda.View.extendTo(RunMapCompxCtr, {
             if (!cvs_data)return
             var container = this.tpl.ancs['legendcount'];
             var width = 80
-            var height_scale = 0.8 //как hclc.height_scale в maphelper.js
+
+            var max_count = (type==42) ? 1950 : 2250;
+            var text = (locale == 'rus')? "макс":'max'
+
+            var magic_coefficient = 0.7 // Костыль для корректировки высоты змея в легенде к змею на карте.
+
             // Высота змея «макс» — высота контейнера
-            var container_height = (type==42) ? 130 * height_scale : 144 * height_scale;
+            var container_height = mh.getHeightByRunners(max_count, (runners_rate) ? runners_rate[2].step : 1) * magic_coefficient;
             // Массив высот для Ж, М и всех вместе
-            var height= (runners_rate) ? [runners_rate[0]['height']*height_scale, runners_rate[1]['height']*height_scale, runners_rate[2]['height']*height_scale] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
-            // factor — доля женщин на участке максимальной толщины в данный момент
-            var factor = (runners_rate) ? (height[0] / height[2]) : 1 
-            if (isNaN(factor)) { factor = 1 };
+            // var height= (runners_rate) ? [runners_rate[0]['height'], runners_rate[1]['height'], runners_rate[2]['height']] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
+            var height = {
+            	'for_counting' : (runners_rate) ? [runners_rate[0]['height'], runners_rate[1]['height'], runners_rate[2]['height']] : [1,1,1], //При первой загрузке подставляем [1,1,1] 
+            	'for_drawing' : (runners_rate) ? [runners_rate[0]['height'] * magic_coefficient, runners_rate[1]['height'] * magic_coefficient, runners_rate[2]['height'] * magic_coefficient] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
+            }
+
+            // female_coeff — доля женщин на участке максимальной толщины в данный момент
+            var female_coeff = (runners_rate) ? (height['for_counting'][0] / height['for_counting'][2]) : 1 
+            if (isNaN(female_coeff)) { female_coeff = 1 };
             
             $(this.legendcount.node()).css({
                 width: width,
@@ -190,20 +200,18 @@ provoda.View.extendTo(RunMapCompxCtr, {
             }
             // Добавляем мальчиков
             svg.select('#legendcount-male')
-                .attr('d', formatSnakePath(width, height[2], 1))
-                .attr('transform', 'translate(0,' + (container_height - height[2]) + ')')
+                .attr('d', formatSnakePath(width, height['for_drawing'][2], 1))
+                .attr('transform', 'translate(0,' + (container_height - height['for_drawing'][2]) + ')')
                 
             // Добавляем девочек
             svg.select('#legendcount-female')
-                .attr('d', formatSnakePath(width, height[2], factor))
-                .attr('transform', 'translate(0,' + (container_height - height[2]) + ')')
+                .attr('d', formatSnakePath(width, height['for_drawing'][2], female_coeff))
+                .attr('transform', 'translate(0,' + (container_height - height['for_drawing'][2]) + ')')
             // Добавляем общего змея
             svg.select('#legendcount-all')
                 .attr('d', formatSnakePath(width, container_height, 1))
 
             // Обновляем максимальное кол-во бегунов
-            var max_count = (type==42) ? 1500 : 1800;
-            var text = (locale == 'rus')? "макс":'max'
             $('.legendcount_num.legendcount_num_max').css('bottom', container_height).html(max_count + '</br>' + text);
             return height
         }
@@ -211,10 +219,12 @@ provoda.View.extendTo(RunMapCompxCtr, {
     'compx-legendcount_text': {
         depends_on: ['runners_rate', 'legendcount'],
         fn: function(runners_rate, height) {
+        	var magic_coefficient = 0.7 // Костыль для подгона высот.
+
         	// console.log("LOG runners_rate from legendcount_text:",runners_rate);
             if (!runners_rate || !height) return
-            var male_count = Math.round(mh.getStepValueByHeight(height[1], runners_rate[1].step)),
-        		female_count = Math.round(mh.getStepValueByHeight(height[0], runners_rate[0].step));
+            var male_count = Math.round(mh.getStepValueByHeight(height['for_counting'][1], runners_rate[1].step)),
+        		female_count = Math.round(mh.getStepValueByHeight(height['for_counting'][0], runners_rate[0].step));
 
 
 
@@ -229,8 +239,8 @@ provoda.View.extendTo(RunMapCompxCtr, {
             
             // span.html(text);
 
-            $('.legendcount_num.legendcount_num_male').css('bottom', height[2]).text(male_count == 0 ? '' : male_count);
-            $('.legendcount_num.legendcount_num_female').css('bottom', height[0]).text(female_count == 0 ? '' : female_count);
+            $('.legendcount_num.legendcount_num_male').css('bottom', height['for_drawing'][2] * magic_coefficient).text(male_count == 0 ? '' : male_count);
+            $('.legendcount_num.legendcount_num_female').css('bottom', height['for_drawing'][0] * magic_coefficient).text(female_count == 0 ? '' : female_count);
             // this.tpl.ancs['legendcounttext'].append(span);
         }
     },

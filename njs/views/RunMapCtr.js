@@ -373,7 +373,7 @@ provoda.View.extendTo(RunMapCtr, {
 					// в t задайтся общий сдвиг пары трек-карта
                     width = this.width,
                     height = this.height;
-                    var	s = 0.7 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+                    var	s = 0.65 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
 
                     if (type == 42) {
                         var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
@@ -417,8 +417,8 @@ provoda.View.extendTo(RunMapCtr, {
 		}
 	},
 	'compx-runners_rate':{
-		depends_on: ['basepathch', 'cvs_data', 'current_runners_data', 'time_value'],
-		fn: function(basepathch, cvs_data, current_runners_data, time_value){
+		depends_on: ['basepathch', 'cvs_data', 'current_runners_data', 'time_value', 'distance_type'],
+		fn: function(basepathch, cvs_data, current_runners_data, time_value, type){
 			if (!basepathch || !cvs_data || !current_runners_data){
 				return;
 			}
@@ -431,6 +431,7 @@ provoda.View.extendTo(RunMapCtr, {
 				rr_male_on_max_height,
 				rr_female_on_max_height;
 
+			var step_for_height = 1000
 			// Из total distance формируем массив точек, где смотрим толщину змея
 			while ((dots_on_distance[dots_on_distance.length - 1] + step_for_dots) < this.total_distance) {
 				dots_on_distance.push(dots_on_distance[dots_on_distance.length - 1] + step_for_dots);
@@ -439,7 +440,7 @@ provoda.View.extendTo(RunMapCtr, {
 
 			// Идём по всем точкам и определяем там высоту змея. Запоминаем высоту в массив
 			dots_on_distance.forEach(function (dot,i) {
-				var rr_on_dot = mh.getStepHeight(that.knodes, dot, time_value, current_runners_data.items, cvs_data.start_time, that.total_distance, 1000)
+				var rr_on_dot = mh.getStepHeight(that.knodes, dot, time_value, current_runners_data.items, cvs_data.start_time, that.total_distance, step_for_height)
 				rr_on_distance[rr_on_dot['height']] = rr_on_dot;
 				heights_on_distance.push(rr_on_dot['height'])
 			})
@@ -447,8 +448,8 @@ provoda.View.extendTo(RunMapCtr, {
 			rr_with_max_height = rr_on_distance[d3.max(heights_on_distance)]
 			
 			// Вычисляем высоты М и Ж змеев на участке с максимальной высотой
-			rr_male_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[1].raw, cvs_data.start_time, that.total_distance, 1000)
-			rr_female_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[0].raw, cvs_data.start_time, that.total_distance, 1000)
+			rr_male_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[1].raw, cvs_data.start_time, that.total_distance, step_for_height)
+			rr_female_on_max_height = mh.getStepHeight(that.knodes, rr_with_max_height['distance'], time_value, current_runners_data.genders_groups[0].raw, cvs_data.start_time, that.total_distance, step_for_height)
 
 			// Возвращаем массив с runners rate для [всех, M, Ж]
 			return [rr_female_on_max_height, rr_male_on_max_height, rr_with_max_height];

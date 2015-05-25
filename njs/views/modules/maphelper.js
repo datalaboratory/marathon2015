@@ -616,6 +616,8 @@ return {
 	format: format,
 	getStepValueByHeight: getStepValueByHeight,
 	getStepHeight: getStepHeight,
+	getHeightByRunners: getHeightByRunners,
+	hclc: hclc,
 	formatPathPoints: function(array){
         if (array.length){
             var result = 'M' + format(array[0]);
