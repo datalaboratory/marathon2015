@@ -551,7 +551,7 @@ path {
 		/*float: right;*/
 		font-size: 12px;
 		/*font-weight: 700;*/
-		/*margin-top: 20px;*/
+		margin-top: -15px;
 		/*margin-right: 22px;*/
 		}
 		.age_text {
@@ -580,6 +580,7 @@ path {
 	        .alt_graph {
 	            /*right: 4px;*/
 	            /*cursor: pointer;*/
+	            margin-top: -5px;
 	            position: static;
 	        }
 	        	.distance_marks_for_alt line {
@@ -590,11 +591,11 @@ path {
 	        		fill: #999;
 	        	}
 	        .legend_alt_annotation {
-				margin-top: 8px;
+				margin-top: 13px;
 	        }
 	        
 	    .legend_runners {
-			margin-top: 40px;
+			margin-top: 38px;
 	    }
 			.legendcount_c{
 				vertical-align: top;
@@ -648,15 +649,24 @@ path {
 				width: inherit;
 				/*margin-right: -68px;*/
 			}
+	.social_buttons {
+		margin-top: 17px;
+	}
 
-	.share_h {
-		font-size: 14px;
-		padding-bottom: 16px;
-        overflow: hidden;
-	}
-	#vk_like {
-		padding-top: 18px;
-	}
+	.dlcredits{
+	    /*position: absolute;*/
+		margin-top: 20px;
+		font-size: 12px;
+	    /*font-weight: 100;*/
+		}
+		.dllogo {
+			width: 35px;
+		}
+
+		.copyright{
+			width: 92px;
+			margin-left: 5px;
+		}
 
 .marath-icon{
     position: absolute;
@@ -1175,20 +1185,6 @@ path {
 	position: absolute;
 }
 
-.dlcredits{
-    /*position: absolute;
-	margin-top: 276px;*/
-	font-size: 12px;
-    /*font-weight: 100;*/
-	}
-	.dllogo {
-		width: 35px;
-	}
-
-	.copyright{
-		width: 92px;
-		margin-left: 5px;
-	}
 .altt_desc{
 	font-size: 10px;
 	color:#999;

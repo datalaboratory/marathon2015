@@ -374,12 +374,12 @@ provoda.View.extendTo(RunMapCtr, {
                     width = this.width,
                     height = this.height;
                     var	s = 0.65 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-
-                    if (type == 42) {
-                        var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
-                    } else {
-                        	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
-                    }
+                    var t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 50]
+                    // if (type == 42) {
+                    //     var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
+                    // } else {
+                    //     	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
+                    // }
                 this.behavior.translate(t).scale(s);
 
                 this.projection.scale(s).translate(t);
