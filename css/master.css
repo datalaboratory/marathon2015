@@ -59,6 +59,16 @@ path {
 .grey_text {
 	color: #999;
 }
+
+.change_language {
+	margin-top: 45px;
+	margin-left: 50px;
+}
+	.change_language span {
+		padding: 6px 9px;
+		border: 1px solid #999;
+	}
+
 .complex-page{
 
 	}
@@ -675,7 +685,7 @@ path {
 }
 
 .bmap_header{
-	font-size: 26px;
+	font-size: 30px;
 	line-height: 1;
 }
 .bmap_desc{
