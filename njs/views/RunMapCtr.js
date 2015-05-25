@@ -290,7 +290,7 @@ provoda.View.extendTo(RunMapCtr, {
 		if (container[0]){
 			result.width = Math.min(container.width(), 960); // Определение ширины свг
 		}
-		result.height = Math.max(window.innerHeight - 80, 640); // Определение высоты свг
+		result.height = Math.max(window.innerHeight - 80, 580); // Определение высоты свг
 		this.updateManyStates(result);
 	},
 	updateManyStates: function(obj) {
