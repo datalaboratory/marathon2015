@@ -169,7 +169,7 @@ path {
 	height: 17px;
 	float: left;
 	margin-left: 12px;
-	margin-top: 4.5px;
+	margin-top: 1px;
     cursor: pointer;
 }
 /*.clear_filters:hover {
@@ -672,7 +672,6 @@ path {
 	border-bottom: 1px solid #ccc;
 }
 .runners_header h2{
-	font-size: 28px;
 	float:left;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
@@ -688,7 +687,7 @@ path {
 }
 .filters{
 	clear:both;
-	padding: 9px 0px;
+	padding: 7px 0px;
 	}
 	.filters:after{
 		content: "";
@@ -700,20 +699,20 @@ path {
 		border-radius: 3px;
 		/*box-shadow: 0px 0px 1px 0px #bfbfbf;*/
 		border: 1px solid #acacac;
-		padding-left: 3px;
 		display: inline-block;
 		width: 100%;
-		height: 25.5px;
+		height: 21px;
 	}
 	.filtrr{
 		font-size: 13px;
-		min-height: 17px;
+		/*min-height: 17px;*/
 		color:#333;
 		position: relative;
 		display: block;
 		border: 1px solid #acacac;
-		border-radius: 2px;
-		padding: 3px 8px 0px 8px;
+		border-radius: 3px;
+		padding: 2px 5px 0px 5px;
+		height: 21px;
 		box-sizing: border-box;
 		/*box-shadow: 0px 0px 1px 0px #bfbfbf;*/
 
@@ -726,7 +725,7 @@ path {
 
     .filtrr_img{
         position: absolute;
-        right: 25px;
+        right: 20px;
         top: 45%;
         width: 8px;
         height: 4px;
@@ -739,8 +738,8 @@ path {
 		width: 38%;
 	}
 	.firunr_search_c input {
-		padding: 0px 8px 0px 8px;
-		height: 24px;
+		padding: -1px 0px 0px 0px;
+		/*height: 24px;*/
 		font-size: 13px;
 	}
 
@@ -862,13 +861,15 @@ path {
 	
 	}
 	.runners_block h2{
-		font-size: 24px;
+		font-size: 28px;
 		display: inline-block;
 		}
 		.sex_filter{
 			margin-left: 20px;
+			margin-top: 10px;
+			margin-bottom: 0px;
 			float:left;
-			padding-top: 5px;
+			padding: 0px;
 		}
 	.runners_list{
 		padding-bottom: 10px;
@@ -987,6 +988,7 @@ path {
 	.genbuttn{
 		position: relative;
 		cursor: pointer;
+		height: 18px;
 		/*background-image: -o-linear-gradient(#fdfdfd,#E7E7E7);
 		background-image: -moz-linear-gradient(100% 0% 270deg, #fdfdfd, #E7E7E7);
 		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fdfdfd), to(#E7E7E7));
@@ -997,7 +999,7 @@ path {
 		/*border-top:1px solid #d7d7d7;
 		border-bottom: 1px solid #666;
 		*/
-		padding: 3px 10px 0px 10px;
+		padding: 1px 9px 0px 9px;
 		font-size: 13px;
 		margin-left: -1px;
 
