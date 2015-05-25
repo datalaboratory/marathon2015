@@ -178,15 +178,12 @@ path {
 	background-size: 17px;
 	width: 17px;
 	height: 17px;
-	float: right;
-	/*margin-left: 12px;*/
+	float: left;
+	margin-left: 12px;
 	margin-top: 1px;
     cursor: pointer;
 }
-/*.clear_filters:hover {
-    color: #d11d1d;
-    border: 1px solid #d11d1d;
-}*/
+
 #map-con{
 	height: 400px;
 }
