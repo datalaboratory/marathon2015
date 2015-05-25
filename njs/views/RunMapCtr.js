@@ -373,8 +373,8 @@ provoda.View.extendTo(RunMapCtr, {
 					// в t задайтся общий сдвиг пары трек-карта
                     width = this.width,
                     height = this.height;
-                    var	s = 0.65 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
-                    var t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 50]
+                    var	s = 0.67 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height);
+                    var t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 62]
                     // if (type == 42) {
                     //     var	t = [(width - s * (b[1][0] + b[0][0])) / 2 - 70, (height - s * (b[1][1] + b[0][1])) / 2 + 40];
                     // } else {
