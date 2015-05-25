@@ -167,8 +167,8 @@ path {
 	background-size: 17px;
 	width: 17px;
 	height: 17px;
-	float: left;
-	margin-left: 12px;
+	float: right;
+	/*margin-left: 12px;*/
 	margin-top: 1px;
     cursor: pointer;
 }
@@ -669,7 +669,7 @@ path {
 	padding-top: 5px;
 	position: relative;
 	z-index: 5;
-	border-bottom: 1px solid #ccc;
+	/*border-bottom: 1px solid #ccc;*/
 }
 .runners_header h2{
 	float:left;
