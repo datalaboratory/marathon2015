@@ -213,7 +213,7 @@ path {
 	position: relative;
 }
 	.timeline {
-		margin-top: 73px;
+		margin-top: 75px;
 		height: 205px;
 		border-bottom: 1px solid #ccc;
 		border-width: 1px 0px;
@@ -464,9 +464,10 @@ path {
 
 
 .main_header{
-	padding-top: 20px;
-	float:left;
-	width:100%;
+	padding-top: 40px;
+  	float: left;
+  	width: 100%;
+  	letter-spacing: 0.03em;
 	}
 .bmap_etc{
 	float:right;
