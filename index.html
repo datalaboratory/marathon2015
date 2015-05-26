@@ -241,7 +241,20 @@
 
 					</div>
 
-					<!-- <div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
+					 <div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
+                        <div
+                            pv-props="
+                                style.top:   {{track_top_padding - (trackheight * 0.2)}}
+                                style.left:  {{track_left_padding - (trackwidth * 0.5)}}
+                            "
+                            pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '00:00:00' : '7:00:00' )) && 'hidden'}}"
+                            class="factoid hidden"
+                            style="width: 190px;">
+                            <img class="factoid_img" style="margin-top: -10px; height: 75px;" src="i/time.png" />
+                            <h5 class="factoid_h bold">На 2 мин 13 сек</h5>
+                            <div class="factoid_d">улучшен прошлогодний рекорд трассы&nbsp;—&nbsp;2:19:36</div>
+                        </div>
+                        <!--
 						<div pv-props="
 								style.top:   {{track_top_padding +  (trackheight * 0.34) }}
 								style.left:  {{track_left_padding + (trackwidth * 0.723)}}
@@ -309,18 +322,7 @@
                             <div class="factoid_d" >время победителя из Кении, Салoмона Барнгетуни</div>
 						</div>
 
-						<div
-							pv-props="
-								style.top:   {{track_top_padding +  (trackheight * 0.53)}}
-								style.left:  {{track_left_padding - (trackwidth * 0.23)}}
-							"
-							pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '00:00:00' : '1:30:00' )) && 'hidden'}}"
-							class="factoid hidden"
-                            style="width: 230px;">
-                            <img class="factoid_img_left" style="margin-top: -10px; height: 75px;" src="i/time.png" />
-							<h5 class="factoid_h">На 2 мин 13 сек</h5>
-							<div class="factoid_d">улучшен прошлогодний рекорд трассы&nbsp;—&nbsp;2:19:36</div>
-						</div>
+						
 
                         <div pv-props="
 									style.top:   {{track_top_padding +  (trackheight * 0.75)}}
@@ -410,8 +412,8 @@
                             <img class="factoid_img_left" src="i/rus_win.png" style="margin-bottom: 20px; margin-top: 20px; margin-right: 10px; height: 44px;"/>
                             <h5 class="factoid_h">0:33:50</h5>
                             <div class="factoid_d" >время победительницы из&nbsp;Москвы, </br>Ирины Сергеевой</div>
-                        </div>
-					</div> -->
+                        </div> -->
+					</div> 
 				</div>
 				<div class="bmap_etc">
 					<div class="weather">
@@ -455,20 +457,21 @@
 							<div class="legendcount_c inline">
 								<div class="bold">Толщина&nbsp;змея</div>
 								<div pv-anchor="legendcount" class="svgcon legendcount_svg">
-                                    <div class="legendcount-text" pv-anchor="legendcounttext"></div>
+                                    
 									<div class="legendcount_num legendcount_num_max grey_text"></div>
                                     <div class="legendcount_num legendcount_num_male"></div>
                                     <div class="legendcount_num legendcount_num_female"></div>
 								</div>
+                                <div class="legendcount-text" pv-anchor="legendcounttext"></div>
 							</div>
 						</div>
 					</div>
 					<div class='social_buttons'>
                         <div class="likely">
-                          <div class="twitter" data-via="moscowmarathon"></div>
-                          <div class="facebook"></div>
-                          <div class="gplus"></div>
-                          <div class="vkontakte"></div>
+                            <div class="facebook"></div>
+                            <div class="twitter" data-via="moscowmarathon"></div>
+                            <div class="vkontakte"></div>
+                            <div class="gplus"></div>
                         </div>               
                     </div>
 					
@@ -641,7 +644,7 @@
                                 pv-nest="runners_filtered"
                                 pv-events="click::switchSelection"
                                 class="runrs_item"
-                                pv-class="runrs_item {{selected && 'selected_runr'}} {{gender === 0 && 'runr_female'}} {{gender === 1 && 'runr_male'}} {{gender === 2 && 'runr_off'}}">
+                                pv-class="runrs_item {{gender_pos <= 6 && 'runr_winner'}} {{selected && 'selected_runr'}} {{gender === 0 && 'runr_female'}} {{gender === 1 && 'runr_male'}} {{gender === 2 && 'runr_off'}}">
                             <div class="runr_selection_mark"></div>
                             <div class="runr_pos"><span pv-text="{{selected_filter_gender && gender_pos}} {{!selected_filter_gender && pos}}"></span></div>
                             <div class="runr_name" pv-text="{{full_name}}"></div>

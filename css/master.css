@@ -199,7 +199,7 @@ body{
 	  stroke-width: 1px;
 	}
 .bmap{
-	font-size: 13px;
+	font-size: 14px;
 }
 .mapoverlay{
 	position: absolute;
@@ -267,18 +267,18 @@ body{
 	}
 	.timeline .just_text_of_mark{
 		margin-left: -2px;
-		font-size: 12px;
+		font-size: 14px;
 	}
 	.timeline .mark_top{
 		top: 17px;
 		}
 	.timeline .mark_top .just_text_of_mark{
-		font-size: 9px;
+		font-size: 10px;
 		color: #9c9c9c;
 		}
 
 	.timeline .mark_bottom .just_text_of_mark{
-		font-size: 13px;
+		font-size: 14px;
 		}
 	.timeline .mark_bottom{
 		top: 0px;
@@ -299,7 +299,7 @@ body{
     	width: 100%;
     	height: 36px;
         background: #000;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 16px;
         color: #fff;
     }
@@ -315,7 +315,7 @@ body{
     	width: 176px;
     	height: 34px;
         color: #000;
-        font-size: 28px;
+        font-size: 24px;
     }
     .timeline_small_white_text {
     	color: #999;
@@ -330,7 +330,7 @@ body{
     	background: #ffee66;
     }
     .timeline_yellow_text {
-    	font-size: 13px;
+    	font-size: 14px;
     	text-align: left;
     	float:left;
     	width: 30px;        
@@ -354,13 +354,13 @@ body{
     position: absolute;
     color: #aaa;
     width: 100px;
-    font-size: 13px;
+    font-size: 14px;
 }
 .current_time {
 	color: #fd0f3a;
     position: absolute;
     margin-top: -28px;
-    font-size: 13px;
+    font-size: 14px;
     z-index: 50;
 
     -webkit-touch-callout: none; /*запрещаем таскать текст*/
@@ -390,7 +390,7 @@ body{
 .winner_info_man span, .winner_info_woman span{
 	padding-top: 5px;
 	line-height: 16px;
-	font-size: 13px;
+	font-size: 14px;
     background: rgba(255,255,255,0.7);
 }
 .winner_info_man{
@@ -427,11 +427,11 @@ body{
 
 		}
 		.factoid_h{
-			font-size: 16px;
+			font-size: 14px;
 			/*font-weight: 100;*/
 			}
 		.factoid_d{
-			font-size: 13px;
+			font-size: 14px;
 			}
 		.factoid_img{
 			margin-bottom:5px;
@@ -452,11 +452,11 @@ body{
 	position: absolute;
 	}
 	.timemark_t{
-		font-size: 18px;
+		font-size: 14px;
 		/*font-weight: 700;*/
 		}
 	.timemark_d{
-		font-size: 13px;
+		font-size: 10px;
 		}
 .controlls_desc{
 
@@ -551,7 +551,7 @@ body{
 		}
 
 		.we_temperature{
-			font-size: 22px;
+			font-size: 24px;
 			/*font-weight: 700;*/
 			/*margin-top: -40px;*/
 			text-align: left;
@@ -560,7 +560,7 @@ body{
 			/*margin-left: 15px;*/
 		}
 		.we_wind{
-			font-size: 13px;
+			font-size: 14px;
 			/*font-weight: 100;*/
 			text-align: right;
 			/*margin-right: 24px;*/
@@ -572,7 +572,7 @@ body{
 	.legend{
 		/*width: 100px;*/
 		/*float: right;*/
-		font-size: 12px;
+		font-size: 14px;
 		/*font-weight: 700;*/
 		margin-top: -15px;
 		/*margin-right: 22px;*/
@@ -628,7 +628,7 @@ body{
 				padding-right: 25px;*/
 			}
 			.legendcount_c .textblock{
-				font-size: 9px;
+				font-size: 8px;
 				margin-top:0px;
 				margin-left: 23px;
 				}
@@ -668,12 +668,13 @@ body{
 	        	.legendcount_num_female {
 	        		color: rgb(244, 146, 162);
 	        	}
-	        .legendcount-text{
-	            /*position:absolute;
-	            right: -58px;
-	            width: 58px;
-	            font-weight: 100;*/
+	        .legendcount-text {
+	            position:absolute;
+	            margin-top: 10px;
 	        }
+		        .legendcount-text span{
+		            font-size: 10px;
+		        }
 			.legendage_c{
 				width: 145px;
 				vertical-align: top;
@@ -692,7 +693,7 @@ body{
 	.dlcredits{
 	    /*position: absolute;*/
 		margin-top: 20px;
-		font-size: 12px;
+		/*font-size: 12px;*/
 	    /*font-weight: 100;*/
 		}
 		.dllogo {
@@ -701,7 +702,9 @@ body{
 
 		.copyright{
 			width: 92px;
-			margin-left: 5px;
+			margin-left: 10px;
+			font-size: 14px;
+			line-height: 18px;
 		}
 
 .marath-icon{
@@ -716,7 +719,7 @@ body{
 }
 .bmap_desc{
 	margin-top: 15px;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .runners_header{
@@ -757,15 +760,15 @@ body{
 		width: 100%;
 		height: 21px;
 	}
-	.filtrr{
-		font-size: 13px;
+	.filtrr {
+		font-size: 14px;
 		/*min-height: 17px;*/
 		color:#333;
 		position: relative;
 		display: block;
 		border: 1px solid #acacac;
 		border-radius: 3px;
-		padding: 2px 5px 0px 5px;
+		padding: 0px 5px 0px 5px;
 		height: 21px;
 		box-sizing: border-box;
 		/*box-shadow: 0px 0px 1px 0px #bfbfbf;*/
@@ -792,9 +795,9 @@ body{
 		width: 38%;
 	}
 	.firunr_search_c input {
-		padding: -1px 0px 0px 0px;
+		padding: 0px 0px 1px 0px;
 		/*height: 24px;*/
-		font-size: 13px;
+		font-size: 14px;
 	}
 
 	.firunr_age_c{
@@ -853,42 +856,14 @@ body{
 	/*Выделялка номера в таблице*/
 	.selected_runr .runr_pos span {
 		padding: 0.3em 0.49em 0.1em;
-		color: #fff;
+		/*color: #fff;*/
 		border-radius: 10px;
 		margin-left: -0.49em;  /*Компенсируем паддинг слева*/
 		
 	}
 	
-	.selected_runr.runr_male .runr_pos span {
-		background-color: #48e;
-	}
 
-	.selected_runr.runr_female .runr_pos span {
-		background-color: #f46;
-	}
-	/*.runrs_item.runr_female .runr_selection_mark {
-
-		border-color: #880e4f;
-	}
-	.runrs_item.runr_male .runr_selection_mark {
-
-		border-color: #2a36b1;
-
-	}
-    .runrs_item.runr_off .runr_selection_mark {
-
-        border-color: #fff;
-    }
-	.runrs_item.runr_female.selected_runr .runr_selection_mark {
-		background: #f46;
-
-	}
-	.runrs_item.runr_male.selected_runr .runr_selection_mark {
-		background: #afbfff;
-	}
-    .runrs_item.runr_off.selected_runr .runr_selection_mark {
-        background: none;
-    }*/
+	
 	.runrs_item:after {
 		visibility: hidden;
         display: block;
@@ -898,24 +873,36 @@ body{
 
 	}
 	
-	
+	.selected_runr.runr_male .runr_pos span {
+		background-color: #acf;
+	}
+
+	.selected_runr.runr_female .runr_pos span {
+		background-color: #fab;
+	}
+
 	.runrs_item:hover{
 		background-color: #f3f3f3;
 		}
 	.selected_runr.runrs_item.runr_female, .runrs_item.runr_female:hover{
-		background-color: #fce4ec;
+		background-color: #feedf0;
 		}
 	.selected_runr.runrs_item.runr_male, .runrs_item.runr_male:hover{
-		background-color: #e7e9fd;
+		background-color: #ecf3fd;
 		}
 		/*.runrs_item:hover .runr_selection_mark{
 			display: block;
 		}*/
+
+	
+
+
+
 .runners_block{
 	
 	}
 	.runners_block h2{
-		font-size: 28px;
+		font-size: 24px;
 		display: inline-block;
 		}
 		.sex_filter{
@@ -937,6 +924,12 @@ body{
 		.runr_name{
 			width:25%;
 			min-width: 100px;
+			}
+			.runr_winner.runr_male .runr_name{
+				color: #4285e9;
+			}
+			.runr_winner.runr_female .runr_name{
+				color: #f14b6b;
 			}
 		.runr_num{
 			width: 8.1%;
@@ -989,7 +982,7 @@ body{
 			}
 			.flrr_menu_item  .counter{
 				float: right;
-				font-size: 12px;
+				font-size: 10px;
 			}
 			.flrr_item_col1{
 				display: inline-block;
@@ -1039,7 +1032,7 @@ body{
 .genbuttn_group{
 	display: inline-block;
 }
-	.genbuttn{
+	.genbuttn {
 		position: relative;
 		cursor: pointer;
 		height: 18px;
@@ -1053,8 +1046,8 @@ body{
 		/*border-top:1px solid #d7d7d7;
 		border-bottom: 1px solid #666;
 		*/
-		padding: 1px 9px 0px 9px;
-		font-size: 13px;
+		padding: 0px 9px 1px 9px;
+		font-size: 14px;
 		margin-left: -1px;
 
 		color:#000;

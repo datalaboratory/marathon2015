@@ -209,7 +209,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                 .attr('d', formatSnakePath(width, container_height, 1))
 
             // Обновляем максимальное кол-во бегунов
-            $('.legendcount_num.legendcount_num_max').css('bottom', container_height).html(max_count + '</br>' + text);
+            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 12).html(text + '</br>' + max_count);
             return height
         }
     },
@@ -231,14 +231,15 @@ provoda.View.extendTo(RunMapCompxCtr, {
 
             male_count = formatCount(male_count);
             female_count = formatCount(female_count)
-            // this.tpl.ancs['legendcounttext'].empty();
+            this.tpl.ancs['legendcounttext'].empty();
             // var span = $('<div class="textblock"></div>');
             
             // span.html(text);
 
-            $('.legendcount_num.legendcount_num_male').css('bottom', height['for_drawing'][2] * magic_coefficient).text(male_count == 0 ? '' : male_count);
-            $('.legendcount_num.legendcount_num_female').css('bottom', height['for_drawing'][0] * magic_coefficient).text(female_count == 0 ? '' : female_count);
-            // this.tpl.ancs['legendcounttext'].append(span);
+            $('.legendcount_num.legendcount_num_male').css('bottom', '29px').text(male_count == 0 ? '' : male_count);
+            $('.legendcount_num.legendcount_num_female').css('bottom', '9px').text(female_count == 0 ? '' : female_count);
+            var text = (locale == 'rus') ? ' бегунов на км' : ' runners on km'
+            this.tpl.ancs['legendcounttext'].html((male_count + female_count) + '<span>' + text + '</span>') ;
         }
     },
 	'compx-legend_age':{
