@@ -229,6 +229,7 @@ body{
         stroke-width: 4;
     }
 		.scroll_marker{
+			width: 1px;
 			position: absolute;
 			margin-top: -33px;
 			z-index: 3;
@@ -240,6 +241,7 @@ body{
 			color: #fd0f3a;
 			width: 50px;
 			margin-top:-234px;
+			margin-left: -25px;
 			text-align: center;
 			-webkit-touch-callout: none;
 		    -webkit-user-select: none;
@@ -248,8 +250,17 @@ body{
 		    -ms-user-select: none;
 		    user-select: none;
 		}
-		.scroll_marker img {
+		.scroll_marker .scroll_top img{
 			width: 50px;
+			margin-left: -25px;
+		}
+		.scroll_bottom {
+			width: 1px;
+		}
+		.scroll_bottom img{
+			height: 178px;
+			/*padding-top: 27px;
+			padding-left:25px;*/
 		}
 	.timeline .tl_text_mark{
 		position: absolute;
