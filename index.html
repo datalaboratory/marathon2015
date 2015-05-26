@@ -3,6 +3,12 @@
 	<title>Результаты Московского полумарафона 17 мая 2015 года</title>
 	<meta charset="utf-8">
 	<meta property="og:image" content="/i/screenshot.png"/>
+    <!-- likely -->
+    <script src="njs/libs/jquery-2.0.2.min.js"></script>
+    <script src="njs/libs/likely.js"></script>
+    <link rel="stylesheet" href="css/likely.css"> 
+    <!-- /likely -->
+    
     <!-- moscow marathon styles -->
     <link href="css/mm.css" rel="stylesheet" type="text/css" />
     <!-- /moscow marathon styles -->
@@ -14,21 +20,12 @@
     <script>
         var locale = 'rus';
     </script>
+
+    
+
 	<script data-main="njs/loader.js" src="njs/require-2.1.6.min.js"></script>
-	<!-- 
-	<script type="text/javascript" src="http://vk.com/js/api/openapi.js?101"></script>
 
-	<script type="text/javascript">
-  		VK && VK.init({apiId: 4560673, onlyWidgets: true});
-	</script>
-	 -->
-
-	<!-- likely -->
-	<!-- 
-	<script src="njs/libs/jquery-2.0.2.min.js"></script>
-	<script src="njs/libs/likely.js"></script>
-	<link rel="stylesheet" href="css/likely.css">  -->
-	<!-- /likely -->
+	
 </head>
 <body>
 	
@@ -79,7 +76,7 @@
                         <a href="/ru/seriya-zabegov/first-run/about/">
                             <span class="">Серия забегов</span></a>
                     </li>
-                    
+
                     <li>
 
                         <a href="/ru/multimedia/">
@@ -466,13 +463,15 @@
 							</div>
 						</div>
 					</div>
-					<div class='social_buttons'> Тут лайкли, который конфликтует с provoda.js</div>
-					<!-- <div class="likely">
-					  <div class="twitter" data-via="ilyabirman">1</div>
-					  <div class="facebook">2</div>
-					  <div class="gplus">3</div>
-					  <div class="vkontakte">4</div>
-					</div> -->
+					<div class='social_buttons'>
+                        <div class="likely">
+                          <div class="twitter" data-via="moscowmarathon"></div>
+                          <div class="facebook"></div>
+                          <div class="gplus"></div>
+                          <div class="vkontakte"></div>
+                        </div>               
+                    </div>
+					
 					<div class="dlcredits"><a href="http://datalaboratory.ru/"><img class="dllogo inline" src="i/dl-logo.png" alt=""></a><span class="copyright inline">Визуализация <a class="text_link" href="http://datalaboratory.ru/">Лаборатории&nbsp;данных</a></span>
 					</div>
 				</div>

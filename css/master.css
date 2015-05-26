@@ -17,11 +17,7 @@ body{
 		border-bottom:1px solid #dc322f;
 	}
 
-path {
-  fill: none;
-  stroke: #999;
-  stroke-width: 1px;
-}
+
 .before_load{
     position: fixed;
     top: 0px;
@@ -197,6 +193,11 @@ path {
 #map-con{
 	height: 400px;
 }
+	#map-con path, #alt_graph svg path {
+	  fill: none;
+	  stroke: #999;
+	  stroke-width: 1px;
+	}
 .bmap{
 	font-size: 13px;
 }
@@ -639,6 +640,19 @@ path {
 	            left: -2px;
 	            top: 4px;
 	        }
+	        	#legendcount-male {
+	        		fill: #82c0fd;
+	        		stroke: none;
+	        	}
+	        	#legendcount-female {
+	        		fill: #f492a2;
+	        		stroke: none;
+	        	}
+	        	#legendcount-all {
+	        		fill: none;
+	        		stroke: #999;
+	        		stroke-width: 1px;
+	        	}
 	        .legendcount_num {
 	        	position: absolute;
 	        	left: 85px;

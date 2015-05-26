@@ -41,7 +41,7 @@
 }
 
 .mm-header {
-  background: url("/static/img/header-bgr.png") no-repeat;
+  background: url("http://moscowmarathon.org/static/img/header-bgr.png") no-repeat;
   height: 120px;
   width: 100%; }
   .mm-header div.mm-logo {

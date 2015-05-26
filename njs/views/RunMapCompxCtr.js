@@ -25,14 +25,11 @@ provoda.View.extendTo(RunMapCompxCtr, {
 		$(svg).appendTo(this.tpl.ancs['legendcount']);
 		this.legendcount =  d3.select(svg);
 		this.legendcount.append('path')
-			.attr('id','legendcount-male')
-			.style('fill', '#82c0fd')
-            .style('stroke', 'none');
+			.attr('id','legendcount-male');
 		this.legendcount.append('path')
-			.attr('id','legendcount-female')
-			.style('fill', '#f492a2')
-            .style('stroke', 'none');
-		this.legendcount.append('path').attr('id','legendcount-all');
+			.attr('id','legendcount-female');
+		this.legendcount.append('path')
+			.attr('id','legendcount-all');
 
 
 		var scroll_marker = this.tpl.ancs['scroll_marker'];
