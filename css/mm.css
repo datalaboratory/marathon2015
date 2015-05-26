@@ -41,13 +41,21 @@
 }
 
 .mm-header {
-	display: block;
-
-	background: url("http://moscowmarathon.org/static/img/header-bgr.png") no-repeat;
-	height: 120px;
-	width: 100%;
-	
+  background: url("/static/img/header-bgr.png") no-repeat;
+  height: 120px;
+  width: 100%; }
+  .mm-header div.mm-logo {
+    padding-top: 35px; }
+  .mm-header div.mm-language {
+    padding-top: 45px; }
+  .mm-header span#language-button {
+    padding: 8px;
+    border: 1px solid #C2C2C2;
+    color: #303030;
+    font-size: 12px; 
+    margin-left: 22px;
 }
+
 .mm-row {
 	clear: both;
 
@@ -66,7 +74,7 @@
 }
 .mm-small-12-medium-6-columns {
 	position: relative;
-	padding-left: 0.9375rem;
+	/*padding-left: 0.9375rem;*/
 	padding-right: 0.9375rem;
 	float: left;
 
@@ -119,7 +127,7 @@
 	margin-bottom: 0;
 }
 .mm-top-bar {
-	padding: 3px 9px 2px 29px;
+	padding: 3px 9px 2px 18px;
 }
 .mm-top-bar-section {
 	position: relative;
