@@ -493,9 +493,12 @@
 			<div id="map-con" pv-nest="geo_map" pv-class="{{!show_map && 'hidden_opacity'}}"></div>
 		</div>
 		<div class="controlls big_block hidden_opacity" pv-class="controlls big_block {{!runners_rate && 'hidden_opacity'}}" pv-anchor="controlls">
-			<div class="scroll_marker" pv-anchor="scroll_marker"><img src="i/scroll-marker.png" alt="">
+			<div class="scroll_marker" pv-anchor="scroll_marker">
+                <div class="scroll_top" ><img src="i/scroll-marker-top.png" alt=""/></div>
+                <div class="scroll_bottom" ><img src="i/scroll-marker-bottom.png" alt=""/></div>
                 <div class="scroll_time">01:17</div>
             </div>
+
 
 			<div class="timeline graph_has_text" pv-nest="time_graph">
                <span class="current_time" pv-props="style.left: {{current_controll_value.pos}}" pv-text="{{current_controll_value.time}}" style="display:none"></span>
