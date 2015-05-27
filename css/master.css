@@ -638,7 +638,6 @@ body{
 				}
 	        .legendcount_svg{
 	            position: absolute;
-	            left: -2px;
 	            top: 4px;
 	        }
 	        	#legendcount-male {
@@ -651,7 +650,7 @@ body{
 	        	}
 	        	#legendcount-all {
 	        		fill: none;
-	        		stroke: #999;
+	        		stroke: #bbb;
 	        		stroke-width: 1px;
 	        	}
 	        .legendcount_num {
