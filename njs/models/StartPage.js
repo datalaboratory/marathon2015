@@ -78,6 +78,7 @@ BrowseMap.Model.extendTo(StartPage, {
             _this.getIndexes(runners, data);
             _this.makeFiltersResult();
             _this.clearFilters();
+            _this.setFilterBy('gender', (locale == 'rus')? 'призёров' : 'winners');
 
         })
 
@@ -160,7 +161,6 @@ BrowseMap.Model.extendTo(StartPage, {
         this.updateState('query', "");
         $(".firunr_search").prop("value","");
 
-        this.setFilterBy('gender', false);
         this.setFilterBy('ages', false);
         this.setFilterBy('team', false);
         this.setFilterBy('city', false);
