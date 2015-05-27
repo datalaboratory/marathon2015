@@ -164,7 +164,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
             var width = 80
 
             var max_count = (type==42) ? 1950 : 2250;
-            var text = (locale == 'rus')? "макс":'max'
+            var text = (locale == 'rus')? "макс.":'max'
 
             var magic_coefficient = 0.7 // Костыль для корректировки высоты змея в легенде к змею на карте.
 
@@ -216,7 +216,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
     'compx-legendcount_text': {
         depends_on: ['runners_rate', 'legendcount'],
         fn: function(runners_rate, height) {
-        	var magic_coefficient = 0.7 // Костыль для подгона высот.
+        	var magic_coefficient = 0.7 // Костыль для высоты змея в легенде.
 
         	// console.log("LOG runners_rate from legendcount_text:",runners_rate);
             if (!runners_rate || !height) return
@@ -238,7 +238,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 
             $('.legendcount_num.legendcount_num_male').css('bottom', '29px').text(male_count == 0 ? '' : male_count);
             $('.legendcount_num.legendcount_num_female').css('bottom', '9px').text(female_count == 0 ? '' : female_count);
-            var text = (locale == 'rus') ? ' бегунов на км' : ' runners on km'
+            var text = (locale == 'rus') ? ' бегунов на км' : ' runners per km'
             this.tpl.ancs['legendcounttext'].html((male_count + female_count) + '<span>' + text + '</span>') ;
         }
     },
