@@ -505,7 +505,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 				//console.log("checking labels", cur.label, part1, part2)
 				//if(i==cvs_data.big_ages_ranges.length-1) {cur.label = cur.label.substr(1,1000)} //если последняя группа, убираем тире
 				$('<span class="textblock"></span>').appendTo(dfrg).css({
-					top: Math.round(legend_age.text_desc[i].y),
+					top: ((cur.label === '65+') ? (Math.round(legend_age.text_desc[i].y) - 10) : (Math.round(legend_age.text_desc[i].y))),
 					left: Math.round(legend_age.text_desc[i].x)
 				}).text(cur.label);
 				//cvs_data.big_ages_ranges[i]

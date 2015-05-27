@@ -578,6 +578,7 @@ body{
 		/*margin-right: 22px;*/
 		}
 		.age_text {
+			z-index: 999;
 			padding-left: 2px;
 			padding-top: 1px;
 			margin-left: 10px;
@@ -680,12 +681,26 @@ body{
 				vertical-align: top;
 			}
 
-			.legendage_c .svgcon{
-				height: 160px;
-				/*float: right;*/
-				width: inherit;
-				/*margin-right: -68px;*/
+			.legendage_mask {
+				position: absolute;
+				bottom: 0;
 			}
+
+				.legendage_c .svgcon{
+					height: 160px;
+					/*float: right;*/
+					width: inherit;
+					/*margin-right: -68px;*/
+				}
+
+				.legendage_c .textblock{
+					font-size: 8px;
+					line-height: 1;
+					width: 50px;
+					margin-left: 4px;
+					color:#999; 
+					margin-top: -3px;
+				}
 	.social_buttons {
 		margin-top: 17px;
 	}
@@ -1169,14 +1184,7 @@ body{
 		position: absolute;
 		}
 
-.legendage_c .textblock{
-	font-size: 8px;
-	line-height: 1;
-	width: 50px;
-	margin-left: 4px;
-	color:#999; 
-	margin-top: -3px;
-}
+
 .timeline_textc span{
 	margin-top: -28px;
 }
