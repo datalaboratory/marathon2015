@@ -4,11 +4,6 @@ var items =[];
 
 var jsondata;
 
-// Unix-time старта забега
-var start_time =1411275600000;
-// Самый медленный результат
-var max_time = 23138;
-
 
 // Создаем MOK-справочник стран
 // var mokcodes = {};
@@ -38,6 +33,11 @@ var convertToTimeString = function(seconds) {
 	return (h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
 };
 
+// Unix-time старта забега (локальное)
+var start_time =1431844200000;
+// Самый медленный результат
+var max_time = convertToSeconds('2:26:30');
+
 // Парсим
 var parsedata = function(){
 	d3.csv("42km-result.csv", function (d){
@@ -53,6 +53,10 @@ var parsedata = function(){
 
 			result_time_string = d.netto;
 
+			if (d.country_name === undefined) { d.country_name = d.country };
+			
+			// Для обработки бага с городом у иностранцев
+			if (d.city === 'Москва' && d.country_name !== "Россия") { d.city = ""};
 
 			//Обработка поля "city"
 			if (d.city !== "") {

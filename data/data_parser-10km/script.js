@@ -32,8 +32,8 @@ var convertToTimeString = function(seconds) {
 	var s = seconds-h*3600-m*60 ;
 	return (h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
 };
-// Unix-time старта забега
-var start_time =1431858600000;
+// Unix-time старта забега (локальное)
+var start_time =1431844200000;
 // Самый медленный результат
 var max_time = convertToSeconds('2:26:30');
 
@@ -62,7 +62,6 @@ var parsedata = function(){
 			
 				if (d.country_name !== "Россия" && d.country_name !== "") {
 					add_city_info = ", " + d.country_name;
-					console.log("LOG:",d);
 				};
 
 			} else {

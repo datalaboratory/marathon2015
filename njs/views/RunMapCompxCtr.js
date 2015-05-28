@@ -209,7 +209,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                 .attr('d', formatSnakePath(width, container_height, 1))
 
             // Обновляем максимальное кол-во бегунов
-            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 2).html(text + '</br>' + max_count);
+            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 1).html(text + '</br>' + max_count);
             return height
         }
     },
@@ -236,7 +236,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
             
             // span.html(text);
 
-            $('.legendcount_num.legendcount_num_male').css('bottom', '29px').text(male_count == 0 ? '' : male_count);
+            $('.legendcount_num.legendcount_num_male').css('bottom', '26px').text(male_count == 0 ? '' : male_count);
             $('.legendcount_num.legendcount_num_female').css('bottom', '9px').text(female_count == 0 ? '' : female_count);
             var text = (locale == 'rus') ? ' бегунов на км' : ' runners per km'
             this.tpl.ancs['legendcounttext'].html((male_count + female_count) + '<span>' + text + '</span>') ;
