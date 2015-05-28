@@ -77,13 +77,12 @@ body{
 
 
 .switch {
-
 	float: left;
 	position: relative;
-	margin-left: 10px;
-	top: -6px;
+	margin-left: 20px;
+	top: -4px;
 	height: 28px;
-	border: 1px solid #acacac;
+	border: 1px solid #ccc;
 	border-radius: 3px;
 	background-color: #fff;
 }
@@ -104,7 +103,7 @@ body{
 	float: left;
 	height: 100%;
 	cursor: default;
-	border-right: 1px solid #acacac;
+	border-right: 1px solid #ccc;
 }
 .switch_item .icon {
 	cursor: pointer;
