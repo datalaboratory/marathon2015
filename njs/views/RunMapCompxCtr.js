@@ -169,12 +169,12 @@ provoda.View.extendTo(RunMapCompxCtr, {
             var magic_coefficient = 0.7 // Костыль для корректировки высоты змея в легенде к змею на карте.
 
             // Высота змея «макс» — высота контейнера
-            var container_height = mh.getHeightByRunners(max_count, (runners_rate) ? runners_rate[2].step : 1) * magic_coefficient;
+            var container_height = Math.ceil(mh.getHeightByRunners(max_count, (runners_rate) ? runners_rate[2].step : 1) * magic_coefficient);
             // Массив высот для Ж, М и всех вместе
             // var height= (runners_rate) ? [runners_rate[0]['height'], runners_rate[1]['height'], runners_rate[2]['height']] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
             var height = {
-            	'for_counting' : (runners_rate) ? [runners_rate[0]['height'], runners_rate[1]['height'], runners_rate[2]['height']] : [1,1,1], //При первой загрузке подставляем [1,1,1] 
-            	'for_drawing' : (runners_rate) ? [runners_rate[0]['height'] * magic_coefficient, runners_rate[1]['height'] * magic_coefficient, runners_rate[2]['height'] * magic_coefficient] : [1,1,1] //При первой загрузке подставляем [1,1,1] 
+            	'for_counting' : (runners_rate) ? [runners_rate[0]['height'], runners_rate[1]['height'], runners_rate[2]['height']] : [0,0,0], //При первой загрузке подставляем [0,0,0] 
+            	'for_drawing' : (runners_rate) ? [runners_rate[0]['height'] * magic_coefficient, runners_rate[1]['height'] * magic_coefficient, runners_rate[2]['height'] * magic_coefficient] : [0,0,0] //При первой загрузке подставляем [1,1,1] 
             }
 
             // female_coeff — доля женщин на участке максимальной толщины в данный момент
