@@ -209,7 +209,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                 .attr('d', formatSnakePath(width, container_height, 1))
 
             // Обновляем максимальное кол-во бегунов
-            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 12).html(text + '</br>' + max_count);
+            $('.legendcount_num.legendcount_num_max').css('bottom', container_height - 2).html(text + '</br>' + max_count);
             return height
         }
     },

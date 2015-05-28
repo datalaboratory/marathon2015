@@ -633,12 +633,10 @@ body{
 				margin-top:0px;
 				margin-left: 23px;
 				}
-				.legendcount_c .svgcon{
-					position: relative;
-				}
+
 	        .legendcount_svg{
-	            position: absolute;
-	            top: 4px;
+	            position: relative;
+	            margin-top: 14px;
 	        }
 	        	#legendcount-male {
 	        		fill: #82c0fd;
@@ -669,8 +667,7 @@ body{
 	        		color: rgb(244, 146, 162);
 	        	}
 	        .legendcount-text {
-	            position:absolute;
-	            margin-top: 10px;
+	            margin-top: 6px;
 	        }
 		        .legendcount-text span{
 		            font-size: 10px;
