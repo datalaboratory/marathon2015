@@ -161,7 +161,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
         fn: function(cvs_data, runners_rate, type) {
             if (!cvs_data)return
             var container = this.tpl.ancs['legendcount'];
-            var width = 80
+            var width = 77
 
             var max_count = (type==42) ? 1950 : 2250;
             var text = (locale == 'rus')? "макс.":'max'
