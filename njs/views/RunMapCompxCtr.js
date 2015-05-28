@@ -502,13 +502,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
 				$('<span class="textblock"></span>').appendTo(dfrg).css({
 					top: ((cur.label === '65+') ? (Math.round(legend_age.text_desc[i].y) - 10) : (Math.round(legend_age.text_desc[i].y))),
 					left: Math.round(legend_age.text_desc[i].x)
-				}).text(function () {
-					if(cur.label.indexOf('-')!=-1){																					//если в строке есть дефис,
-						return cur.label.substr(0,cur.label.indexOf('-'))+"–"+cur.label.substr(cur.label.indexOf('-')+1,1000); //заменяем дефис на среднее тире
-					} else {
-						return cur.label;
-					}
-				});
+				}).text(cur.label);
 				//cvs_data.big_ages_ranges[i]
 			}
 			con.append(dfrg);
