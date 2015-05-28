@@ -163,7 +163,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
             var container = this.tpl.ancs['legendcount'];
             var width = 77
 
-            var max_count = (type==42) ? 1950 : 2250;
+            var max_count = (type==42) ? 1950 : 920; // Максимальная толщина змея, считаем вручную
             var text = (locale == 'rus')? "макс.":'max'
 
             var magic_coefficient = 0.7 // Костыль для корректировки высоты змея в легенде к змею на карте.
