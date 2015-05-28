@@ -111,6 +111,25 @@ var parsedata = function(){
 				};
 			};
 
+			// Переводим в нижний регистр города из одного слова, типа «ЛЮБЕРЦЫ»
+			if (d.city.split(' ').length === 1 && d.city.split('-').length === 1) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+
+			};
+
+			// Переводим в нижний регистр города из двух слов, типа «ПАВЛОВСКИЙ ПОСАД»
+			if (d.city.split(' ').length === 2 && d.city.split('-').length === 1) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+				d.city = d.city.slice(0, d.city.indexOf(' ') + 1) + d.city.charAt(d.city.indexOf(' ') + 1).toUpperCase() + d.city.substr(d.city.indexOf(' ') + 2).toLowerCase();
+			};
+
+			// Переводим в нижний регистр города из двух слов, типа «ОРЕХОВО-ЗУЕВО»
+			if (d.city.split('-').length === 2) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+				d.city = d.city.slice(0, d.city.indexOf('-') + 1) + d.city.charAt(d.city.indexOf('-') + 1).toUpperCase() + d.city.substr(d.city.indexOf('-') + 2).toLowerCase();
+			};
+			
+			//Упаковываем данные по бегуну
 			items[i] = 
 						{
 				"num": +d.num,
@@ -151,7 +170,7 @@ var parsedata = function(){
 			"start_time":start_time,
 			"max_time":max_time
 		};
-		console.log(jsondata);
+		// console.log(jsondata);
 		d3.select("body").append("p").text(JSON.stringify(jsondata));
 
 	});

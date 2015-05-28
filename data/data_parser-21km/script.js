@@ -36,11 +36,12 @@ var convertToTimeString = function(seconds) {
 // Unix-time старта забега (локальное)
 var start_time =1431844200000;
 // Самый медленный результат
-var max_time = convertToSeconds('2:26:30');
+var max_time = convertToSeconds('2:55:37');
 
 // Парсим
 var parsedata = function(){
-	d3.csv("42km-result.csv", function (d){
+	d3.csv("21km_results_170515.csv", function (d){
+		console.log("LOG:",'start parsing');
 		d.forEach(function(d,i){
 
 			var result_time_string;
@@ -88,12 +89,9 @@ var parsedata = function(){
 
 				d.netto = max_time + 1;
 
-
 				d["5km_time"] = d.result_time;
 				d["10km_time"] = d.result_time;
-				d["half_time"] = d.result_time;
-				d["30km_time"] = d.result_time;
-				d["35km_time"] = d.result_time;
+				d["15km_time"] = d.result_time;
 			
 			// Если добежал до финиша, то обрабатываем данные времени
 			} else {
@@ -103,47 +101,54 @@ var parsedata = function(){
 
 				d["5km_time"] = convertToSeconds(d["5km_time"]);
 				d["10km_time"] = convertToSeconds(d["10km_time"]);
-				d["half_time"] = convertToSeconds(d["half_time"]);
-				d["30km_time"] = convertToSeconds(d["30km_time"]);
-				d["35km_time"] = convertToSeconds(d["35km_time"]);
+				d["15km_time"] = convertToSeconds(d["15km_time"]);
 				
 				// Проверяем на опечатки
 				// Если "нетто" больше "брутто" или не заполнено, то "нетто" = "брутто"
 				if ( d.netto > d.result_time || +d.netto === 0) { 
-					console.log("LOG:","time-problem with num", d.num, "42km");
+					console.log("LOG:","time-problem with num", d.num, "21km");
 					d.netto = d.result_time;
 				};
 
-				// Если время на 5км подозрительно, то "время на 5км" = "нетто/8"
+				// Если время на 5км подозрительно, то "время на 5км" = "нетто/4"
 				if ( d["5km_time"]/d.netto > 0.3 || d["5km_time"]/d.netto < 0.06) {
-					console.log("LOG:","time-problem with num", d.num, "5km", d["5km_time"]/d.netto);
-					d["5km_time"] = d.netto/8;
+					console.log("LOG:","time-problem with num", d.num, "5km_time", d["5km_time"]/d.netto);
+					d["5km_time"] = d.netto/4;
 				};
 
-				// Если время на 10км подозрительно, то "время на 10км" = "нетто/4"
-				if ( d["10km_time"]/d.netto > 0.4 || d["10km_time"]/d.netto < 0.1) {
-					console.log("LOG:","time-problem with num", d.num, "10km", d["10km_time"]/d.netto);
-					d["10km_time"] = d.netto/4;
+				// Если время на 10км подозрительно, то "время на 10км" = "нетто/2"
+				if ( d["10km_time"]/d.netto > 0.65 || d["10km_time"]/d.netto < 0.25) {
+					console.log("LOG:","time-problem with num", d.num, "10km_time", d["10km_time"]/d.netto);
+					d["10km_time"] = d.netto/2;
 				};
 
-				// Если время на 21км подозрительно, то "время на 21км" = "нетто/2"
-				if ( d["half_time"]/d.netto > 0.65 || d["half_time"]/d.netto < 0.25) {
-					console.log("LOG:","time-problem with num", d.num, "21km", d["half_time"]/d.netto);
-					d["half_time"] = d.netto/2;
+				// Если время на 15км подозрительно, то "время на 15км" = "нетто/2"
+				if ( d["15km_time"]/d.netto > 0.8 || d["15km_time"]/d.netto < 0.5) {
+					console.log("LOG:","time-problem with num", d.num, "15km_time", d["15km_time"]/d.netto);
+					d["15km_time"] = d.netto/1.4;
 				};
 
-				// Если время на 30км подозрительно, то "время на 30км" = "нетто/"
-				if ( d["30km_time"]/d.netto > 0.8 || d["30km_time"]/d.netto < 0.5) {
-					console.log("LOG:","time-problem with num", d.num, "30km", d["30km_time"]/d.netto);
-					d["30km_time"] = d.netto/1.4;
-				};
-				
-				// Если время на 35км подозрительно, то "время на 35км" = "нетто/"
-				if ( d["35km_time"]/d.netto > 0.9 || d["35km_time"]/d.netto < 0.6) {
-					console.log("LOG:","time-problem with num", d.num, "35km", d["35km_time"]/d.netto);
-					d["35km_time"] = d.netto/1.2;
-				};
 			};
+
+			// Переводим в нижний регистр города из одного слова, типа «ЛЮБЕРЦЫ»
+			if (d.city.split(' ').length === 1 && d.city.split('-').length === 1) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+
+			};
+
+			// Переводим в нижний регистр города из двух слов, типа «ПАВЛОВСКИЙ ПОСАД»
+			if (d.city.split(' ').length === 2 && d.city.split('-').length === 1) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+				d.city = d.city.slice(0, d.city.indexOf(' ') + 1) + d.city.charAt(d.city.indexOf(' ') + 1).toUpperCase() + d.city.substr(d.city.indexOf(' ') + 2).toLowerCase();
+			};
+
+			// Переводим в нижний регистр города из двух слов, типа «ОРЕХОВО-ЗУЕВО»
+			if (d.city.split('-').length === 2) {
+				d.city = d.city.charAt(0).toUpperCase() + d.city.substr(1).toLowerCase();
+				d.city = d.city.slice(0, d.city.indexOf('-') + 1) + d.city.charAt(d.city.indexOf('-') + 1).toUpperCase() + d.city.substr(d.city.indexOf('-') + 2).toLowerCase();
+			};
+
+
 
 			//Упаковываем данные по бегуну
 			items[i] = 
@@ -172,19 +177,11 @@ var parsedata = function(){
 						"time": start_time + d["10km_time"] * 1000
 					},
 					{
-						"distance": 21000,
-						"time": start_time + d["half_time"] * 1000
+						"distance": 15000,
+						"time": start_time + d["15km_time"] * 1000
 					},
 					{
-						"distance": 30000,
-						"time": start_time + d["30km_time"] * 1000
-					},
-					{
-						"distance": 35000,
-						"time": start_time + d["35km_time"] * 1000
-					},
-					{
-						"distance": 42280,
+						"distance": 21240,
 						"time": start_time + d.netto*1000
 					}
 				],
