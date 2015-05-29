@@ -43,7 +43,7 @@ provoda.View.extendTo(SelRunner, {
 				return;
 			}
             this.info_text = $('#desc_text_on_map')
-            console.log("looking inside raw", raw)
+            // console.log("looking inside raw", raw)
             var black = this.info_text.find('.timeline_black_text').html(raw.full_name+",<br>"+raw.pos)
             var white = this.info_text.find('.timeline_white_text').text(raw.result_time_string)
             var yellow = this.info_text.find('.timeline_yellow_text').text(raw.num)
@@ -59,7 +59,7 @@ provoda.View.extendTo(SelRunner, {
 			if (!raw) {
 				return;
 			}
-			// Смотрим какой выделен ли «Все вместе»
+			// Смотрим выделен ли «Все вместе»
 			var show_all = $('.genbuttn-male-female').hasClass('active');
 
 			// Для «все вместе» берём номер в общем зачёте, в противном случае — в группе по полу
@@ -72,6 +72,13 @@ provoda.View.extendTo(SelRunner, {
 				.style('fill', raw.gender === 1 ? '#48e': '#f46')
 				.attr('width', widths[num_of_nums -1])
 				.attr('ry', function() {
+					if (num_of_nums === 1) {
+						return 20;
+					} else {
+						return 10;
+					};
+				})
+				.attr('rx', function() {
 					if (num_of_nums === 1) {
 						return 20;
 					} else {
@@ -128,10 +135,10 @@ provoda.View.extendTo(SelRunner, {
             	var gender_endings = ['й','м','a',''];
             	var curyear = new Date().getFullYear()
             	var age = curyear - raw.birthyear;
-                var black = _this.info_text.find('.timeline_black_text').html(raw.full_name+",<br>"+age+" "+age_endings[age%10])
+                var black = _this.info_text.find('.timeline_black_text').html(locale === 'rus' ? raw.full_name+",<br>"+age+" "+age_endings[age%10] : raw.full_name+",<br>"+age+" years old")
                 var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
                 var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
-                var white_small = _this.info_text.find('.timeline_small_white_text').text("Финишировал"+gender_endings[raw.gender+2]+" "+raw.pos+"-"+gender_endings[raw.gender])
+                var white_small = _this.info_text.find('.timeline_small_white_text').text(locale === 'rus' ? "Финишировал"+gender_endings[raw.gender+2]+" "+raw.pos+"-"+gender_endings[raw.gender] : "Finished " + raw.pos + "th")
 
                 var container_width = $('.big-wrap').width()
                 var offset_hor = (window.innerWidth - container_width) / 2

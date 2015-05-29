@@ -435,9 +435,9 @@
                             <div class="svgcon graph_has_text alt_graph" id="alt_graph">
                             </div>
                             <div class="legend_alt_annotation">
-                                <div pv-class="{{!(distance_type==42) && 'hidden'}}">Total climb — 73 m</div>
-                                <div pv-class="{{!(distance_type==10) && 'hidden'}}">Total climb — 35 m</div>
-                                <div>169 m — highest point of Moscow Marathon</div>
+                                <div pv-class="{{!(distance_type==42) && 'hidden'}}">Total climb: 73 m</div>
+                                <div pv-class="{{!(distance_type==10) && 'hidden'}}">Total climb: 35 m</div>
+                                <div>Highest point of Moscow Marathon: 169 m</div>
                             </div>
                             
                         </div>
@@ -472,7 +472,7 @@
                         </div>               
                     </div>
                     
-                    <div class="dlcredits"><a href="http://datalaboratory.ru/"><img class="dllogo inline" src="../i/dl-logo.png" alt=""></a><span class="copyright inline">Visualization by&nbsp;<a class="text_link" href="http://datalaboratory.ru/">Data&nbsp;laboratory</a></span>
+                    <div class="dlcredits"><a href="http://datalaboratory.ru/"><img class="dllogo inline" src="../i/dl-logo.png" alt=""></a><span class="copyright inline">Visualization <a class="text_link" href="http://datalaboratory.ru/">by&nbsp;Data&nbsp;laboratory</a></span>
                     </div>
                 </div>
             </div>
@@ -551,7 +551,7 @@
                             <div class="timeline_black_text" pv-html="{{selector_matching.runner.full_name}},<br> {{selector_matching.runner.age_years}}"></div>
                             <div class="white_text_container">
                                 <div class="timeline_white_text bold" pv-text="{{selector_matching.runner.end_time_string}}"></div>
-                                <div class="timeline_small_white_text" pv-text="Финишировал{{selector_matching.runner.gender===0 && 'a'}} {{selector_matching.runner.pos}}-{{selector_matching.runner.gender===0 && 'й' || selector_matching.runner.gender===1 && 'м'}}"></div>
+                                <div class="timeline_small_white_text" pv-text="Finished {{selector_matching.runner.pos}}th"></div>
                             </div>
                             <div class="timeline_yellow_block">
                                 <div class="text_wrapper">
