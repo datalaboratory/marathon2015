@@ -441,7 +441,7 @@ provoda.View.extendTo(RunMapCompxCtr, {
                 .text("test text");*/
 
             $('.svgcon rect').mousemove(function(e){
-            	var gender = ['мужчин','женщин'];
+            	var gender = locale === 'rus' ? ['мужчин','женщин'] : ['men','women'];
             	var endings = ['','a','ы','ы','ы','','','','','']
 
             	var cur_gender = Number($(this).attr('gender'));
@@ -462,12 +462,16 @@ provoda.View.extendTo(RunMapCompxCtr, {
             	})
 
             	if(last != "last"){
-	            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>от "+start+" до "+end+" лет").css({
+	            	$('.age_text')
+	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>от "+start+" to "+end+" лет" : count + " " + gender[cur_gender] + "<br>"+start+" to "+end+" years")
+	            		.css({
 	            		top: y+'px',
 	            		left: x+'px'
 	            	});
 	            } else {
-	            	$('.age_text').html(count+" "+gender[cur_gender]+ending+"<br>старше "+start+" лет").css({
+	            	$('.age_text')
+	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>старше "+start+" лет" : count+" " + gender[cur_gender]+"<br>over "+start+" years")
+	            		.css({
 	            		top: y+'px',
 	            		left: x+'px'
 	            	});
