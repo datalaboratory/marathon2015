@@ -544,28 +544,24 @@ body{
 		}
 
 		.weather_images img{
-			width: 155px;
+			width: 150px;
 			/*max-width: 90%;
 			max-height: 90%;*/
 		}
 
 		.we_temperature{
 			font-size: 24px;
-			/*font-weight: 700;*/
-			/*margin-top: -40px;*/
 			text-align: left;
-			vertical-align: 71px;
 			width: 46px;
-			/*margin-left: 15px;*/
+			float: left;
+			margin-top: 19px;
 		}
 		.we_wind{
 			font-size: 14px;
-			/*font-weight: 100;*/
 			text-align: right;
-			/*margin-right: 24px;*/
-			/*margin-top: -24px;*/
 			width: 51px;
-			vertical-align: 71px;
+			float: right;
+			margin-top: 28px;
 		}
 
 	.legend{
@@ -597,8 +593,7 @@ body{
             /*width: 130px;*/
         }
         .legend_alt svg {
-        	/*font-size: 8px;*/
-        	/*font-weight: normal;*/
+        	font-size: 10px;
         }
 	        .alt_graph {
 	            /*right: 4px;*/
@@ -655,6 +650,7 @@ body{
 	        	left: 82px;
 	        	line-height: 1;
 	        	margin-bottom: -1em;
+	        	font-size: 10px;
 	        }	
 	        	.legendcount_num_max {
 

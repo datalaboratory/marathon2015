@@ -146,7 +146,6 @@ provoda.View.extendTo(SelRunner, {
 			})
 
             $(_this.d3_g.node()).on('mousemove', function(e) {
-
                 var container_width = $('.big-wrap').width()
                 var offset_hor = (window.innerWidth - container_width) / 2
                 var offset_vert = $('.mm-wrapper').height()
