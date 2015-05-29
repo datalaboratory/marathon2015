@@ -432,15 +432,9 @@ provoda.View.extendTo(RunMapCompxCtr, {
 
 			})();
 
-			/*svg.append('text').attr({
-                		class: "age_text",
-						x: 20,
-						y: 20,
-						fill: "#000"	
-					})
-                .text("test text");*/
+            $('.svgcon rect').mouseover(function(){
+            	$('.age_text').css("display","block");
 
-            $('.svgcon rect').mousemove(function(e){
             	var gender = locale === 'rus' ? ['мужчин','женщин'] : ['men','women'];
             	var endings = ['','a','ы','ы','ы','','','','','']
 
@@ -451,6 +445,17 @@ provoda.View.extendTo(RunMapCompxCtr, {
             	var ending = endings[count%10];
             	var last = $(this).attr('last');
 
+            	if(last != "last"){
+	            	$('.age_text')
+	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>от "+start+" to "+end+" лет" : count + " " + gender[cur_gender] + "<br>"+start+" to "+end+" years")
+	            } else {
+	            	$('.age_text')
+	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>старше "+start+" лет" : count+" " + gender[cur_gender]+"<br>over "+start+" years")
+	            }
+
+            })
+
+            $('.svgcon rect').mousemove(function(e){
             	var offset = $(this).parent().parent().offset();
             	var y = e.pageY-offset.top;
             	var x = e.pageX-offset.left;
@@ -461,25 +466,13 @@ provoda.View.extendTo(RunMapCompxCtr, {
             		}
             	})
 
-            	if(last != "last"){
-	            	$('.age_text')
-	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>от "+start+" to "+end+" лет" : count + " " + gender[cur_gender] + "<br>"+start+" to "+end+" years")
-	            		.css({
+	            $('.age_text')
+	            	.css({
 	            		top: y+'px',
 	            		left: x+'px'
 	            	});
-	            } else {
-	            	$('.age_text')
-	            		.html(locale == 'rus' ? count+" "+gender[cur_gender]+ending+"<br>старше "+start+" лет" : count+" " + gender[cur_gender]+"<br>over "+start+" years")
-	            		.css({
-	            		top: y+'px',
-	            		left: x+'px'
-	            	});
-	            }
             })
-            $('.svgcon rect').mouseover(function(){
-            	$('.age_text').css("display","block");
-            })
+
             $('.svgcon rect').mouseout(function(){
             	$(this).attr('stroke', function(){
             		return $(this).attr('fill');
