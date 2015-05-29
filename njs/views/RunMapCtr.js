@@ -130,8 +130,8 @@ provoda.View.extendTo(SelRunner, {
 					.attr("y", px_coords[1] - 10)
 			}
 
-            $(_this.d3_g.node()).on('mousemove', function(e) {
-            	var age_endings = ['лет', 'год', 'года', 'года', 'года', 'лет', 'лет', 'лет', 'лет', 'лет'];
+			$(_this.d3_g.node()).on('mouseover', function(e) {
+				var age_endings = ['лет', 'год', 'года', 'года', 'года', 'лет', 'лет', 'лет', 'лет', 'лет'];
             	var gender_endings = ['й','м','a',''];
             	var curyear = new Date().getFullYear()
             	var age = curyear - raw.birthyear;
@@ -139,6 +139,13 @@ provoda.View.extendTo(SelRunner, {
                 var white = _this.info_text.find('.timeline_white_text').text(raw.result_time_string)
                 var yellow = _this.info_text.find('.timeline_yellow_text').text(raw.num)
                 var white_small = _this.info_text.find('.timeline_small_white_text').text(locale === 'rus' ? "Финишировал" + gender_endings[raw.gender+2]+" "+raw.pos+"-"+gender_endings[raw.gender] : "Finished " + raw.pos + "th")
+                _this.info_text.css({
+                    height: black.innerHeight() + white.innerHeight() + yellow.innerHeight() + 'px',
+                    opacity: 1, 'z-index': 100
+                })
+			})
+
+            $(_this.d3_g.node()).on('mousemove', function(e) {
 
                 var container_width = $('.big-wrap').width()
                 var offset_hor = (window.innerWidth - container_width) / 2
@@ -147,10 +154,7 @@ provoda.View.extendTo(SelRunner, {
                     left: e.pageX - offset_hor + 15 + 'px',
                     top: e.pageY - offset_vert + 15 + 'px'
                 })
-                _this.info_text.css({
-                    height: black.innerHeight() + white.innerHeight() + yellow.innerHeight() + 'px',
-                    opacity: 1, 'z-index': 100
-                })
+                
             })
 
             this.d3_g.on('mouseleave', function(){
