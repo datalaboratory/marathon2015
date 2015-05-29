@@ -78,7 +78,7 @@ BrowseMap.Model.extendTo(StartPage, {
             _this.getIndexes(runners, data);
             _this.makeFiltersResult();
             _this.clearFilters();
-            _this.setFilterBy('gender', (locale == 'rus')? 'призёров' : 'winners');
+            // _this.setFilterBy('gender', (locale == 'rus')? 'призёров' : 'winners'); //Меняем дефолтное значение
 
         })
 
