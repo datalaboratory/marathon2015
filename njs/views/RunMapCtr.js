@@ -600,10 +600,11 @@ provoda.View.extendTo(RunMapCtr, {
             distance_marks_for_alt
             	.append('text')
             	.text(function(d,i) {
+            		var mark = d.toString().replace('.',',')
             		if (i === 0) {
-            			return (locale == 'rus') ? (d + ' км') : (d + ' km')
+            			return (locale == 'rus') ? (mark + ' км') : (mark + ' km')
             		} else {
-            			return d
+            			return mark
             		};
             	})
             	.attr({
