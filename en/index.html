@@ -1,37 +1,43 @@
 <html>
 <head>
-	<title>We ran marathon. Moscow marathon results, 21 September 2014</title>
-	<meta charset="utf-8">
+    <title>Moscow Half Marathon results, 17 May 2015</title>
+    <meta charset="utf-8">
     <meta property="og:image" content="../i/screenshot_eng.png"/>
-	<link rel="stylesheet" type="text/css" href="../css/master.css">
-	<link rel="stylesheet" type="text/css" href="../css/leaflet.css">
+    <!-- likely -->
+    <script src="../njs/libs/jquery-2.0.2.min.js"></script>
+    <script src="../njs/libs/likely.js"></script>
+    <link rel="stylesheet" href="../css/likely.css"> 
+    <!-- /likely -->
 
-    <!-- mm styles -->
+    <!-- moscow marathon styles -->
     <link href="../css/mm.css" rel="stylesheet" type="text/css" />
-    <!-- /mm styles -->
+    <!-- /moscow marathon styles -->
+    <link rel="stylesheet" type="text/css" href="../css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="../css/master.css">
 
-	<link rel="shortcut icon" href="../i/favicon.ico">
-	<link rel="image_src" href="../i/screenshot_eng.png" />
+    <link rel="shortcut icon" href="../i/favicon.ico">
+    <link rel="image_src" href="../i/screenshot.png" />
     <script>
         var locale = 'en';
     </script>
-	<script data-main="../njs/loader.js" src="../njs/require-2.1.6.min.js"></script>
-	<script type="text/javascript" src="http://vk.com/js/api/openapi.js?101"></script>
 
-	<script type="text/javascript">
-  		VK && VK.init({apiId: 4560673, onlyWidgets: true});
-	</script>
+    
 
+    <script data-main="../njs/loader.js" src="../njs/require-2.1.6.min.js"></script>
+
+    
 </head>
 <body>
-<div id="fb-root"></div>
+    
+<!-- <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=349811821852193&version=v2.0";
+  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=1501547416745518&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+</script>  -->
 
 <!-- mm header -->
 <div class="mm-wrapper">
@@ -40,13 +46,21 @@
             <div class="mm-small-12-medium-6-columns">
                 <div class="mm-row">
                     <div class="mm-small-8-medium-6-columns">
-                        <div class="mm-logo"><a href="/en/"><img src="http://moscowmarathon.org/static/img/mm-logo1.png"></a></div>
+                        <div class="mm-logo"><a href="ru/"><img src="http://moscowmarathon.org/static/img/mm-logo1.png" width="157px" height="46px"></a></div>
+                    </div>
+                    <div class="mm-small-4-medium-6-columns">
+        <div class="mm-language"><span id="language-button"><a href="../">
+            По-русски
+             </a></span></div>
+
+
                     </div>
                 </div>
             </div>
+            <div class="mm-show-for-medium-up-medium-6-columns">
+            </div>
         </div>
     </div>
-
     <div class="mm-contain-to-grid">
         <nav class="mm-top-bar">
             <section class="mm-top-bar-section">
@@ -56,23 +70,30 @@
                         <a href="/en/marathon/marathon/registration/">
                             <span class="mm-active">Marathon</span></a>
                     </li>
+                    
+                    <li>
+
+                        <a href="/en/race-series/first-run/about/">
+                            <span class="">Race Series</span></a>
+                    </li>
 
                     <li>
 
-                        <a href="/en/multimedia/">
+                        <a href="/en/multimedia">
                             <span class="">Multimedia</span></a>
                     </li>
 
                     <li>
 
-                        <a href="/en/press/information-press/news/">
-                            <span class="">Press</span></a>
+                        <a href="/en/news/news/all/">
+                            <span class="">News</span></a>
                     </li>
+
 
                     <li>
 
-                        <a href="/en/contacts/">
-                            <span class="">Contacts</span></a>
+                        <a href="/en/contact-us/contacts/organisers/">
+                            <span class="">Contact us</span></a>
                     </li>
 
                 </ul>
@@ -84,70 +105,31 @@
 </div>
 <!-- /mm header -->
 
-<div class="big-wrap">
-	<div id="runs_map_compx">
+<div class="big-wrap">  
+    <div id="runs_map_compx">
 
     <div class="before_load"   pv-class="before_load {{runners_rate && trackwidth && show_map && 'hidden'}}"></div>
-    <div class="bmap big_block hidden_opacity" pv-class="bmap big_block {{!runners_rate && 'hidden_opacity'}}">
-        <div class="lang">
-            <div class="flag_con">
-                <div class="inactive_flag_bw left_flag"><a href="../"><img src="../i/flag_rus_bw.png"></a></div>
-                <div class="inactive_flag_clr left_flag"><a href="../"><img src="../i/flag_rus_clr.png"></a></div>
-                <div class="right_flag"><img src="../i/flag_en_clr.png"></div>
-            </div>
-        </div>
-			<div class="weather we_bg_sun">
-				<div class="weather_images">
-					<div
-
-						pv-class=" {{ !( time_value|compareTime: '00:00' : '7:00:00' ) && 'hidden'}}"
-						class="hidden">
-						<img src="../i/w-sun.png" alt="">
-					</div>
-
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+11°</div>
-					<div class="we_wind">0 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '1:00:00' : '2:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+14°</div>
-					<div class="we_wind">0 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '2:00:00' : '3:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+16°</div>
-					<div class="we_wind">0 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '3:00:00' : '4:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+17°</div>
-					<div class="we_wind">0 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '4:00:00' : '5:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+19°</div>
-					<div class="we_wind">↗ 1 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '5:00:00' : '6:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+19°</div>
-					<div class="we_wind">↗ 1 m/s</div>
-				</div>
-				<div pv-class=" {{ !( time_value|compareTime: '6:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">
-					<div class="we_temperature">+18°</div>
-					<div class="we_wind">↑ 1 m/s</div>
-				</div>
-			</div>
-			<div class="map-cover">
+        <div class="bmap big_block hidden_opacity" pv-class="bmap big_block {{!runners_rate && 'hidden_opacity'}}">
+            <!-- <div class="lang">
+                <div class="flag_con">
+                    <div class="left_flag"><img src="../i/flag_rus_clr.png"></div>
+                    <div class="inactive_flag_bw right_flag"><a href="en/"><img src="../i/flag_en_bw.png"></a></div>
+                    <div class="inactive_flag_clr right_flag"><a href="en/"><img src="../i/flag_en_clr.png"></a></div>
+                </div>
+            </div> -->
+            <div class="map-cover">
                 <img
 
-                        excesstop="8"
-                        excessright="121"
-                        excessbottom="65"
-                        excessleft="30"
-                        bigwidth="1490"
-                        bigheight="1343"
+                        excesstop="400"
+                        excessright="200"
+                        excessbottom="240"
+                        excessleft="750"
+                        bigwidth="2500"
+                        bigheight="2217"
 
 
 
-                        src="../i/mapcover_42_en.png"
+                        src="../i/half-marathon-map.png"
                         alt=""
                         class="hidden"
                         pv-class="{{!(runners_rate && show_map && distance_type==42) && 'hidden'}}"
@@ -156,89 +138,118 @@
                         >
                 <!--ниже - поменять src картинки для 10км -->
                 <img
-                        excesstop="290"
-                        excessright="100"
-                        excessbottom="130"
-                        excessleft="210"
-                        bigwidth="1639"
-                        bigheight="1800"
+                        excesstop="500"
+                        excessright="670"
+                        excessbottom="240"
+                        excessleft="750"
+                        bigwidth="2500"
+                        bigheight="2217"
 
-                        src="../i/mapcover_10_en.png"
+                        src="../i/half-marathon-map.png"
                         alt=""
                         class="hidden"
-                        pv-class="{{!(runners_rate && show_map && distance_type==10) && 'hidden'}}"
+                        pv-class="{{!(trackwidth && show_map && distance_type==10) && 'hidden'}}"
                         pv-anchor="mapcover10"
 
                         >
-			</div>
-			<div class="mapoverlay">
-				<div class="main_header">
+            </div>
+            <div class="mapoverlay">
+            <div class="main_header">
                 <h1 class="bmap_header" pv-class="bmap_header {{current_runner_data && 'hidden'}}" >
-                    <div style="float:left;" >We run </div>
-                    <div class="toggle">
+                    <div class="bold" style="float:left;" >MOSCOW HALF MARATHON</div>
+                    <!--<div class="toggle">-->
+                    <div class="switch">
+                        <div class="switch_item active" pv-events="click::updateGeo42">
+                            <div class="icon runner"><img src="../i/runner.png"></div>
+                            <div class="switch_text"><span class="mthswitch">21,1</span></div>
+                        </div>
+                        <div class="switch_item last" pv-events="click::updateGeo10">
+                            <div class="icon runner"><img src="../i/runner.png"></div>
+                            <div class="switch_text"><span class="mthswitch">10 KM</span></div>
+                        </div>
+
+                        <!--
                         <div class="toggle-header 42menu_item" pv-class="42menu_item {{distance_type==42 && 'toggle-header current_menu_item'}}
-                                                            {{distance_type!=42 && menu_opened && 'toggle_menu_item'}}
-                                                            {{!(menu_opened||distance_type==42) && 'hidden'}}
-                                                            {{distance_type==42 && menu_opened && 'toggle-header-open'}}"
+                                                                {{distance_type!=42 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==42) && 'hidden'}}
+                                                                {{distance_type==42 && menu_opened && 'toggle-header-open'}}"
                              pv-events="click::updateGeo42">
 
-                            <div><span pv-anchor="mthswitch" class="mthswitch" pv-class="mthswitch toggle_item_text">42 km 195 m</span></div>
+                            <div><span pv-anchor="mthswitch" class="mthswitch" pv-class=" toggle_item_text">21,1</span></div>
                         </div>
-                        <div class="hidden toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
-                                                            {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
-                                                            {{!(menu_opened||distance_type==10) && 'hidden'}}
-                                                            {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
+                        <div class="toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
+                                                                {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==10) && 'hidden'}}
+                                                                {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
+                             pv-events="click::updateGeo42">
+
+                            <div><span class="toggle_item_text">10 КМ</span></div>
+                        </div>
+                        <div class="toggle_menu_item 10menu_item" pv-class="10menu_item {{distance_type==10 && 'toggle-header current_menu_item'}}
+                                                                {{distance_type!=10 && menu_opened && 'toggle_menu_item'}}
+                                                                {{!(menu_opened||distance_type==10) && 'hidden'}}
+                                                                {{distance_type==10 && menu_opened && 'toggle-header-open'}}"
                              pv-events="click::updateGeo10">
-                            <span class="toggle_item_text">10 km</span>
+                            <span class="toggle_item_text">10 км</span>
                         </div>
-                        <img class="toggle_arrow" src="../i/triangle.png">
+                        <img class="toggle_arrow" src="../i/triangle.png">-->
                     </div>
                 </h1>
-					<div>
-						<div>
-							<!-- start -->
-							<div 
-								class="marker_c hidden"
+
+                    <div>
+                        <div>
+                            <!-- start -->
+                            <div 
+                                class="marker_c hidden"
+
+                                pv-props="
+                                    style.left: {{start_point.0}}
+                                    style.top: {{start_point.1}}
+                                    
+                                "
                                 pv-class="marker_c {{!(show_map && start_point && runners_rate) && 'hidden'}}"
-								pv-props="
-									style.left: {{start_point.0}}
-									style.top: {{start_point.1}}
-									
-								">
+                                    >
 
-								<span class="marker marker_yel"></span>
-							</div>
+                                <span class="marker marker_yel"></span>
+                            </div>
 
-						</div>
-						
+                        </div>
+                        
 
-						<div>
-							<!-- finish-->
-							<div 
-								class="marker_c hidden"
+                        <div>
+                            <!-- finish-->
+                            <div 
+                                class="marker_c hidden"
+
+                                pv-props="
+                                    style.left: {{end_point.0}}
+                                    style.top: {{end_point.1}}
+                                    
+                                "
                                 pv-class="marker_c {{!(show_map && end_point && runners_rate) && 'hidden'}}"
-								pv-props="
-									style.left: {{end_point.0}}
-									style.top: {{end_point.1}}
-									
-								">
+                                    >
 
-								<span class="marker"></span>
-							</div>
+                                <span class="marker"></span>
+                            </div>
 
+                        </div>
 
-						</div>
+                    </div>
 
-							<!-- подпись для высоты 1 -->
-
-							<!-- подпись для высоты 2 -->
-
-					</div>
-
-					
-					<div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
-
-                        <!-- Достопримечательности -->
+                     <div class="factoids" pv-class="factoids {{!show_map && 'hidden_opacity'}}">
+                        <div
+                            pv-props="
+                                style.top:   {{track_top_padding - (trackheight * 0.2)}}
+                                style.left:  {{track_left_padding - (trackwidth * 0.5)}}
+                            "
+                            pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '00:00:00' : '7:00:00' )) && 'hidden'}}"
+                            class="factoid hidden"
+                            style="width: 190px;">
+                            <img class="factoid_img" style="margin-top: -10px; height: 75px;" src="../i/time.png" />
+                            <h5 class="factoid_h bold">By 2 min 13 s</h5>
+                            <div class="factoid_d">improved the previous record of 2:19:36</br>set in 2013</div>
+                        </div>
+                        <!--
                         <div pv-props="
                                 style.top:   {{track_top_padding +  (trackheight * 0.34) }}
                                 style.left:  {{track_left_padding + (trackwidth * 0.723)}}
@@ -295,45 +306,29 @@
                             <img class="factoid_img" src="../i/sights/7_MoskvaC.png" style="margin-top: -17.5px; height: 35px;"/>
                         </div>
 
-
-                        <!-- Фактоиды -->
-                        <!--на 42км-->
-                        <!--первые три-->
-						<div pv-props="
-									style.top:   {{track_top_padding +  (trackheight * 0.12) }}
-									style.left:  {{ - (trackwidth * 0.01)}}
-								"
-								pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '0:00:00' : '2:40:00' )) && 'hidden'}}" class="factoid hidden"
-                                style="width: 210px;">
+                        <div pv-props="
+                                    style.top:   {{track_top_padding +  (trackheight * 0.12) }}
+                                    style.left:  {{ - (trackwidth * 0.01)}}
+                                "
+                                pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '0:00:00' : '2:40:00' )) && 'hidden'}}" class="factoid hidden"
+                                style="width: 200px;">
                             <img class="factoid_img_left" src="../i/ken_win.png" style="margin-bottom: 20px; margin-top: 20px; margin-right: 10px; height: 44px;"/>
                             <h5 class="factoid_h">2:17:23</h5>
-                            <div class="factoid_d" >winner time of&nbsp;Salomon Kibet Barngetuny from Kenia</div>
-						</div>
+                            <div class="factoid_d" >время победителя из Кении, Салoмона Барнгетуни</div>
+                        </div>
 
-						<div
-							pv-props="
-								style.top:   {{track_top_padding +  (trackheight * 0.53)}}
-								style.left:  {{track_left_padding - (trackwidth * 0.23)}}
-							"
-							pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '00:00:00' : '1:30:00' )) && 'hidden'}}"
-							class="factoid hidden"
-                            style="width: 230px;">
-                            <img class="factoid_img_left" style="height: 75px;" src="../i/time.png" />
-							<h5 class="factoid_h">By 2 min 13 s</h5>
-							<div class="factoid_d">improved the previous record of 2:19:36</br>set in 2013</div>
-						</div>
+                        
 
                         <div pv-props="
-									style.top:   {{track_top_padding +  (trackheight * 0.75)}}
-									style.left:  {{ - (trackwidth * 0.03)}}
-								"
+                                    style.top:   {{track_top_padding +  (trackheight * 0.75)}}
+                                    style.left:  {{ - (trackwidth * 0.03)}}
+                                "
                              pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '00:00:00' : '2:40:00' )) && 'hidden'}}" style="width: 168px;" class="factoid hidden">
-                            <h5 class="factoid_h">292 metres</h5>
-                            <div class="factoid_d">the total elevation gain,<br>higher than main<br/>building of Moscow State University</div>
+                            <h5 class="factoid_h">+292 м</h5>
+                            <div class="factoid_d">суммарного подъема,<br>выше ГЗ&nbsp;МГУ<br/>вместе со&nbsp;шпилем</div>
                             <img class="factoid_img_msu" src="../i/msu.png" />
                         </div>
 
-                        <!--вторые три-->
                         <div pv-props="
                                     style.top:   {{track_top_padding +  (trackheight * 0.12) }}
                                     style.left:  {{ - (trackwidth * 0.01)}}
@@ -342,89 +337,65 @@
                                 style="width: 225px;">
                             <img class="factoid_img_left" src="../i/kz_win.png" style="margin-bottom: 20px; margin-top: 20px; margin-right: 10px; height: 44px;"/>
                             <h5 class="factoid_h">2:40:20</h5>
-                            <div class="factoid_d" >women's best time of&nbsp;Irina Smolnikova from Kazakhstan</div>
+                            <div class="factoid_d" >время победительницы</br>из Казахстана,</br>Ирины Смольниковой</div>
                         </div>
 
-
-                        <div  pv-props="
-                                style.top:   {{track_top_padding +  (trackheight * 0.48)}}
-                                style.left:  {{track_left_padding - (trackwidth * 0.22)}}
-                            "
-                             pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '4:25:00' : '7:25:00' )) && 'hidden'}}" class="factoid hidden"
-                             style="width: 185px;">
-                            <img class="factoid_img_left" src="../i/volonteers.png" style="height: 66px;"/>
-                            <h5 class="factoid_h">250 volunteers</h5>
-                            <div class="factoid_d" >helped during the&nbsp;marathon</div>
-                        </div>
-                        <div pv-props="
+                       <div pv-props="
                                 style.top:   {{track_top_padding +  (trackheight * 0.51)}}
                                 style.left:  {{track_left_padding - (trackwidth * 0.23)}}
                             "
                                 pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '1:30:00' : '4:25:00' )) && 'hidden'}}"
                                 class="factoid hidden"
-                                style="width: 260px;">
-                            <img class="factoid_img_left" src="../i/glass.png" style="margin-right:0px; height: 70px;"/>
-                            <div class="factoid_d">Runners drank</div>                           
-                            <h5 class="factoid_h">85 000 l of&nbsp;water</br>from 130 000 cups</h5>
+                                style="width: 235px;">
+                            <img class="factoid_img_left" src="../i/glass.png" style="margin-right:0px; margin-top: 10px; height: 70px;"/>
+                            <div class="factoid_d">Бегуны выпили</div>
+                            <h5 class="factoid_h">85&nbsp;000 л воды из 130&nbsp;000 стаканчиков</h5>
+                        </div>
+
+                        <div pv-props="
+                                    style.top:   {{track_top_padding +  (trackheight * 0.75)}}
+                                    style.left:  {{ - (trackwidth * 0.03)}}
+                                "
+                             pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '2:40:00' : '5:10:00' )) && 'hidden'}}" style="width: 150px;" class="factoid hidden">
+                            <img class="factoid_img" style="margin-left: 18px; height: 74px;" src="../i/fruits.png" />
+                            <div class="factoid_d">На трассе бегуны съели</div>
+                            <h5 class="factoid_h">3500 кг фруктов</h5>
 
                         </div>
-                        <!-- <div pv-props="
-									style.top:   {{track_top_padding +  (trackheight * 0.75)}}
-									style.left:  {{ - (trackwidth * 0.03)}}
-								"
-                             pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '3:10:00' : '4:10:00' )) && 'hidden'}}" style="width: 168px;" class="factoid hidden">
-                            <img class="factoid_img" src="../i/water.png"/>
-                            <div class="factoid_d">Runners drank</div>
-                            <h5 class="factoid_h">95 000 l of&nbsp;water and beverages</h5>
 
-                        </div> -->
-                        <!--третьи три-->
+                         <div pv-props="
+                                style.top:   {{track_top_padding +  (trackheight * 0.48)}}
+                                style.left:  {{track_left_padding - (trackwidth * 0.22)}}
+                            "
+                             pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '4:25:00' : '7:25:00' )) && 'hidden'}}" class="factoid hidden"
+                             style="width: 185px;">
+                            <img class="factoid_img" src="../i/volonteers.png" style="height: 66px;"/>
+                            <h5 class="factoid_h">250 волонтёров</h5>
+                            <div class="factoid_d" >работало в&nbsp;день марафона</div>
+                        </div>
+
                         <div pv-props="
                                     style.top:   {{track_top_padding +  (trackheight * 0.75)}}
                                     style.left:  {{ - (trackwidth * 0.03)}}
                                 "
                              pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '5:10:00' : '7:00:00' )) && 'hidden'}}" class="factoid hidden"
                              style="width: 210px;">
-                            <img class="factoid_img" style="margin-top: 8px; height: 49px;" src="../i/kitchen.png"/>
-                            <div class="factoid_d" >Runners ate</div>
-                            <h5 class="factoid_h">6 000 servings of&nbsp;porridge</h5>
+                            <img class="factoid_img" style="margin-top: 8px; height: 49px; margin-left: 29px;" src="../i/kitchen.png"/>
+                            <div class="factoid_d" >На финише бегуны съели</div>
+                            <h5 class="factoid_h">6000 порций гречневой каши</h5>
 
                         </div>
-                        <!-- <div
-                                pv-props="
-								style.top:   {{track_top_padding +  (trackheight * 0.53)}}
-								style.left:  {{track_left_padding - (trackwidth * 0.13)}}
-							"
-                                pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '5:00:00' : '7:00:00' )) && 'hidden'}}"
-                                class="factoid hidden"
-                                style="width: 140px;">
-                            <h5 class="factoid_h">≈&thinsp;2000 ccal</h5>
-                            <div class="factoid_d">runner burns during&nbsp;the&nbsp;race</div>
 
-                        </div> -->
+                       
                         <div pv-props="
-                                    style.top:   {{track_top_padding +  (trackheight * 0.75)}}
-                                    style.left:  {{ - (trackwidth * 0.03)}}
+                                    style.top:   {{track_top_padding +  (trackheight * 0.12) }}
+                                    style.left:  {{track_top_padding + (trackwidth * 0.1)}}
                                 "
-                             pv-class="factoid {{(distance_type==10 || !( time_value|compareTime: '2:40:00' : '5:10:00' )) && 'hidden'}}" style="width: 150px;" class="factoid hidden">
-                            <img class="factoid_img" style="margin-left: -20px; height: 74px;" src="../i/fruits.png" />
-                            <div class="factoid_d">Runners ate</div>
-                            <h5 class="factoid_h">3500 kg of&nbsp;fruits</h5>
-
-                        </div>
-
-                        <!--на 10км -->
-
-                        <!--первые три-->
-                        <div pv-props="
-									style.top:   {{track_top_padding +  (trackheight * 0.12) }}
-									style.left:  {{track_top_padding + (trackwidth * 0.1)}}
-								"
                              pv-class="factoid {{(distance_type==42 || !( time_value|compareTime: '0:00:00' : '0:50:00' )) && 'hidden'}}" class="factoid hidden"
                              style="width: 200px;">
                             <img class="factoid_img_left" src="../i/rus_win.png" style="margin-bottom: 20px; margin-top: 20px; margin-right: 10px; height: 44px;"/>
                             <h5 class="factoid_h">0:29:23</h5>
-                            <div class="factoid_d" >the best time was set by&nbsp;Rinas&nbsp;Akhmadeev from Russia</div>
+                            <div class="factoid_d" >время победителя из&nbsp;Казани, </br>Ринаса Ахмадеева</div>
                         </div>
 
                         <div pv-props="
@@ -435,247 +406,265 @@
                              style="width: 230px;">
                             <img class="factoid_img_left" src="../i/rus_win.png" style="margin-bottom: 20px; margin-top: 20px; margin-right: 10px; height: 44px;"/>
                             <h5 class="factoid_h">0:33:50</h5>
-                            <div class="factoid_d" >women's best time was set by&nbsp;Irina&nbsp;Sergeeva from Russia</div>
+                            <div class="factoid_d" >время победительницы из&nbsp;Москвы, </br>Ирины Сергеевой</div>
+                        </div> -->
+                    </div> 
+                </div>
+                <div class="bmap_etc">
+                    <div class="weather">
+                        <div class="we_temperature bold inline">
+                            <span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">+10°</span>
+                            <span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">+11°</span>
+                            </div>
+                        <div class="weather_images inline">
+                            <div
+                                pv-class=" {{ !( time_value|compareTime: '00:00' : '7:00:00' ) && 'hidden'}}"
+                                class="hidden">
+                                <img src="../i/weather/w-small-rain.gif" alt="">
+                            </div>
                         </div>
+                        <div class="we_wind inline">
+                            
+                            <span pv-class=" {{ !( time_value|compareTime: '00:00' : '1:00:00' ) && 'hidden'}}" class="hidden">→ 2 m/s</span>
+                            <span pv-class=" {{ !( time_value|compareTime: '1:00:00' : '7:00:00' ) && 'hidden'}}" class="hidden">→ 3 m/s</span>     
+                        </div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend_alt">
+                            <div class="bold">Altitude</div>
+                            <div class="svgcon graph_has_text alt_graph" id="alt_graph">
+                            </div>
+                            <div class="legend_alt_annotation">
+                                <div pv-class="{{!(distance_type==42) && 'hidden'}}">Total climb — 73 m</div>
+                                <div pv-class="{{!(distance_type==10) && 'hidden'}}">Total climb — 35 m</div>
+                                <div>169 m — highest point of Moscow Marathon</div>
+                            </div>
+                            
+                        </div>
+                        <div class="legend_runners">
+                            <div class="legendage_c inline">
+                                <div class="bold">Age and&nbsp;sex</div>
+                                <div pv-anchor="legendage" class="svgcon graph_has_text">
+                                    <img src="../i/legendage_mask.png" class="legendage_mask"alt="">
+                                    <div class="graph_text_block" pv-anchor="legendage_textc"></div>
+                                    <div class="age_text" style="display:none;"></div>
 
-						<div pv-props="
-								style.top:   {{distance_type==42 && (track_top_padding +  (trackheight * 0.76)) || distance_type==10 && (track_top_padding +  (trackheight * 0.8))  }}
-
-								style.left:  {{distance_type==42 && (track_left_padding + (trackwidth * 0.64)) || distance_type==10 && (track_left_padding + (trackwidth * 0.82))  }}
-								style.width: {{trackwidth * 0.5}}
-							"
-							pv-class="factoid" class="factoid" style = "display:block">
-							<h5 class="share_h">You did it! Share your awesomeness:</h5>
-							<div class="fb-like" data-href="http://moscowmarathon.org/en/marathon/results/stats/en/" data-layout="standard" data-action="like" data-width="250" data-show-faces="true" data-share="false"></div>
-
-							<div>
-							<div id="vk_like"></div>
-							<script type="text/javascript">
-							VK.Widgets.Like("vk_like", {type: "full"});
-							</script>
-							
-							</div>
-						</div>
-
-					</div>
-					
-
-				</div>
-				<div class="bmap_etc">			
-					<div class="legend">
-						<div class="legendcount_c">
-							<div>Snake width</div>
-                            <div pv-anchor="legendcount" class="svgcon legendcount_svg">
+                                </div>
+                            </div>
+                            <div class="legendcount_c inline">
+                                <div class="bold">Snake&nbsp;width</div>
+                                <div pv-anchor="legendcount" class="svgcon legendcount_svg">
+                                    
+                                    <div class="legendcount_num legendcount_num_max grey_text"></div>
+                                    <div class="legendcount_num legendcount_num_male"></div>
+                                    <div class="legendcount_num legendcount_num_female"></div>
+                                </div>
                                 <div class="legendcount-text" pv-anchor="legendcounttext"></div>
                             </div>
-						</div>
-						<div class="legendage_c">
-							<div>Age and&nbsp;sex</div>
-							<div pv-anchor="legendage" class="svgcon graph_has_text">
-								<div class="graph_text_block" pv-anchor="legendage_textc"></div>
-							</div>
-						</div>
-                        <div class="legend_alt">
-                            <div>Altitude</div>
-                            <div class="svgcon alt_graph graph_has_text" id="alt_graph">
-
-                            </div>
                         </div>
-                        <div class="copyright_desc">Visualization by&nbsp;<a href="http://datalaboratory.ru/">Data&nbsp;laboratory
-                        	<img src="../i/dl-logo.png" alt=""></a></div>
-					</div>
-				</div>
-			</div>
-        <div class="desc_text_on_map" id="desc_text_on_map">
-            <div class="timeline_black_text" ></div>
-            <div class="timeline_white_text" ></div>
-            <div class="timeline_yellow_text" ></div>
-
+                    </div>
+                    <div class='social_buttons'>
+                        <div class="likely">
+                            <div class="facebook"></div>
+                            <div class="twitter" data-via="moscowmarathon"></div>
+                            <div class="vkontakte"></div>
+                            <div class="gplus"></div>
+                        </div>               
+                    </div>
+                    
+                    <div class="dlcredits"><a href="http://datalaboratory.ru/"><img class="dllogo inline" src="../i/dl-logo.png" alt=""></a><span class="copyright inline">Visualization by&nbsp;<a class="text_link" href="http://datalaboratory.ru/">Data&nbsp;laboratory</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="desc_text_on_map" id="desc_text_on_map">
+                <div class="timeline_black_text" pv-html="{{selector_matching.runner.full_name}},<br> {{selector_matching.runner.age_years}}"></div>
+                    <div class="white_text_container">
+                        <div class="timeline_white_text bold" ></div>
+                        <div class="timeline_small_white_text" pv-text="Финишировал{{selector_matching.runner.gender===0 && 'a'}} {{selector_matching.runner.pos}}-{{selector_matching.runner.gender===0 && 'й' || selector_matching.runner.gender===1 && 'м'}}"></div>
+                    </div>
+                    <div class="timeline_yellow_block">
+                        <div class="text_wrapper">
+                            <div class="yellow_text_logo"><img src="../i/mm-logo-small.png"></div>
+                            <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
+                        </div>
+                    </div>
+            </div>
+            <div id="map-con" pv-nest="geo_map" pv-class="{{!show_map && 'hidden_opacity'}}"></div>
         </div>
-		<div id="map-con" pv-nest="geo_map"  pv-class="{{!show_map && 'hidden_opacity'}}"></div>
+        <div class="controlls big_block hidden_opacity" pv-class="controlls big_block {{!runners_rate && 'hidden_opacity'}}" pv-anchor="controlls">
+            <div class="scroll_marker" pv-anchor="scroll_marker">
+                <div class="scroll_top" ><img src="../i/scroll-marker-top.png" alt=""/></div>
+                <div class="scroll_bottom" ><img src="../i/scroll-marker-bottom.png" alt=""/></div>
+                <div class="scroll_time">01:17</div>
+            </div>
 
-		</div>
-    <div class="controlls big_block hidden_opacity" pv-class="controlls big_block {{!runners_rate && 'hidden_opacity'}}" pv-anchor="controlls">
-			<div class="scroll_marker" pv-anchor="scroll_marker"><img src="../i/scroll-marker.png" alt=""></div>
-			<div class="timeline graph_has_text" pv-nest="time_graph">
-                <!-- <span class="start_text timeline_text">start</span> -->
-                <!--<span class="hidden" pv-class="winner_text timeline_text {{!winner && 'hidden'}}" pv-props="style.left: {{winner.pixel_pos - 5}}">winner finished</span>-->
-                <div class="hidden" pv-class="winner_info_man {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos - 5}}">
+
+            <div class="timeline graph_has_text" pv-nest="time_graph">
+               <span class="current_time" pv-props="style.left: {{current_controll_value.pos}}" pv-text="{{current_controll_value.time}}" style="display:none"></span>
+
+
+                <!-- <span class="start_text timeline_text">начало забега</span> -->
+               <!--<span class="hidden" pv-class="winner_text timeline_text {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos - 5}}">финишировал победитель</span>-->
+                <div class="hidden" pv-class="winner_info_man {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_man.pixel_pos}}">
                     <span pv-text="{{winner.winner_man.full_name}}"></span>
                     <span pv-text="{{winner.winner_man.result_time_string}}"></span>
                 </div>
-                <div class="hidden" pv-class="winner_info_woman {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_woman.pixel_pos - 5}}">
+                <div class="hidden" pv-class="winner_info_woman {{!winner && 'hidden'}}" pv-props="style.left: {{winner.winner_woman.pixel_pos}}">
                     <span pv-text="{{winner.winner_woman.full_name}}"></span>
                     <span pv-text="{{winner.winner_woman.result_time_string}}"></span>
                 </div>
-                <!-- <span class="finish_text timeline_text">last runner finished</span> -->
-                <span class="current_time" pv-props="style.left: {{current_controll_value.pos}}" pv-text="{{current_controll_value.time}}"></span>
+                <!-- <span class="finish_text timeline_text">финишировал последний бегун</span> -->
+                
                 <div class="controlls_desc">
+
                     <h2 class="controlls_desc_h">
-                        <span class="hidden" pv-class="{{!male_current_number && 'hidden'}}" pv-text="{{male_current_number}}"></span>
-                        <span class="hidden" pv-class="{{!(male_current_number && female_current_number) && 'hidden'}}"><br/> and</span>
-                        <span class="hidden" pv-class="{{!female_current_number && 'hidden'}}"  pv-text="{{female_current_number}}"></span>
-                        <span class="hidden" pv-class="{{!(female_current_number||male_current_number) && 'hidden'}}"></span>
+                        <span class="bold">
+                            <span class="hidden" pv-class="{{!male_current_number && 'hidden'}}" pv-text="{{male_current_number}}"></span>
+                            <span class="hidden" pv-class="{{!(male_current_number && female_current_number) && 'hidden'}}"><br/> и</span>
+                            <span class="hidden" pv-class="{{!female_current_number && 'hidden'}}"  pv-text="{{female_current_number}}"></span>
+                        </span>
                     </h2>
-                    <div class="controlls_desc_i hidden" pv-class="controlls_desc_i {{!((male_current_number||female_current_number) && max_age) && 'hidden'}}" style="line-height:24px;">
+                    <div class="controlls_desc_i hidden" pv-class="controlls_desc_i {{!((male_current_number||female_current_number) && max_age) && 'hidden'}}" >
                         <span class="hidden" pv-class="{{!min_age && 'hidden'}}" pv-text="from {{min_age}} to "></span>
-                        <span pv-text="{{max_age}} years old,"></span><br>by finish times</div>
+                        <span pv-text="{{max_age}}"></span><br>by finish times</div>
                 </div>
-				<div class="graph_text_block">
-					<div class="selector_box hidden" pv-class="selector_box {{!selector_matching && 'hidden'}}"
-						pv-props="
-							style.left: {{selector_matching && ((selector_matching.selector.pos_x * px_step) || '0')}}
-							style.bottom: {{selector_matching && ((selector_matching.selector.pos_y * height_factor) || '0')}}
-							style.width: {{px_step}}
-							style.height: {{height_factor}}
-						"
-					></div>
-					<div 
-						class="timeline_select_desc hidden"
-						pv-class="timeline_select_desc {{!selector_matching.runner.full_name && 'hidden'}} {{selector_matching.selector.pos_x_factor > 0.66 && 'right_stack_fix'}}"
-						pv-props="
-							style.left: {{selector_matching && ((selector_matching.selector.pos_x * px_step) || '0')}}
-							style.bottom: {{selector_matching && ((selector_matching.selector.pos_y * height_factor) || '0')}}
-						"
+                
+                <div class="graph_text_block">
+                    <div class="selector_box hidden" pv-class="selector_box {{!selector_matching && 'hidden'}}"
+                        pv-props="
+                            style.left: {{selector_matching && ((selector_matching.selector.pos_x * px_step) || '0')}}
+                            style.bottom: {{selector_matching && ((selector_matching.selector.pos_y * height_factor) || '0')}}
+                            style.width: {{px_step}}
+                            style.height: {{height_factor}}
+                        "
+                    ></div>
+                    <div 
+                        class="timeline_select_desc hidden"
+                        pv-class="timeline_select_desc {{!selector_matching.runner.full_name && 'hidden'}} {{selector_matching.selector.pos_x_factor > 0.66 && 'right_stack_fix'}}"
+                        pv-props="
+                            style.left: {{selector_matching && ((selector_matching.selector.pos_x * px_step) || '0')}}
+                            style.bottom: {{selector_matching && ((selector_matching.selector.pos_y * height_factor) || '0')}}
+                        "
 
-						>
+                        >
                         <div class="timeline_select_desc-text" >
-                            <div class="timeline_black_text" pv-text="{{selector_matching.runner.full_name}}, {{selector_matching.runner.age_years}}"></div>
-                            <div class="timeline_white_text" pv-text="{{selector_matching.runner.end_time_string}}"></div>
-                            <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
-
+                            <div class="timeline_black_text" pv-html="{{selector_matching.runner.full_name}},<br> {{selector_matching.runner.age_years}}"></div>
+                            <div class="white_text_container">
+                                <div class="timeline_white_text bold" pv-text="{{selector_matching.runner.end_time_string}}"></div>
+                                <div class="timeline_small_white_text" pv-text="Финишировал{{selector_matching.runner.gender===0 && 'a'}} {{selector_matching.runner.pos}}-{{selector_matching.runner.gender===0 && 'й' || selector_matching.runner.gender===1 && 'м'}}"></div>
+                            </div>
+                            <div class="timeline_yellow_block">
+                                <div class="text_wrapper">
+                                    <div class="yellow_text_logo"><img src="../i/mm-logo-small.png"></div>
+                                    <div class="timeline_yellow_text" pv-text="{{selector_matching.runner.num}}"></div>
+                                </div>
+                            </div>
                         </div>
-					</div>					
-				</div>
-				<div class="graph_text_block" pv-anchor="timeline_textc">
-					
-				</div>
-			</div>
+                    </div>                  
+                </div>
+                <div class="graph_text_block timeline_textc" pv-anchor="timeline_textc">
+                    
+                </div>
+            </div>
 
-		</div>
+    </div>
+    <div id="screens">
+        <div class="hidden_opacity" pv-class="{{!runners_rate && 'hidden_opacity'}}">
+            <div 
+                class="complex-page-scroll_con"
+                pv-anchor="scroll_con">
+                <div id="start-screen" class="runners_block big_block" pv-nest="scope">
+                    <div class="runners_header" pv-anchor="runners_header">
+                        <h2 class="bold">Results</h2>
+                        <span class="sex_filter">
+                            <div class="genbuttn_group ">
+                                <div class="genbuttn" pv-nest="filter_gender" pv-class="
+                                    genbuttn
+                                    {{(label == 'призёров' || label == 'winners') && 'buttn-winners'}}
+                                    {{(label == 'мужчин' || label == 'men') && 'genbuttn-male'}}
+                                    {{(label == 'женщин' || label == 'women') && 'genbuttn-female'}}
+                                    {{novalue && 'genbuttn-male-female'}}
+                                    {{active && 'active'}}
+                                " pv-text="{{label}}" pv-events="click::setFilter click::update"></div>
+                            </div>
+                        </span>
+                        <div class="filters">
+                            <div class="firunr_search_c">
+                                <input class="firunr_search" placeholder="Name or number" type="search" pv-events="input:makeSearch keydown:makeSearch mousemove:makeSearch" >
+                            </div>
+                            <div pv-class="{{query && 'hidden'}}">
+                                <div class="firunr_age_c"><img class="filtrr_img" src="../i/triangle.png">
+                                    <div class="firunr_age filterr_menu">
+                                        <div class="filtrr" pv-text="{{selected_filter_ages || filter_ages.0.label}}"></div>
+                                        <div class="flrr_menu_list" >
+                                            <div class="flrr_menu_item" pv-nest="filter_ages" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}} {{not_specified && 'not_specified_item'}}">
+                                                <span pv-text="{{label}}" class="filter_item_name"></span>
+                                                <span class="counter" pv-text="{{counter}}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="firunr_teem_c"><img class="filtrr_img" src="../i/triangle.png">
+                                    <div class="firunr_teem filterr_menu">
+                                        <div class="filtrr" pv-text="{{selected_filter_team || filter_team.0.label}}"></div>
+                                        <div class="flrr_menu_list" >
+                                            <div class="flrr_menu_item" pv-nest="filter_team" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}} {{not_specified && 'not_specified_item'}}">
+                                                <span pv-text="{{label}}" class="filter_item_name"></span>
+                                                <span class="counter" pv-text="{{!novalue && counter}}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="firunr_place_c"><img class="filtrr_img" src="../i/triangle.png">
+                                    <div class="firunr_place filterr_menu">
+                                        <div class="filtrr" pv-text="{{selected_filter_city || filter_city.0.label}}" ></div>
+                                        <div class="flrr_menu_list" >
+                                            <div class="flrr_menu_item" pv-nest="filter_city" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}} {{not_specified && 'not_specified_item'}}">
+                                                <span pv-text="{{label}}" class="filter_item_name"></span>
+                                                <span class="counter" pv-text="{{!novalue && counter}}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hidden clear_filters" pv-class="clear_filters {{!selected_filter_city && !selected_filter_team && !selected_filter_ages && 'hidden'}}" pv-events="click::clearFilters"></div>
 
-
-	<div id="screens">
-		<div class="hidden_opacity" pv-class="{{!runners_rate && 'hidden_opacity'}}">
-			<div 
-				class="complex-page-scroll_con"
-				pv-anchor="scroll_con">
-				<div id="start-screen" class="runners_block big_block" pv-nest="scope">
-					<div class="runners_header" pv-anchor="runners_header">
-						<h2>Results  </h2>
-						<span class="sex_filter">
-							<div class="genbuttn_group ">
-								<div class="genbuttn" pv-nest="filter_gender" pv-class="
-									genbuttn
-									{{label == 'Men' && 'genbuttn-male'}}
-									{{label == 'Women' && 'genbuttn-female'}}
-									{{novalue && 'genbuttn-male-female'}}
-									{{active && 'active'}}
-
-								" pv-text="{{label}}" pv-events="click::setFilter"></div>
-							</div>
-
-						</span>
-						<div class="filters">
-							<div class="firunr_search_c">
-								<input class="firunr_search" placeholder="Name or number" type="search" pv-events="input:makeSearch keydown:makeSearch mousemove:makeSearch"/ >
-							</div>
-							<div pv-class="{{query && 'hidden'}}">
-								<div class="firunr_age_c"><img class="filtrr_img" src="../i/triangle.png">
-									<div class="firunr_age filterr_menu">
-										<div class="filtrr" pv-text="{{selected_filter_ages || filter_ages.0.label}}"></div>
-										<div class="flrr_menu_list" >
-											<div class="flrr_menu_item" pv-nest="filter_ages" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}}">
-												<span pv-text="{{label}}" class="filter_item_name"></span>
-												<span class="counter" pv-text="{{counter}}"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="firunr_teem_c"><img class="filtrr_img" src="../i/triangle.png">
-									<div class="firunr_teem filterr_menu">
-										<div class="filtrr" pv-text="{{selected_filter_team || filter_team.0.label}}"></div>
-										<div class="flrr_menu_list" >
-											<div class="flrr_menu_item" pv-nest="filter_team" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}} {{not_specified && 'not_specified_item'}}">
-												<span pv-text="{{label}}" class="filter_item_name"></span>
-												<span class="counter" pv-text="{{!novalue && counter}}"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="firunr_place_c"><img class="filtrr_img" src="../i/triangle.png">
-									<div class="firunr_place filterr_menu">
-										<div class="filtrr" pv-text="{{selected_filter_city || filter_city.0.label}}"></div>
-										<div class="flrr_menu_list" >
-											<div class="flrr_menu_item" pv-nest="filter_city" pv-events="click::setFilter" pv-class="flrr_menu_item {{active && 'active'}} {{novalue && 'no_filtering_item'}} {{not_specified && 'not_specified_item'}}">
-												<span pv-text="{{label}}" class="filter_item_name"></span>
-												<span class="counter" pv-text="{{!novalue && counter}}"></span>
-											</div>
-										</div>
-									</div>
-								</div>
-                                <div class="hidden clear_filters" pv-class="clear_filters {{!selected_filter_city && !selected_filter_gender && !selected_filter_team && !selected_filter_ages && 'hidden'}}" pv-events="click::clearFilters">✕</div>
-
-								
-							</div>
-							
-							
-						</div>
-						
-					</div>
+                                
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
                     <div class="runners_list" pv-anchor="runners_list">
 
                         <div
                                 pv-nest="runners_filtered"
                                 pv-events="click::switchSelection"
                                 class="runrs_item"
-                                pv-class="runrs_item {{selected && 'selected_runr'}} {{gender === 0 && 'runr_female'}} {{gender === 1 && 'runr_male'}} {{gender === 2 && 'runr_off'}}">
+                                pv-class="runrs_item {{gender_pos <= 6 && 'runr_winner'}} {{selected && 'selected_runr'}} {{gender === 0 && 'runr_female'}} {{gender === 1 && 'runr_male'}} {{gender === 2 && 'runr_off'}}">
                             <div class="runr_selection_mark"></div>
-                            <div class="runr_pos" pv-text="{{selected_filter_gender && gender_pos}} {{!selected_filter_gender && pos}}"></div>
+                            <div class="runr_pos"><span pv-text="{{selected_filter_gender && gender_pos}} {{!selected_filter_gender && pos}}"></span></div>
                             <div class="runr_name" pv-text="{{full_name}}"></div>
                             <div class="runr_num" pv-text="{{num}}"></div>
-                            <div class="runr_age" pv-text="{{2014 - birthyear}}"></div>
+                            <div class="runr_age" pv-text="{{2015 - birthyear}}"></div>
                             <div class="runr_team" pv-text="{{team}}"></div>
                             <div class="runr_place" pv-text="{{city || country}}"></div>
-                            <div class="runr_time" pv-text="{{full_time_string}}"></div>
+                            <div class="runr_time bold" pv-text="{{full_time_string}}"></div>
                         </div>
-                        <div class="hidden load_more_button" pv-class="load_more_button {{!has_more_button && 'hidden'}}" pv-events="click::showMore">Show more 100 results</div>
+                        <div class="hidden bold load_more_button" pv-class="load_more_button {{!has_more_button && 'hidden'}}" pv-events="click::showMore">Show more 100 results</div>
                     </div>
-				
-					
-					
-				</div>
-			</div>
-		</div>
-	</div>
+                
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
-	
-	
+    
+    
 
-	
-</div>
-<div id="dom-templates" style="display:none">
-	<div
-		class="complex-page inactive-page"
-		pv-class="
-			complex-page
-			{{'index-of-cp-is-' + $lev_num}}
-			{{current_lev_num != $lev_num && 'inactive-page'}}
-			{{current_lev_num == $lev_num && 'full-page'}}
-			{{(current_lev_num - 1) == $lev_num && 'page-scheme'}}"
-		pv-anchor="con">
-		<div
-			class="complex-page-scroll_con"
-			pv-anchor="scroll_con">
-			<div
-				class="complex-page_material"
-				pv-anchor="material">
-			</div>
-		</div>
-	</div>
-	<div class="runner_page big_block">
-		<span pv-text="{{full_name}}"></span>
-	</div>
+    
 </div>
 
 <script>
