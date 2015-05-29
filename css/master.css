@@ -598,7 +598,7 @@ body{
 	        .alt_graph {
 	            /*right: 4px;*/
 	            /*cursor: pointer;*/
-	            margin-top: -5px;
+	            margin-top: -7px;
 	            position: static;
 	        }
 	        	.distance_marks_for_alt line {
@@ -609,7 +609,7 @@ body{
 	        		fill: #999;
 	        	}
 	        .legend_alt_annotation {
-				margin-top: 13px;
+				margin-top: 12px;
 	        }
 	        
 	    .legend_runners {
@@ -907,11 +907,12 @@ body{
 	}
 		.sex_filter{
 			margin-left: 20px;
-			margin-top: 12px;
+			margin-top: 11px;
 			margin-bottom: 0px;
 			float:left;
 			padding: 0px;
 		}
+		
 	.runners_list{
 		padding-bottom: 10px;
 		padding-top: 20px;
@@ -1065,10 +1066,10 @@ body{
 			margin-left: 0px;
 		}
 		.genbuttn_group .genbuttn:first-of-type,.genbuttn-left{
-			border-radius: 0.2em 0 0 0.2em;
+			border-radius: 3px 0 0 3px;
 		}
 		.genbuttn_group .genbuttn:last-of-type,.genbuttn-right{
-			border-radius:  0 0.2em 0.2em 0;
+			border-radius: 0 3px 3px 0;
 		}
 		.genbuttn-male {
 			color: #4285e9;

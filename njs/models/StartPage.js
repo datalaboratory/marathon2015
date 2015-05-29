@@ -313,7 +313,7 @@ BrowseMap.Model.extendTo(StartPage, {
         var ages_header = (locale == 'rus') ? ('Все от ' + ages.min_age + ' до ' + ages.max_age) : ('All from ' + ages.min_age + ' to ' + ages.max_age)
 		this.setFilterResult(this.getAgesGroups(runners, cvsdata.big_ages_ranges, cvsdata), 'ages', ages_header);
 
-        var gender_header = (locale == 'rus') ? 'всех вместе' : 'аll genders'
+        var gender_header = (locale == 'rus') ? 'всех вместе' : 'аll runners'
 		this.setFilterResult(this.getGenderGroups(runners), 'gender', gender_header, true);
 
 	},

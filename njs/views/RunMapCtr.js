@@ -543,7 +543,7 @@ provoda.View.extendTo(RunMapCtr, {
         depends_on: ['altitudes', 'geo_alt', 'distance_type'],
             fn: function(alt, geo, distance_type) {
             if (!alt || !geo) return
-            var width = 246, height = 20, offset_ver = 20, offset_hor = 7;
+            var width = 246, height = 20, offset_ver = 22, offset_hor = 7;
             var svg = this.alt_graph
             svg = svg.attr('width', width + 2 * offset_hor).attr('height', height + 2 * offset_ver)
             svg.selectAll('*').remove()
